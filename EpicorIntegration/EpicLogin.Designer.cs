@@ -85,14 +85,15 @@
             this.Uname.Location = new System.Drawing.Point(80, 3);
             this.Uname.Name = "Uname";
             this.Uname.Size = new System.Drawing.Size(100, 20);
-            this.Uname.TabIndex = 2;
+            this.Uname.TabIndex = 0;
             // 
             // Passw
             // 
             this.Passw.Location = new System.Drawing.Point(80, 29);
             this.Passw.Name = "Passw";
+            this.Passw.PasswordChar = '*';
             this.Passw.Size = new System.Drawing.Size(100, 20);
-            this.Passw.TabIndex = 4;
+            this.Passw.TabIndex = 1;
             // 
             // label2
             // 
@@ -138,8 +139,10 @@
             // 
             // EpicLogin
             // 
+            this.AcceptButton = this.Savebtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.Cancelbtn;
             this.ClientSize = new System.Drawing.Size(384, 227);
             this.Controls.Add(this.ControlPanel);
             this.Controls.Add(this.BlueLinePanel);

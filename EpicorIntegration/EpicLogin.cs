@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Epicor.Mfg.Core;
+using Epicor.Mfg.BO;
 
 namespace EpicorIntegration
 {
@@ -42,6 +44,28 @@ namespace EpicorIntegration
         private void Savebtn_Click(object sender, EventArgs e)
         {
             //save settings to resource file then test settings to connect
+
+            Properties.Settings.Default.uname = Uname.Text;
+
+            Properties.Settings.Default.passw = Passw.Text;
+
+            string server = Properties.Settings.Default .svrname + ":" + Properties.Settings.Default.svrport;
+
+            try
+            {
+                BLConnectionPool EpicConn = new BLConnectionPool(Uname.Text, Passw.Text, "AppServerDC://" + server);
+
+                Part EpicPart = new Part(EpicConn);
+               
+                bool ValidLogin = EpicPart.PartExists(null);
+
+                this.Close();
+
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Try Again");
+            }
         }
     }
 }

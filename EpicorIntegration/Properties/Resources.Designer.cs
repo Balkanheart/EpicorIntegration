@@ -79,41 +79,5 @@ namespace EpicorIntegration.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string passw {
-            get {
-                return ResourceManager.GetString("passw", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string svrname {
-            get {
-                return ResourceManager.GetString("svrname", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string svrport {
-            get {
-                return ResourceManager.GetString("svrport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string user {
-            get {
-                return ResourceManager.GetString("user", resourceCulture);
-            }
-        }
     }
 }

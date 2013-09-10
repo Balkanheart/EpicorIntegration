@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Epicor.Mfg.Core;
 using Epicor.Mfg.BO;
 using EpicorIntegration.Properties;
+using Epicor.Mfg.Lib;
 
 namespace EpicorIntegration
 {
@@ -22,17 +23,36 @@ namespace EpicorIntegration
 
         private void Item_Master_Load(object sender, EventArgs e)
         {
-            string user = Resources.ResourceManager.GetString("user");
+            string user = Properties.Settings.Default.uname;
 
-            string passw = Resources.ResourceManager.GetString("passw");
+            string passw = Properties.Settings.Default.passw;
 
-            string svrname = Resources.ResourceManager.GetString("svrname");
+            string svrname = Properties.Settings.Default.svrname;
 
-            string svrport = Resources.ResourceManager.GetString("svrport");
+            string svrport = Properties.Settings.Default.svrport;
 
             BLConnectionPool EpicConn = new BLConnectionPool(user,passw,"AppServerDC://" + svrname + ":" + svrport);
 
-            Part EpicPart = new Part(EpicConn);
+            BOReader BOReader = new BOReader(EpicConn);
+
+            bool what;
+
+            DataSet ds = (DataSet)BOReader.GetList("Plant", "", "Company,Plant,Name,Company");
+
+            try
+            {
+
+                TestTableViewer test = new TestTableViewer(ds);
+
+                test.ShowDialog();
+            }
+            catch (System.Exception ex)
+            {
+                this.Close();
+            }
+
+
+            //Part EpicPart = new Part(EpicConn);
         }
     }
 }

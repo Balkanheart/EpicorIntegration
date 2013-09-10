@@ -25,7 +25,7 @@ namespace EpicorIntegration.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("bhooper")]
         public string uname {
             get {
                 return ((string)(this["uname"]));
@@ -37,7 +37,7 @@ namespace EpicorIntegration.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("hgdmccl")]
         public string passw {
             get {
                 return ((string)(this["passw"]));

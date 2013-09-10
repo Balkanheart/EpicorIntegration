@@ -11,6 +11,21 @@
     <AssemblyName>EpicorIntegration</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,15 +50,43 @@
     <StartupObject>EpicorIntegration.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Epicor.Mfg.BO.CCCountCycle">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.CCCountCycle.dll</HintPath>
+    </Reference>
     <Reference Include="Epicor.Mfg.BO.Part">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Part.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.PartOnHandWhse">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.PartOnHandWhse.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.Plant">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Plant.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.Core.BLConnectionPool">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Core.BLConnectionPool.dll</HintPath>
     </Reference>
+    <Reference Include="Epicor.Mfg.Core.CallContext, Version=2.5.702.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Core.CallContext.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.ICCCountCycle">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.ICCCountCycle.dll</HintPath>
+    </Reference>
     <Reference Include="Epicor.Mfg.IF.IPart, Version=9.5.702.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IPart.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IPartOnHandWhse">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IPartOnHandWhse.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IPlant">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IPlant.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.Lib.BOReader">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Lib.BOReader.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.Lib.IBOReader">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Lib.IBOReader.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -136,6 +179,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Categories-preferences-other.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

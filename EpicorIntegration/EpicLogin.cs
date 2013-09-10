@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Epicor.Mfg.Core;
 using Epicor.Mfg.BO;
+using Epicor.Mfg.Lib;
 
 namespace EpicorIntegration
 {

@@ -49,6 +49,8 @@ namespace EpicorIntegration
 
             Properties.Settings.Default.passw = Passw.Text;
 
+            Properties.Settings.Default.Save();
+
             string server = Properties.Settings.Default .svrname + ":" + Properties.Settings.Default.svrport;
 
             try

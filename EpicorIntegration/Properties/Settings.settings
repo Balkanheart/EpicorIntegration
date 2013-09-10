@@ -8,10 +8,10 @@
     <Setting Name="passw" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="svrname" Type="System.String" Scope="Application">
+    <Setting Name="svrname" Type="System.String" Scope="User">
       <Value Profile="(Default)">EPAPP1</Value>
     </Setting>
-    <Setting Name="svrport" Type="System.String" Scope="Application">
+    <Setting Name="svrport" Type="System.String" Scope="User">
       <Value Profile="(Default)">9421</Value>
     </Setting>
   </Settings>

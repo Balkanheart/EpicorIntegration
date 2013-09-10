@@ -47,21 +47,27 @@ namespace EpicorIntegration.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("EPAPP1")]
         public string svrname {
             get {
                 return ((string)(this["svrname"]));
             }
+            set {
+                this["svrname"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("9421")]
         public string svrport {
             get {
                 return ((string)(this["svrport"]));
+            }
+            set {
+                this["svrport"] = value;
             }
         }
     }

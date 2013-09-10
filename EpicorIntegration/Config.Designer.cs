@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Config));
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ServerName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.SeverPort = new System.Windows.Forms.TextBox();
             this.logininfobtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // ServerName
             // 
-            this.textBox1.Location = new System.Drawing.Point(9, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(144, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "EPAPP1";
+            this.ServerName.Location = new System.Drawing.Point(9, 32);
+            this.ServerName.Name = "ServerName";
+            this.ServerName.Size = new System.Drawing.Size(144, 20);
+            this.ServerName.TabIndex = 0;
+            this.ServerName.Text = "EPAPP1";
             // 
             // label1
             // 
@@ -61,9 +61,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.SeverPort);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.ServerName);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(159, 111);
@@ -81,13 +81,14 @@
             this.label2.Text = "Server Port:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // textBox2
+            // SeverPort
             // 
-            this.textBox2.Location = new System.Drawing.Point(9, 71);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(60, 20);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "9411";
+            this.SeverPort.Location = new System.Drawing.Point(9, 71);
+            this.SeverPort.MaxLength = 5;
+            this.SeverPort.Name = "SeverPort";
+            this.SeverPort.Size = new System.Drawing.Size(60, 20);
+            this.SeverPort.TabIndex = 2;
+            this.SeverPort.Text = "9411";
             // 
             // logininfobtn
             // 
@@ -97,7 +98,7 @@
             this.logininfobtn.TabIndex = 3;
             this.logininfobtn.Text = "Login Info";
             this.logininfobtn.UseVisualStyleBackColor = true;
-            this.logininfobtn.Click += new System.EventHandler(this.button1_Click);
+            this.logininfobtn.Click += new System.EventHandler(this.logininfobtn_click);
             // 
             // savebtn
             // 
@@ -107,6 +108,7 @@
             this.savebtn.TabIndex = 4;
             this.savebtn.Text = "Save";
             this.savebtn.UseVisualStyleBackColor = true;
+            this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
             // cancelbtn
             // 
@@ -116,6 +118,7 @@
             this.cancelbtn.TabIndex = 5;
             this.cancelbtn.Text = "Cancel";
             this.cancelbtn.UseVisualStyleBackColor = true;
+            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
             // 
             // Config
             // 
@@ -130,6 +133,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Config";
             this.Text = "Options";
+            this.Load += new System.EventHandler(this.Config_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -138,11 +142,11 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox ServerName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox SeverPort;
         private System.Windows.Forms.Button logininfobtn;
         private System.Windows.Forms.Button savebtn;
         private System.Windows.Forms.Button cancelbtn;

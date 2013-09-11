@@ -37,6 +37,10 @@ namespace EpicorIntegration
 
             DataSet ds = (DataSet)BOReader.GetList("PartClass", "", "ClassID,Description");
 
+            TestTableViewer test = new TestTableViewer(ds);
+
+            test.ShowDialog();
+
             return ds;
         }
 

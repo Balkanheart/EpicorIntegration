@@ -48,6 +48,18 @@ namespace EpicorIntegration
 
                 uomclass_cbo.DisplayMember = "Description";
 
+                plant_cbo.DataSource = DL.PlantDataSet().Tables[0];
+
+                plant_cbo.DisplayMember = "NAME";
+
+                DataSet WDS = DL.WarehseDataSet();
+
+                WDS.Tables[0].Columns.Add("FullCode", typeof(string), "Name + ' ' + Description");
+
+                whse_cbo.DataSource = WDS;
+
+                whse_cbo.DisplayMember = "Name";
+
                 DataSet DS = DL.UOMSearchDataSet();
 
                 DS.Tables[0].Columns.Add("FullCode", typeof(string), "UOMCode + ' ' + UOMDesc");
@@ -60,10 +72,6 @@ namespace EpicorIntegration
 
                 type_cbo.SelectedIndex = 0;
 
-                plant_cbo.DataSource = DL.PlantDataSet();
-
-                plant_cbo.DisplayMember = "NAME";
-
             }
             catch (System.Exception ex)
             {
@@ -74,6 +82,11 @@ namespace EpicorIntegration
 
 
             //Part EpicPart = new Part(EpicConn);
+        }
+
+        private void cancelbtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

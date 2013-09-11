@@ -51,6 +51,8 @@
             this.whse_cbo = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.plant_cbo = new System.Windows.Forms.ComboBox();
+            this.cancelbtn = new System.Windows.Forms.Button();
+            this.savebtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
@@ -287,11 +289,32 @@
             this.plant_cbo.Size = new System.Drawing.Size(150, 21);
             this.plant_cbo.TabIndex = 27;
             // 
+            // cancelbtn
+            // 
+            this.cancelbtn.Location = new System.Drawing.Point(283, 416);
+            this.cancelbtn.Name = "cancelbtn";
+            this.cancelbtn.Size = new System.Drawing.Size(75, 23);
+            this.cancelbtn.TabIndex = 29;
+            this.cancelbtn.Text = "&Cancel";
+            this.cancelbtn.UseVisualStyleBackColor = true;
+            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
+            // 
+            // savebtn
+            // 
+            this.savebtn.Location = new System.Drawing.Point(202, 416);
+            this.savebtn.Name = "savebtn";
+            this.savebtn.Size = new System.Drawing.Size(75, 23);
+            this.savebtn.TabIndex = 30;
+            this.savebtn.Text = "&Save";
+            this.savebtn.UseVisualStyleBackColor = true;
+            // 
             // Item_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 392);
+            this.ClientSize = new System.Drawing.Size(370, 451);
+            this.Controls.Add(this.savebtn);
+            this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.plant_cbo);
             this.Controls.Add(this.label10);
@@ -350,6 +373,8 @@
         private System.Windows.Forms.ComboBox whse_cbo;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox plant_cbo;
+        private System.Windows.Forms.Button cancelbtn;
+        private System.Windows.Forms.Button savebtn;
     }
 }
 

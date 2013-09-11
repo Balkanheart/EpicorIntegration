@@ -107,6 +107,44 @@ namespace EpicorIntegration
             return ds;
         }
 
+        public DataSet UOMWeightDataSet()
+        {
+            string user = Properties.Settings.Default.uname;
+
+            string passw = Properties.Settings.Default.passw;
+
+            string svrname = Properties.Settings.Default.svrname;
+
+            string svrport = Properties.Settings.Default.svrport;
+
+            BLConnectionPool EpicConn = new BLConnectionPool(user, passw, "AppServerDC://" + svrname + ":" + svrport);
+
+            BOReader BOReader = new BOReader(EpicConn);
+
+            DataSet ds = (DataSet)BOReader.GetList("UOMClass", "((Active=True) AND (ClassType='Weight'))", "UOMClassID,Description");
+
+            return ds;
+        }
+
+        public DataSet UOMVolumeDataSet()
+        {
+            string user = Properties.Settings.Default.uname;
+
+            string passw = Properties.Settings.Default.passw;
+
+            string svrname = Properties.Settings.Default.svrname;
+
+            string svrport = Properties.Settings.Default.svrport;
+
+            BLConnectionPool EpicConn = new BLConnectionPool(user, passw, "AppServerDC://" + svrname + ":" + svrport);
+
+            BOReader BOReader = new BOReader(EpicConn);
+
+            DataSet ds = (DataSet)BOReader.GetList("UOMClass", "((Active=True) AND (ClassType='Volume'))", "UOMClassID,Description");
+
+            return ds;
+        }
+
         public DataSet WarehseDataSet()
         {
             string user = Properties.Settings.Default.uname;
@@ -125,5 +163,37 @@ namespace EpicorIntegration
 
             return ds;
         }
+    }
+
+    /// <summary>
+    /// Data structure for Part with all appropriate descriptors
+    /// </summary>
+    class PartData
+    {
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    class BOMData
+    {
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    class BOOData
+    {
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    class Operation
+    {
+
     }
 }

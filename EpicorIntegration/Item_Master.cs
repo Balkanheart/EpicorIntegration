@@ -16,6 +16,8 @@ namespace EpicorIntegration
 {
     public partial class Item_Master : Form
     {
+        PartData PartDatum = new PartData();
+
         public Item_Master()
         {
             InitializeComponent();
@@ -23,6 +25,8 @@ namespace EpicorIntegration
 
         private void Item_Master_Load(object sender, EventArgs e)
         {
+            #region Load Settings
+
             string user = Properties.Settings.Default.uname;
 
             string passw = Properties.Settings.Default.passw;
@@ -31,8 +35,11 @@ namespace EpicorIntegration
 
             string svrport = Properties.Settings.Default.svrport;
 
+            #endregion
+
             try
             {
+                #region Fill DataLists
 
                 DataList DL = new DataList();
 
@@ -52,17 +59,13 @@ namespace EpicorIntegration
 
                 plant_cbo.DisplayMember = "NAME";
 
-                DataSet WDS = DL.WarehseDataSet();
+                whse_cbo.DataSource = DL.WarehseDataSet().Tables[0];
 
-                WDS.Tables[0].Columns.Add("FullCode", typeof(string), "Name + ' ' + Description");
-
-                whse_cbo.DataSource = WDS;
-
-                whse_cbo.DisplayMember = "Name";
+                whse_cbo.DisplayMember = "Description";
 
                 DataSet DS = DL.UOMSearchDataSet();
 
-                DS.Tables[0].Columns.Add("FullCode", typeof(string), "UOMCode + ' ' + UOMDesc");
+                DS.Tables[0].Columns.Add("FullCode", typeof(string), "UOMCode + ' - ' + UOMDesc");
 
                 uom_cbo.DataSource = DS.Tables[0];
 
@@ -72,6 +75,16 @@ namespace EpicorIntegration
 
                 type_cbo.SelectedIndex = 0;
 
+                uomvol_cbo.DataSource = DL.UOMVolumeDataSet().Tables[0];
+
+                uomvol_cbo.DisplayMember = "UOMCode";
+
+                uomweight_cbo.DataSource = DL.UOMWeightDataSet().Tables[0];
+
+                uomweight_cbo.DisplayMember = "UOMCode";
+
+                #endregion
+
             }
             catch (System.Exception ex)
             {
@@ -79,14 +92,16 @@ namespace EpicorIntegration
 
                 this.Close();
             }
-
-
-            //Part EpicPart = new Part(EpicConn);
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void savebtn_Click(object sender, EventArgs e)
+        {
+            //Commit Part Changes
         }
     }
 }

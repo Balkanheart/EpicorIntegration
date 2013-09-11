@@ -53,14 +53,20 @@
             this.plant_cbo = new System.Windows.Forms.ComboBox();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
+            this.uomweight_cbo = new System.Windows.Forms.ComboBox();
+            this.uomvol_cbo = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(6, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 0;
@@ -68,7 +74,7 @@
             // 
             // Partnumber_txt
             // 
-            this.Partnumber_txt.Location = new System.Drawing.Point(15, 25);
+            this.Partnumber_txt.Location = new System.Drawing.Point(9, 32);
             this.Partnumber_txt.Name = "Partnumber_txt";
             this.Partnumber_txt.Size = new System.Drawing.Size(333, 20);
             this.Partnumber_txt.TabIndex = 1;
@@ -76,7 +82,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 48);
+            this.label3.Location = new System.Drawing.Point(6, 55);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 4;
@@ -84,7 +90,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(15, 64);
+            this.textBox1.Location = new System.Drawing.Point(9, 71);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(333, 20);
             this.textBox1.TabIndex = 5;
@@ -92,7 +98,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 87);
+            this.label5.Location = new System.Drawing.Point(6, 94);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 13);
             this.label5.TabIndex = 9;
@@ -106,7 +112,7 @@
             "Purchased",
             "Manufacturer",
             "Sales Kit"});
-            this.type_cbo.Location = new System.Drawing.Point(15, 103);
+            this.type_cbo.Location = new System.Drawing.Point(9, 110);
             this.type_cbo.Name = "type_cbo";
             this.type_cbo.Size = new System.Drawing.Size(157, 21);
             this.type_cbo.TabIndex = 10;
@@ -114,7 +120,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 127);
+            this.label4.Location = new System.Drawing.Point(6, 134);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 13);
             this.label4.TabIndex = 12;
@@ -123,7 +129,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Location = new System.Drawing.Point(15, 143);
+            this.numericUpDown1.Location = new System.Drawing.Point(9, 150);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -137,7 +143,7 @@
             // numericUpDown2
             // 
             this.numericUpDown2.DecimalPlaces = 2;
-            this.numericUpDown2.Location = new System.Drawing.Point(123, 143);
+            this.numericUpDown2.Location = new System.Drawing.Point(9, 189);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -151,7 +157,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(120, 127);
+            this.label6.Location = new System.Drawing.Point(6, 173);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 13);
             this.label6.TabIndex = 14;
@@ -165,7 +171,7 @@
             "Purchased",
             "Manufacturer",
             "Sales Kit"});
-            this.group_cbo.Location = new System.Drawing.Point(15, 182);
+            this.group_cbo.Location = new System.Drawing.Point(9, 268);
             this.group_cbo.Name = "group_cbo";
             this.group_cbo.Size = new System.Drawing.Size(210, 21);
             this.group_cbo.TabIndex = 17;
@@ -173,7 +179,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 166);
+            this.label2.Location = new System.Drawing.Point(6, 252);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 16;
@@ -187,7 +193,7 @@
             "Purchased",
             "Manufacturer",
             "Sales Kit"});
-            this.class_cbo.Location = new System.Drawing.Point(15, 222);
+            this.class_cbo.Location = new System.Drawing.Point(9, 308);
             this.class_cbo.Name = "class_cbo";
             this.class_cbo.Size = new System.Drawing.Size(210, 21);
             this.class_cbo.TabIndex = 19;
@@ -195,7 +201,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 206);
+            this.label7.Location = new System.Drawing.Point(6, 292);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 18;
@@ -209,7 +215,7 @@
             "Purchased",
             "Manufacturer",
             "Sales Kit"});
-            this.uomclass_cbo.Location = new System.Drawing.Point(178, 103);
+            this.uomclass_cbo.Location = new System.Drawing.Point(172, 110);
             this.uomclass_cbo.Name = "uomclass_cbo";
             this.uomclass_cbo.Size = new System.Drawing.Size(157, 21);
             this.uomclass_cbo.TabIndex = 21;
@@ -217,7 +223,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(175, 87);
+            this.label8.Location = new System.Drawing.Point(169, 94);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(63, 13);
             this.label8.TabIndex = 20;
@@ -231,15 +237,15 @@
             "Purchased",
             "Manufacturer",
             "Sales Kit"});
-            this.uom_cbo.Location = new System.Drawing.Point(15, 262);
+            this.uom_cbo.Location = new System.Drawing.Point(9, 228);
             this.uom_cbo.Name = "uom_cbo";
-            this.uom_cbo.Size = new System.Drawing.Size(132, 21);
+            this.uom_cbo.Size = new System.Drawing.Size(180, 21);
             this.uom_cbo.TabIndex = 23;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 246);
+            this.label9.Location = new System.Drawing.Point(6, 212);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(72, 13);
             this.label9.TabIndex = 24;
@@ -248,7 +254,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(13, 326);
+            this.label10.Location = new System.Drawing.Point(6, 56);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 13);
             this.label10.TabIndex = 26;
@@ -258,19 +264,15 @@
             // 
             this.whse_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.whse_cbo.FormattingEnabled = true;
-            this.whse_cbo.Items.AddRange(new object[] {
-            "Purchased",
-            "Manufacturer",
-            "Sales Kit"});
-            this.whse_cbo.Location = new System.Drawing.Point(15, 342);
+            this.whse_cbo.Location = new System.Drawing.Point(8, 72);
             this.whse_cbo.Name = "whse_cbo";
-            this.whse_cbo.Size = new System.Drawing.Size(150, 21);
+            this.whse_cbo.Size = new System.Drawing.Size(321, 21);
             this.whse_cbo.TabIndex = 25;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(13, 286);
+            this.label11.Location = new System.Drawing.Point(6, 16);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(34, 13);
             this.label11.TabIndex = 28;
@@ -280,18 +282,15 @@
             // 
             this.plant_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.plant_cbo.FormattingEnabled = true;
-            this.plant_cbo.Items.AddRange(new object[] {
-            "Purchased",
-            "Manufacturer",
-            "Sales Kit"});
-            this.plant_cbo.Location = new System.Drawing.Point(15, 302);
+            this.plant_cbo.Location = new System.Drawing.Point(8, 32);
             this.plant_cbo.Name = "plant_cbo";
-            this.plant_cbo.Size = new System.Drawing.Size(150, 21);
+            this.plant_cbo.Size = new System.Drawing.Size(321, 21);
             this.plant_cbo.TabIndex = 27;
             // 
             // cancelbtn
             // 
-            this.cancelbtn.Location = new System.Drawing.Point(283, 416);
+            this.cancelbtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelbtn.Location = new System.Drawing.Point(290, 476);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(75, 23);
             this.cancelbtn.TabIndex = 29;
@@ -301,51 +300,97 @@
             // 
             // savebtn
             // 
-            this.savebtn.Location = new System.Drawing.Point(202, 416);
+            this.savebtn.Location = new System.Drawing.Point(209, 476);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
             this.savebtn.TabIndex = 30;
             this.savebtn.Text = "&Save";
             this.savebtn.UseVisualStyleBackColor = true;
+            this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
+            // 
+            // uomweight_cbo
+            // 
+            this.uomweight_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.uomweight_cbo.FormattingEnabled = true;
+            this.uomweight_cbo.Location = new System.Drawing.Point(117, 149);
+            this.uomweight_cbo.Name = "uomweight_cbo";
+            this.uomweight_cbo.Size = new System.Drawing.Size(72, 21);
+            this.uomweight_cbo.TabIndex = 31;
+            // 
+            // uomvol_cbo
+            // 
+            this.uomvol_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.uomvol_cbo.FormattingEnabled = true;
+            this.uomvol_cbo.Location = new System.Drawing.Point(117, 188);
+            this.uomvol_cbo.Name = "uomvol_cbo";
+            this.uomvol_cbo.Size = new System.Drawing.Size(72, 21);
+            this.uomvol_cbo.TabIndex = 32;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.uomvol_cbo);
+            this.groupBox1.Controls.Add(this.Partnumber_txt);
+            this.groupBox1.Controls.Add(this.uomweight_cbo);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.type_cbo);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.numericUpDown2);
+            this.groupBox1.Controls.Add(this.uom_cbo);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.uomclass_cbo);
+            this.groupBox1.Controls.Add(this.group_cbo);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.class_cbo);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(353, 344);
+            this.groupBox1.TabIndex = 33;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Detail";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.whse_cbo);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.plant_cbo);
+            this.groupBox2.Location = new System.Drawing.Point(12, 362);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(353, 108);
+            this.groupBox2.TabIndex = 34;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Plants";
             // 
             // Item_Master
             // 
+            this.AcceptButton = this.savebtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 451);
+            this.CancelButton = this.cancelbtn;
+            this.ClientSize = new System.Drawing.Size(378, 512);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.savebtn);
             this.Controls.Add(this.cancelbtn);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.plant_cbo);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.whse_cbo);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.uom_cbo);
-            this.Controls.Add(this.uomclass_cbo);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.class_cbo);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.group_cbo);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.type_cbo);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.Partnumber_txt);
-            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Item_Master";
-            this.Text = "EPDM to Epicor";
+            this.Text = "Epicor Item Injection";
             this.Load += new System.EventHandler(this.Item_Master_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -375,6 +420,10 @@
         private System.Windows.Forms.ComboBox plant_cbo;
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.Button savebtn;
+        private System.Windows.Forms.ComboBox uomweight_cbo;
+        private System.Windows.Forms.ComboBox uomvol_cbo;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
 

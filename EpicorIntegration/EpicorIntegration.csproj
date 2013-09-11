@@ -57,6 +57,9 @@
     <Reference Include="Epicor.Mfg.BO.CCCountCycle">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.CCCountCycle.dll</HintPath>
     </Reference>
+    <Reference Include="Epicor.Mfg.BO.EngWorkBench">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.EngWorkBench.dll</HintPath>
+    </Reference>
     <Reference Include="Epicor.Mfg.BO.Part">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Part.dll</HintPath>
     </Reference>
@@ -65,6 +68,9 @@
     </Reference>
     <Reference Include="Epicor.Mfg.BO.Plant">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Plant.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.QuickSearch">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.QuickSearch.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.Core.BLConnectionPool">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Core.BLConnectionPool.dll</HintPath>
@@ -79,6 +85,9 @@
     <Reference Include="Epicor.Mfg.IF.ICCCountCycle">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.ICCCountCycle.dll</HintPath>
     </Reference>
+    <Reference Include="Epicor.Mfg.IF.IEngWorkBench">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IEngWorkBench.dll</HintPath>
+    </Reference>
     <Reference Include="Epicor.Mfg.IF.IPart, Version=9.5.702.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IPart.dll</HintPath>
@@ -88,6 +97,9 @@
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IPlant">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IPlant.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IQuickSearch">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IQuickSearch.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.Lib.BOReader">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Lib.BOReader.dll</HintPath>
@@ -141,6 +153,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Revision_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Revision_Master.Designer.cs">
+      <DependentUpon>Revision_Master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchPart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchPart.Designer.cs">
+      <DependentUpon>SearchPart.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestTableViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +190,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Revision_Master.resx">
+      <DependentUpon>Revision_Master.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TestTableViewer.resx">
       <DependentUpon>TestTableViewer.cs</DependentUpon>
     </EmbeddedResource>

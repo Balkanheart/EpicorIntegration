@@ -12,18 +12,10 @@ namespace EpicorIntegration
 {
     class DataList
     {
+        BLConnectionPool EpicConn = new BLConnectionPool(Properties.Settings.Default.uname, Properties.Settings.Default.passw, "AppServerDC://" + Properties.Settings.Default.svrname + ":" + Properties.Settings.Default.svrport);
+
         public DataSet PlantDataSet()
         {
-            string user = Properties.Settings.Default.uname;
-
-            string passw = Properties.Settings.Default.passw;
-
-            string svrname = Properties.Settings.Default.svrname;
-
-            string svrport = Properties.Settings.Default.svrport;
-
-            BLConnectionPool EpicConn = new BLConnectionPool(user, passw, "AppServerDC://" + svrname + ":" + svrport);
-
             BOReader BOReader = new BOReader(EpicConn);
 
             DataSet ds = (DataSet)BOReader.GetList("Plant", "", "Company,Plant,Name,Company");
@@ -33,16 +25,6 @@ namespace EpicorIntegration
 
         public DataSet PartClassDataSet()
         {
-            string user = Properties.Settings.Default.uname;
-
-            string passw = Properties.Settings.Default.passw;
-
-            string svrname = Properties.Settings.Default.svrname;
-
-            string svrport = Properties.Settings.Default.svrport;
-
-            BLConnectionPool EpicConn = new BLConnectionPool(user, passw, "AppServerDC://" + svrname + ":" + svrport);
-
             BOReader BOReader = new BOReader(EpicConn);
 
             DataSet ds = (DataSet)BOReader.GetList("PartClass", "", "ClassID,Description");
@@ -52,16 +34,6 @@ namespace EpicorIntegration
 
         public DataSet ProdGrupDataSet()
         {
-            string user = Properties.Settings.Default.uname;
-
-            string passw = Properties.Settings.Default.passw;
-
-            string svrname = Properties.Settings.Default.svrname;
-
-            string svrport = Properties.Settings.Default.svrport;
-
-            BLConnectionPool EpicConn = new BLConnectionPool(user, passw, "AppServerDC://" + svrname + ":" + svrport);
-
             BOReader BOReader = new BOReader(EpicConn);
 
             DataSet ds = (DataSet)BOReader.GetList("ProdGrup", "", "ProdCode,Description");
@@ -71,16 +43,6 @@ namespace EpicorIntegration
 
         public DataSet UOMSearchDataSet()
         {
-            string user = Properties.Settings.Default.uname;
-
-            string passw = Properties.Settings.Default.passw;
-
-            string svrname = Properties.Settings.Default.svrname;
-
-            string svrport = Properties.Settings.Default.svrport;
-
-            BLConnectionPool EpicConn = new BLConnectionPool(user, passw, "AppServerDC://" + svrname + ":" + svrport);
-
             BOReader BOReader = new BOReader(EpicConn);
 
             DataSet ds = (DataSet)BOReader.GetList("UOMSearch", "((Active=True) AND (UOMClassID = 'NORCO'))", "UOMCode,UOMDesc");
@@ -90,16 +52,6 @@ namespace EpicorIntegration
 
         public DataSet UOMClassDataSet()
         {
-            string user = Properties.Settings.Default.uname;
-
-            string passw = Properties.Settings.Default.passw;
-
-            string svrname = Properties.Settings.Default.svrname;
-
-            string svrport = Properties.Settings.Default.svrport;
-
-            BLConnectionPool EpicConn = new BLConnectionPool(user, passw, "AppServerDC://" + svrname + ":" + svrport);
-
             BOReader BOReader = new BOReader(EpicConn);
 
             DataSet ds = (DataSet)BOReader.GetList("UOMClass", "((Active=True) AND (ClassType<>'OnTheFly'))", "UOMClassID,Description");
@@ -109,57 +61,38 @@ namespace EpicorIntegration
 
         public DataSet UOMWeightDataSet()
         {
-            string user = Properties.Settings.Default.uname;
-
-            string passw = Properties.Settings.Default.passw;
-
-            string svrname = Properties.Settings.Default.svrname;
-
-            string svrport = Properties.Settings.Default.svrport;
-
-            BLConnectionPool EpicConn = new BLConnectionPool(user, passw, "AppServerDC://" + svrname + ":" + svrport);
-
             BOReader BOReader = new BOReader(EpicConn);
 
-            DataSet ds = (DataSet)BOReader.GetList("UOMClass", "((Active=True) AND (ClassType='Weight'))", "UOMClassID,Description");
+            DataSet ds = (DataSet)BOReader.GetList("UOMSearch", "((Active=True) AND (ClassType='Weight'))", "UOMCode,UOMDesc");
 
             return ds;
         }
 
         public DataSet UOMVolumeDataSet()
         {
-            string user = Properties.Settings.Default.uname;
-
-            string passw = Properties.Settings.Default.passw;
-
-            string svrname = Properties.Settings.Default.svrname;
-
-            string svrport = Properties.Settings.Default.svrport;
-
-            BLConnectionPool EpicConn = new BLConnectionPool(user, passw, "AppServerDC://" + svrname + ":" + svrport);
-
             BOReader BOReader = new BOReader(EpicConn);
 
-            DataSet ds = (DataSet)BOReader.GetList("UOMClass", "((Active=True) AND (ClassType='Volume'))", "UOMClassID,Description");
+            DataSet ds = (DataSet)BOReader.GetList("UOMSearch", "((Active=True) AND (ClassType='Volume'))", "UOMCode,UOMDesc");
 
             return ds;
         }
 
         public DataSet WarehseDataSet()
         {
-            string user = Properties.Settings.Default.uname;
-
-            string passw = Properties.Settings.Default.passw;
-
-            string svrname = Properties.Settings.Default.svrname;
-
-            string svrport = Properties.Settings.Default.svrport;
-
-            BLConnectionPool EpicConn = new BLConnectionPool(user, passw, "AppServerDC://" + svrname + ":" + svrport);
-
             BOReader BOReader = new BOReader(EpicConn);
 
             DataSet ds = (DataSet)BOReader.GetList("WarehseSearch", "MfgSys", "");
+
+            return ds;
+        }
+
+        public DataSet GroupIDDataSet()
+        {
+            bool MorePages;
+
+            EngWorkBench EngBench = new EngWorkBench(EpicConn);
+
+            DataSet ds = (DataSet)EngBench.GetList(" BY GroupID", 100, 0, out MorePages);
 
             return ds;
         }

@@ -10,9 +10,17 @@ using Epicor.Mfg.Lib;
 
 namespace EpicorIntegration
 {
-    class DataList
+    public class DataList
     {
-        BLConnectionPool EpicConn = new BLConnectionPool(Properties.Settings.Default.uname, Properties.Settings.Default.passw, "AppServerDC://" + Properties.Settings.Default.svrname + ":" + Properties.Settings.Default.svrport);
+        public BLConnectionPool EpicConn
+        {
+            get
+            {
+                BLConnectionPool BLConnectionPool = new BLConnectionPool(Properties.Settings.Default.uname, Properties.Settings.Default.passw, "AppServerDC://" + Properties.Settings.Default.svrname + ":" + Properties.Settings.Default.svrport);
+
+                return BLConnectionPool;
+            }
+        }
 
         public DataSet PlantDataSet()
         {
@@ -37,6 +45,10 @@ namespace EpicorIntegration
             BOReader BOReader = new BOReader(EpicConn);
 
             DataSet ds = (DataSet)BOReader.GetList("ProdGrup", "", "ProdCode,Description");
+
+            TestTableViewer test = new TestTableViewer(ds);
+
+            test.ShowDialog();
 
             return ds;
         }
@@ -96,14 +108,110 @@ namespace EpicorIntegration
 
             return ds;
         }
+
+        /// <summary>
+        /// Search Function for retrieving Part lists
+        /// </summary>
+        /// <param name="WhereStatement">Equivalent to the SQL WHERE function; Leave blank for all possiblities</param>
+        /// <returns>Dataset of parts meeting the WhereStatement criteria</returns>
+        public DataSet PartSearchDataSet(string WhereStatement)
+        {
+            Part Part = new Part(EpicConn);
+
+            bool More;
+
+            DataSet ds = Part.GetList(WhereStatement, 0, 0, out More);
+            
+            TestTableViewer test = new TestTableViewer(ds);
+
+            test.ShowDialog();
+
+            return ds;
+        }
     }
 
     /// <summary>
     /// Data structure for Part with all appropriate descriptors
     /// </summary>
-    class PartData
+    public class PartData
     {
+        public string PartNumber
+        {
+            get;
+            set;
+        }
 
+        public string Description
+        {
+            get;
+            set;
+        }
+
+        public string PMT
+        {
+            get;
+            set;
+        }
+
+        public string UOM_Class
+        {
+            get;
+            set;
+        }
+
+        public string Net_Weight
+        {
+            get;
+            set;
+        }
+
+        public string Net_Vol
+        {
+            get;
+            set;
+        }
+
+        public string Net_Weight_UM
+        {
+            get;
+            set;
+        }
+
+        public string Net_Vol_UM
+        {
+            get;
+            set;
+        }
+
+        public string Primary_UOM
+        {
+            get;
+            set;
+        }
+
+        public string PartGroup
+        {
+            get;
+            set;
+        }
+
+        public string PartClass
+        {
+            get;
+            set;
+        }
+
+        public string PartPlant
+        {
+            get;
+            set;
+        }
+
+        public string PlantWhse
+        {
+            get;
+            set;
+        }
     }
 
     /// <summary>
@@ -128,5 +236,45 @@ namespace EpicorIntegration
     class Operation
     {
 
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    class PartTypeCode
+    {
+        private string _Code;
+        private string _Description;
+
+        public PartTypeCode(string Description, string Code)
+        {
+            _Code = Code;
+            _Description = Description;
+        }
+
+        /// <summary>
+        /// Overridden to prove correct datamember for cbo
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return _Description;
+        }
+
+        public string Code
+        {
+            get
+            {
+                return _Code;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return _Description;
+            }
+        }
     }
 }

@@ -108,10 +108,6 @@
             // 
             this.type_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.type_cbo.FormattingEnabled = true;
-            this.type_cbo.Items.AddRange(new object[] {
-            "Purchased",
-            "Manufacturer",
-            "Sales Kit"});
             this.type_cbo.Location = new System.Drawing.Point(9, 110);
             this.type_cbo.Name = "type_cbo";
             this.type_cbo.Size = new System.Drawing.Size(157, 21);

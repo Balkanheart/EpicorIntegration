@@ -16,7 +16,26 @@ namespace EpicorIntegration
 {
     public partial class Item_Master : Form
     {
-        PartData PartDatum = new PartData();
+        public PartData PartDatum
+        {
+            get
+            {
+                PartData PartDatum = new PartData();
+
+                return PartDatum;
+            }
+        }
+
+        public DataList DL
+        {
+            get
+            {
+                DataList DL = new DataList();
+
+                return DL;
+            }
+        
+        }
 
         public Item_Master()
         {
@@ -25,27 +44,19 @@ namespace EpicorIntegration
 
         private void Item_Master_Load(object sender, EventArgs e)
         {
-            #region Load Settings
-
-            string user = Properties.Settings.Default.uname;
-
-            string passw = Properties.Settings.Default.passw;
-
-            string svrname = Properties.Settings.Default.svrname;
-
-            string svrport = Properties.Settings.Default.svrport;
-
-            #endregion
+            type_cbo.Items.Add(new PartTypeCode("Manufactured","M"));
+            type_cbo.Items.Add(new PartTypeCode("Purchased", "P"));
+            type_cbo.Items.Add(new PartTypeCode("Sales Kit", "K"));
 
             try
             {
                 #region Fill DataLists
 
-                DataList DL = new DataList();
-
                 group_cbo.DataSource = DL.ProdGrupDataSet ().Tables[0];
-
+                
                 group_cbo.DisplayMember = "Description";
+
+                group_cbo.ValueMember = "ProdCode";
 
                 class_cbo.DataSource = DL.PartClassDataSet().Tables[0];
 
@@ -84,7 +95,7 @@ namespace EpicorIntegration
                 uomweight_cbo.DisplayMember = "UOMCode";
 
                 #endregion
-
+               
             }
             catch (System.Exception ex)
             {
@@ -101,7 +112,37 @@ namespace EpicorIntegration
 
         private void savebtn_Click(object sender, EventArgs e)
         {
-            //Commit Part Changes
+            try
+            {
+                //Commit Part Changes
+
+                Part Part = new Part(DL.EpicConn);
+
+                Epicor.Mfg.BO.PartDataSet Pdata = new Epicor.Mfg.BO.PartDataSet();
+
+                Pdata = (Epicor.Mfg.BO.PartDataSet)DL.PartSearchDataSet("");
+
+                Part.GetNewPart(Pdata);
+
+                Part.ChangePartNum(Partnumber_txt.Text, Pdata);
+
+                Part.ChangePartTypeCode(type_cbo.SelectedItem.ToString(), Pdata);
+
+                Part.ChangePartProdCode(group_cbo.SelectedItem.ToString(), Pdata);
+
+                //Potential implementation of CHeckPartChanges
+
+                Part.Update(Pdata);
+
+                this.Close();
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            
+
+
         }
     }
 }

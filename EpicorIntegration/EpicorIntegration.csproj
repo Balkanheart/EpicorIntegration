@@ -57,8 +57,17 @@
     <Reference Include="Epicor.Mfg.BO.CCCountCycle">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.CCCountCycle.dll</HintPath>
     </Reference>
+    <Reference Include="Epicor.Mfg.BO.DashBoard">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.DashBoard.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.DynamicQuery">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.DynamicQuery.dll</HintPath>
+    </Reference>
     <Reference Include="Epicor.Mfg.BO.EngWorkBench">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.EngWorkBench.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.EpiSearch">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.EpiSearch.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.Part">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Part.dll</HintPath>
@@ -85,8 +94,17 @@
     <Reference Include="Epicor.Mfg.IF.ICCCountCycle">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.ICCCountCycle.dll</HintPath>
     </Reference>
+    <Reference Include="Epicor.Mfg.IF.IDashBoard">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IDashBoard.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IDynamicQuery">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IDynamicQuery.dll</HintPath>
+    </Reference>
     <Reference Include="Epicor.Mfg.IF.IEngWorkBench">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IEngWorkBench.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IEpiSearch">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IEpiSearch.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IPart, Version=9.5.702.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -106,6 +124,10 @@
     </Reference>
     <Reference Include="Epicor.Mfg.Lib.IBOReader">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Lib.IBOReader.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.Lib.SessionMod, Version=2.5.702.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Lib.SessionMod.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -192,6 +214,9 @@
     </Compile>
     <EmbeddedResource Include="Revision_Master.resx">
       <DependentUpon>Revision_Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchPart.resx">
+      <DependentUpon>SearchPart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestTableViewer.resx">
       <DependentUpon>TestTableViewer.cs</DependentUpon>

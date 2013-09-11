@@ -62,6 +62,10 @@ namespace EpicorIntegration
                
                 bool ValidLogin = EpicPart.PartExists(null);
 
+                Properties.Settings.Default.validated = true;
+
+                Properties.Settings.Default.Save();
+
                 this.Close();
 
             }

@@ -70,5 +70,17 @@ namespace EpicorIntegration.Properties {
                 this["svrport"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool validated {
+            get {
+                return ((bool)(this["validated"]));
+            }
+            set {
+                this["validated"] = value;
+            }
+        }
     }
 }

@@ -31,23 +31,44 @@ namespace EpicorIntegration
 
             string svrport = Properties.Settings.Default.svrport;
 
-            BLConnectionPool EpicConn = new BLConnectionPool(user,passw,"AppServerDC://" + svrname + ":" + svrport);
-
-            BOReader BOReader = new BOReader(EpicConn);
-
-            bool what;
-
-            DataSet ds = (DataSet)BOReader.GetList("Plant", "", "Company,Plant,Name,Company");
-
             try
             {
 
-                TestTableViewer test = new TestTableViewer(ds);
+                DataList DL = new DataList();
 
-                test.ShowDialog();
+                group_cbo.DataSource = DL.ProdGrupDataSet ().Tables[0];
+
+                group_cbo.DisplayMember = "Description";
+
+                class_cbo.DataSource = DL.PartClassDataSet().Tables[0];
+
+                class_cbo.DisplayMember = "Description";
+
+                uomclass_cbo.DataSource = DL.UOMClassDataSet().Tables[0];
+
+                uomclass_cbo.DisplayMember = "Description";
+
+                DataSet DS = DL.UOMSearchDataSet();
+
+                DS.Tables[0].Columns.Add("FullCode", typeof(string), "UOMCode + ' ' + UOMDesc");
+
+                uom_cbo.DataSource = DS.Tables[0];
+
+                uom_cbo.DisplayMember = "FullCode";
+
+                uomclass_cbo.SelectedIndex = 2;
+
+                type_cbo.SelectedIndex = 0;
+
+                plant_cbo.DataSource = DL.PlantDataSet();
+
+                plant_cbo.DisplayMember = "NAME";
+
             }
             catch (System.Exception ex)
             {
+                MessageBox.Show(ex.Message + "\n\nThis application will now close.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 this.Close();
             }
 

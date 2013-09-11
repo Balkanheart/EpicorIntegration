@@ -69,6 +69,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Core.CallContext.dll</HintPath>
     </Reference>
+    <Reference Include="Epicor.Mfg.Core.Session">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Core.Session.dll</HintPath>
+    </Reference>
     <Reference Include="Epicor.Mfg.IF.ICCCountCycle">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.ICCCountCycle.dll</HintPath>
     </Reference>
@@ -107,6 +110,7 @@
     <Compile Include="Bill_Master.Designer.cs">
       <DependentUpon>Bill_Master.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataList.cs" />
     <Compile Include="Config.cs">
       <SubType>Form</SubType>
     </Compile>

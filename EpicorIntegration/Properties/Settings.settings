@@ -14,5 +14,8 @@
     <Setting Name="svrport" Type="System.String" Scope="User">
       <Value Profile="(Default)">9421</Value>
     </Setting>
+    <Setting Name="validated" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

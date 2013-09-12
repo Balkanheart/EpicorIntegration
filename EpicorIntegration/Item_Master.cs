@@ -64,19 +64,23 @@ namespace EpicorIntegration
 
                 class_cbo.DataSource = DL.PartClassDataSet().Tables[0];
 
-                class_cbo.DisplayMember = "Description";
+                class_cbo.DisplayMember = DL.PartClassDataSet().Tables[0].Columns["Description"].ToString();
+
+                class_cbo.ValueMember = DL.PartClassDataSet().Tables[0].Columns["ClassID"].ToString();
 
                 uomclass_cbo.DataSource = DL.UOMClassDataSet().Tables[0];
 
-                uomclass_cbo.DisplayMember = "Description";
+                uomclass_cbo.DisplayMember = DL.UOMClassDataSet().Tables[0].Columns["Description"].ToString();
 
                 plant_cbo.DataSource = DL.PlantDataSet().Tables[0];
 
-                plant_cbo.DisplayMember = "NAME";
+                plant_cbo.DisplayMember = DL.PlantDataSet().Tables[0].Columns["NAME"].ToString();
 
                 whse_cbo.DataSource = DL.WarehseDataSet().Tables[0];
 
-                whse_cbo.DisplayMember = "Description";
+                whse_cbo.DisplayMember = DL.WarehseDataSet().Tables[0].Columns["Description"].ToString();
+
+                whse_cbo.ValueMember = DL.WarehseDataSet().Tables[0].Columns["WarehouseCode"].ToString();
 
                 DataSet DS = DL.UOMSearchDataSet();
 
@@ -85,6 +89,8 @@ namespace EpicorIntegration
                 uom_cbo.DataSource = DS.Tables[0];
 
                 uom_cbo.DisplayMember = DS.Tables[0].Columns["FullCode"].ToString();
+
+                uom_cbo.ValueMember = "UOMCode";
 
                 uomclass_cbo.SelectedIndex = 2;
 
@@ -124,7 +130,7 @@ namespace EpicorIntegration
             {
                 //Commit Part Changes
 
-                Part Part = new Part(DL.EpicConn);
+                Part Part = new Part(DataList.EpicConn);
 
                 PartDataSet Pdata = new PartDataSet();
 
@@ -142,31 +148,35 @@ namespace EpicorIntegration
 
                 if (!multipleMatch)
                 {
-                    //Part.GetByID(PartNumber);
-
                     Part.GetNewPart(Pdata);
 
                     Part.ChangePartNum(PartNumber, Pdata);
 
                     DL.AddDatum(Pdata, "Part",  0, "PartDescription", Description_txt.Text);
-
-                    DL.AddDatum(Pdata, "Part",  0, "SearchWord", Description_txt.Text.Substring(0,8));
+            
+                    //SearchWord has 8 character limit
+                    if (Description_txt.Text.Length > 8)
+                        DL.AddDatum(Pdata, "Part", 0, "SearchWord", Description_txt.Text.Substring(0,8));
+                    else
+                        DL.AddDatum(Pdata, "Part",  0, "SearchWord", Description_txt.Text);
 
                     DL.AddDatum(Pdata, "Part",  0, "NetWeight", NetWeight.Text);
 
-                    string uomweight = uomweight_cbo.SelectedValue.ToString();
-
-                    DL.AddDatum(Pdata, "Part", 0, "NetWeightUOM", uomweight);
+                    DL.AddDatum(Pdata, "Part", 0, "NetWeightUOM", uomweight_cbo.SelectedValue.ToString());
 
                     DL.AddDatum(Pdata, "Part", 0, "NetVolume", NetVolume.Text);
 
-                    DL.AddDatum(Pdata, "Part", 0, "NetVolumeUOM",uomvol_cbo.SelectedItem.ToString());
+                    DL.AddDatum(Pdata, "Part", 0, "NetVolumeUOM",uomvol_cbo.SelectedValue.ToString());
 
-                    //Needs Primary UOM Change
+                    DL.AddDatum(Pdata, "Part", 0, "IUM", uom_cbo.SelectedValue.ToString());
 
-                    //Needs Change Class Code
+                    DL.AddDatum(Pdata, "Part", 0, "ClassID", class_cbo.SelectedValue.ToString());
 
-                    //Needs Change Plant/Whse
+                    Part.GetNewPartPlant(Pdata, PartNumber);
+
+                    DL.AddDatum(Pdata, "PartPlant", 0, "PrimWhse", whse_cbo.SelectedValue.ToString());
+
+                    DL.AddDatum(Pdata, "PartPlant", 0, "Plant", plant_cbo.SelectedValue.ToString());
 
                     string Type_Code = type_cbo.SelectedItem.ToString();
 
@@ -176,11 +186,9 @@ namespace EpicorIntegration
 
                     //Potential implementation of CheckPartChanges
 
-                    TestTableViewer test = new TestTableViewer(Pdata);
-
-                    test.ShowDialog();
-
                     Part.Update(Pdata);
+
+                    DL.EpicClose();
                 
                 }
                 else

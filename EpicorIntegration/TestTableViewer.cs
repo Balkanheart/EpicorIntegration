@@ -20,7 +20,7 @@ namespace EpicorIntegration
 
             BindingSource bindingsource1 = new BindingSource();
 
-            bindingsource1.DataSource = ds.Tables[0];
+            bindingsource1.DataSource = ds.Tables["PartPlant"];
 
             dataGridView1.DataSource = bindingsource1;
         }

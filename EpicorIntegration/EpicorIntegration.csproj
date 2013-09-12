@@ -125,9 +125,17 @@
     <Reference Include="Epicor.Mfg.Lib.IBOReader">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Lib.IBOReader.dll</HintPath>
     </Reference>
+    <Reference Include="Epicor.Mfg.Lib.ISessionMod, Version=2.5.702.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Lib.ISessionMod.dll</HintPath>
+    </Reference>
     <Reference Include="Epicor.Mfg.Lib.SessionMod, Version=2.5.702.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Lib.SessionMod.dll</HintPath>
+    </Reference>
+    <Reference Include="Progress.o4glrt, Version=10.2.1.1390, Culture=neutral, PublicKeyToken=1a0c0a15bd34807c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Progress.o4glrt.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

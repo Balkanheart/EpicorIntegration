@@ -56,15 +56,20 @@ namespace EpicorIntegration
 
             try
             {
-                BLConnectionPool EpicConn = new BLConnectionPool(Uname.Text, Passw.Text, "AppServerDC://" + server);
 
-                Part EpicPart = new Part(EpicConn);
+                DataList.EpicConn = new BLConnectionPool(Uname.Text, Passw.Text, "AppServerDC://" + server);
+
+                Part EpicPart = new Part(DataList.EpicConn);
                
                 bool ValidLogin = EpicPart.PartExists(null);
 
                 Properties.Settings.Default.validated = true;
 
                 Properties.Settings.Default.Save();
+
+                DataList DL = new DataList();
+
+                DL.EpicClose();
 
                 this.Close();
 

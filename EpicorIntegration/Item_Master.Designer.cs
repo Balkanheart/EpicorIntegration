@@ -215,6 +215,7 @@
             this.uomclass_cbo.Name = "uomclass_cbo";
             this.uomclass_cbo.Size = new System.Drawing.Size(157, 21);
             this.uomclass_cbo.TabIndex = 21;
+            this.uomclass_cbo.Visible = false;
             // 
             // label8
             // 
@@ -224,6 +225,7 @@
             this.label8.Size = new System.Drawing.Size(63, 13);
             this.label8.TabIndex = 20;
             this.label8.Text = "UOM Class:";
+            this.label8.Visible = false;
             // 
             // uom_cbo
             // 
@@ -243,9 +245,9 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(6, 212);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(72, 13);
+            this.label9.Size = new System.Drawing.Size(82, 13);
             this.label9.TabIndex = 24;
-            this.label9.Text = "Primary UOM:";
+            this.label9.Text = "Inventory UOM:";
             // 
             // label10
             // 

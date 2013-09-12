@@ -12,34 +12,61 @@ namespace EpicorIntegration
 {
     public class DataList
     {
-        public BLConnectionPool EpicConn
+
+         public static BLConnectionPool EpicConn = new BLConnectionPool(Properties.Settings.Default.uname, Properties.Settings.Default.passw, "AppServerDC://" + Properties.Settings.Default.svrname + ":" + Properties.Settings.Default.svrport);
+
+
+        public void EpicClose()
+        {
+                SessionMod SM = new SessionMod(EpicConn);
+                
+                SM.GracefulShutdown();
+
+                Progress.Open4GL.DynamicAPI.Session Session = EpicConn.Get();
+
+                EpicConn.Release(Session);
+
+                //EpicConn.Dispose();
+        }
+
+        public BOReader BOReader
         {
             get
             {
-                BLConnectionPool BLConnectionPool = new BLConnectionPool(Properties.Settings.Default.uname, Properties.Settings.Default.passw, "AppServerDC://" + Properties.Settings.Default.svrname + ":" + Properties.Settings.Default.svrport);
+                BOReader BOReader = new BOReader(EpicConn);
 
-                return BLConnectionPool;
+                return BOReader;
             }
+
         }
 
         public DataSet PlantDataSet()
         {
-            BOReader BOReader = new BOReader(EpicConn);
-
             DataSet ds = (DataSet)BOReader.GetList("Plant", "", "Company,Plant,Name,Company");
+
+            EpicClose();
 
             return ds;
         }
 
         public DataSet PartClassDataSet()
         {
-            BOReader BOReader = new BOReader(EpicConn);
-
             DataSet ds = (DataSet)BOReader.GetList("PartClass", "", "ClassID,Description");
+
+            EpicClose();
 
             return ds;
         }
 
+        /// <summary>
+        /// Adds data in specified column at row number and table all into PartDataSet given
+        /// </summary>
+        /// <param name="Part"></param>
+        /// <param name="tableName"></param>
+        /// <param name="rowNum"></param>
+        /// <param name="colName"></param>
+        /// <param name="Input"></param>
+        /// <returns></returns>
         public PartDataSet AddDatum(PartDataSet Part, string tableName, int rowNum, string colName, string Input)
         {
             DataTable PartDT = Part.Tables[tableName];
@@ -77,18 +104,18 @@ namespace EpicorIntegration
 
         public DataSet ProdGrupDataSet()
         {
-            BOReader BOReader = new BOReader(EpicConn);
-
             DataSet ds = (DataSet)BOReader.GetList("ProdGrup", "", "ProdCode,Description");
+
+            EpicClose();
 
             return ds;
         }
 
         public DataSet UOMSearchDataSet()
         {
-            BOReader BOReader = new BOReader(EpicConn);
-
             DataSet ds = (DataSet)BOReader.GetList("UOMSearch", "((Active=True) AND (UOMClassID = 'NORCO'))", "UOMCode,UOMDesc");
+
+            EpicClose();
 
             return ds;
         }
@@ -99,32 +126,34 @@ namespace EpicorIntegration
 
             DataSet ds = (DataSet)BOReader.GetList("UOMClass", "((Active=True) AND (ClassType<>'OnTheFly'))", "UOMClassID,Description");
 
+            EpicClose();
+
             return ds;
         }
 
         public DataSet UOMWeightDataSet()
         {
-            BOReader BOReader = new BOReader(EpicConn);
-
             DataSet ds = (DataSet)BOReader.GetList("UOMSearch", "((Active=True) AND (ClassType='Weight'))", "UOMCode,UOMDesc");
+
+            EpicClose();
 
             return ds;
         }
 
         public DataSet UOMVolumeDataSet()
         {
-            BOReader BOReader = new BOReader(EpicConn);
-
             DataSet ds = (DataSet)BOReader.GetList("UOMSearch", "((Active=True) AND (ClassType='Volume'))", "UOMCode,UOMDesc");
+
+            EpicClose();
 
             return ds;
         }
 
         public DataSet WarehseDataSet()
         {
-            BOReader BOReader = new BOReader(EpicConn);
-
             DataSet ds = (DataSet)BOReader.GetList("WarehseSearch", "MfgSys", "");
+
+            EpicClose();
 
             return ds;
         }
@@ -136,6 +165,8 @@ namespace EpicorIntegration
             EngWorkBench EngBench = new EngWorkBench(EpicConn);
 
             DataSet ds = (DataSet)EngBench.GetList(" BY GroupID", 100, 0, out MorePages);
+
+            EpicClose();
 
             return ds;
         }
@@ -154,6 +185,8 @@ namespace EpicorIntegration
             DataSet dss = ((DataSet)Part.GetList(WhereStatement, 0, 0, out More));
 
             PartDataSet ds = (PartDataSet)dss;
+
+            EpicClose();
 
             return ds;
         }
@@ -282,7 +315,7 @@ namespace EpicorIntegration
         }
 
         /// <summary>
-        /// Overridden to prove correct datamember for cbo
+        /// Overridden to prove correct data member for combobox
         /// </summary>
         /// <returns></returns>
         public override string ToString()

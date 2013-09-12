@@ -37,7 +37,10 @@ namespace EpicorIntegration
 
         private void savebtn_Click(object sender, EventArgs e)
         {
-            //Not sure if I want to include changes from this form or add buttons to make changes...
+            //Make revision
+            //Open Item_Master for changes (Need to alter to allow for edits)
+            //Determine if BOO exists, if (exists) Open BOO_Master
+            //Determine if BOM exists, if (exists) Open BOM_Master
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)

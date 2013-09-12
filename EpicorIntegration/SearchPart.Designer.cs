@@ -32,36 +32,38 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchPart));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Basic = new System.Windows.Forms.TabPage();
-            this.SearchResultGrid = new System.Windows.Forms.DataGridView();
-            this.PartNumber = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.SortBy = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Description = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.PartNumber = new System.Windows.Forms.TextBox();
             this.Advanced = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.type_cbo = new System.Windows.Forms.ComboBox();
+            this.SearchResultGrid = new System.Windows.Forms.DataGridView();
             this.HorizMajorContainer = new System.Windows.Forms.SplitContainer();
             this.VerticalTopContainer = new System.Windows.Forms.SplitContainer();
-            this.SearchBtn = new System.Windows.Forms.Button();
-            this.CancelBtn = new System.Windows.Forms.Button();
-            this.Clearbtn = new System.Windows.Forms.Button();
             this.OptionsBtn = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.SortBy = new System.Windows.Forms.ComboBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.Clearbtn = new System.Windows.Forms.Button();
+            this.CancelBtn = new System.Windows.Forms.Button();
+            this.SearchBtn = new System.Windows.Forms.Button();
+            this.group_cbo = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.Basic.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchResultGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.Advanced.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchResultGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HorizMajorContainer)).BeginInit();
             this.HorizMajorContainer.Panel1.SuspendLayout();
             this.HorizMajorContainer.Panel2.SuspendLayout();
@@ -70,7 +72,6 @@
             this.VerticalTopContainer.Panel1.SuspendLayout();
             this.VerticalTopContainer.Panel2.SuspendLayout();
             this.VerticalTopContainer.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -96,35 +97,6 @@
             this.Basic.TabIndex = 0;
             this.Basic.Text = "Basic";
             // 
-            // SearchResultGrid
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PowderBlue;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.SearchResultGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.SearchResultGrid.BackgroundColor = System.Drawing.Color.White;
-            this.SearchResultGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.SearchResultGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SearchResultGrid.Location = new System.Drawing.Point(0, 0);
-            this.SearchResultGrid.Name = "SearchResultGrid";
-            this.SearchResultGrid.Size = new System.Drawing.Size(684, 196);
-            this.SearchResultGrid.TabIndex = 0;
-            // 
-            // PartNumber
-            // 
-            this.PartNumber.Location = new System.Drawing.Point(125, 13);
-            this.PartNumber.Name = "PartNumber";
-            this.PartNumber.Size = new System.Drawing.Size(167, 20);
-            this.PartNumber.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Part Number Contains:";
-            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
@@ -140,6 +112,23 @@
             this.groupBox1.Size = new System.Drawing.Size(522, 130);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
+            // 
+            // SortBy
+            // 
+            this.SortBy.FormattingEnabled = true;
+            this.SortBy.Location = new System.Drawing.Point(125, 65);
+            this.SortBy.Name = "SortBy";
+            this.SortBy.Size = new System.Drawing.Size(167, 21);
+            this.SortBy.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(90, 68);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Sort:";
             // 
             // label2
             // 
@@ -157,6 +146,22 @@
             this.Description.Size = new System.Drawing.Size(167, 20);
             this.Description.TabIndex = 3;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Part Number Contains:";
+            // 
+            // PartNumber
+            // 
+            this.PartNumber.Location = new System.Drawing.Point(125, 13);
+            this.PartNumber.Name = "PartNumber";
+            this.PartNumber.Size = new System.Drawing.Size(167, 20);
+            this.PartNumber.TabIndex = 1;
+            // 
             // Advanced
             // 
             this.Advanced.BackColor = System.Drawing.SystemColors.Control;
@@ -167,6 +172,125 @@
             this.Advanced.Size = new System.Drawing.Size(528, 136);
             this.Advanced.TabIndex = 1;
             this.Advanced.Text = "Advanced";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.group_cbo);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.checkBox6);
+            this.groupBox2.Controls.Add(this.checkBox5);
+            this.groupBox2.Controls.Add(this.checkBox4);
+            this.groupBox2.Controls.Add(this.checkBox3);
+            this.groupBox2.Controls.Add(this.checkBox2);
+            this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.type_cbo);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(522, 130);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 55);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Group:";
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(334, 38);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(71, 17);
+            this.checkBox6.TabIndex = 7;
+            this.checkBox6.Text = "Serialized";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(334, 15);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(64, 17);
+            this.checkBox5.TabIndex = 6;
+            this.checkBox5.Text = "Inactive";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(228, 84);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(65, 17);
+            this.checkBox4.TabIndex = 5;
+            this.checkBox4.Text = "On Hold";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(228, 61);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(95, 17);
+            this.checkBox3.TabIndex = 4;
+            this.checkBox3.Text = "Phantom BOM";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(228, 38);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(81, 17);
+            this.checkBox2.TabIndex = 3;
+            this.checkBox2.Text = "Qty Bearing";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(228, 15);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(100, 17);
+            this.checkBox1.TabIndex = 2;
+            this.checkBox1.Text = "Non-Stock Item";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Type Code:";
+            // 
+            // type_cbo
+            // 
+            this.type_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.type_cbo.FormattingEnabled = true;
+            this.type_cbo.Location = new System.Drawing.Point(74, 13);
+            this.type_cbo.Name = "type_cbo";
+            this.type_cbo.Size = new System.Drawing.Size(148, 21);
+            this.type_cbo.TabIndex = 0;
+            // 
+            // SearchResultGrid
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PowderBlue;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.SearchResultGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.SearchResultGrid.BackgroundColor = System.Drawing.Color.White;
+            this.SearchResultGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SearchResultGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SearchResultGrid.Location = new System.Drawing.Point(0, 0);
+            this.SearchResultGrid.Name = "SearchResultGrid";
+            this.SearchResultGrid.Size = new System.Drawing.Size(684, 196);
+            this.SearchResultGrid.TabIndex = 0;
             // 
             // HorizMajorContainer
             // 
@@ -207,14 +331,23 @@
             this.VerticalTopContainer.SplitterDistance = 536;
             this.VerticalTopContainer.TabIndex = 2;
             // 
-            // SearchBtn
+            // OptionsBtn
             // 
-            this.SearchBtn.Location = new System.Drawing.Point(12, 12);
-            this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(117, 23);
-            this.SearchBtn.TabIndex = 0;
-            this.SearchBtn.Text = "&Search";
-            this.SearchBtn.UseVisualStyleBackColor = true;
+            this.OptionsBtn.Location = new System.Drawing.Point(12, 70);
+            this.OptionsBtn.Name = "OptionsBtn";
+            this.OptionsBtn.Size = new System.Drawing.Size(117, 23);
+            this.OptionsBtn.TabIndex = 5;
+            this.OptionsBtn.Text = "&Options";
+            this.OptionsBtn.UseVisualStyleBackColor = true;
+            // 
+            // Clearbtn
+            // 
+            this.Clearbtn.Location = new System.Drawing.Point(12, 41);
+            this.Clearbtn.Name = "Clearbtn";
+            this.Clearbtn.Size = new System.Drawing.Size(117, 23);
+            this.Clearbtn.TabIndex = 3;
+            this.Clearbtn.Text = "&Clear";
+            this.Clearbtn.UseVisualStyleBackColor = true;
             // 
             // CancelBtn
             // 
@@ -227,145 +360,23 @@
             this.CancelBtn.UseVisualStyleBackColor = true;
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
-            // Clearbtn
+            // SearchBtn
             // 
-            this.Clearbtn.Location = new System.Drawing.Point(12, 41);
-            this.Clearbtn.Name = "Clearbtn";
-            this.Clearbtn.Size = new System.Drawing.Size(117, 23);
-            this.Clearbtn.TabIndex = 3;
-            this.Clearbtn.Text = "&Clear";
-            this.Clearbtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Location = new System.Drawing.Point(12, 12);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(117, 23);
+            this.SearchBtn.TabIndex = 0;
+            this.SearchBtn.Text = "&Search";
+            this.SearchBtn.UseVisualStyleBackColor = true;
             // 
-            // OptionsBtn
+            // group_cbo
             // 
-            this.OptionsBtn.Location = new System.Drawing.Point(12, 70);
-            this.OptionsBtn.Name = "OptionsBtn";
-            this.OptionsBtn.Size = new System.Drawing.Size(117, 23);
-            this.OptionsBtn.TabIndex = 5;
-            this.OptionsBtn.Text = "&Options";
-            this.OptionsBtn.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(90, 68);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Sort:";
-            // 
-            // SortBy
-            // 
-            this.SortBy.FormattingEnabled = true;
-            this.SortBy.Location = new System.Drawing.Point(125, 65);
-            this.SortBy.Name = "SortBy";
-            this.SortBy.Size = new System.Drawing.Size(167, 21);
-            this.SortBy.TabIndex = 6;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.checkBox6);
-            this.groupBox2.Controls.Add(this.checkBox5);
-            this.groupBox2.Controls.Add(this.checkBox4);
-            this.groupBox2.Controls.Add(this.checkBox3);
-            this.groupBox2.Controls.Add(this.checkBox2);
-            this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(3, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(522, 130);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(74, 13);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(148, 21);
-            this.comboBox1.TabIndex = 0;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Type Code:";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(228, 15);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(100, 17);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "Non-Stock Item";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(228, 38);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(81, 17);
-            this.checkBox2.TabIndex = 3;
-            this.checkBox2.Text = "Qty Bearing";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(228, 61);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(95, 17);
-            this.checkBox3.TabIndex = 4;
-            this.checkBox3.Text = "Phantom BOM";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(228, 84);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(65, 17);
-            this.checkBox4.TabIndex = 5;
-            this.checkBox4.Text = "On Hold";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(334, 15);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(64, 17);
-            this.checkBox5.TabIndex = 6;
-            this.checkBox5.Text = "Inactive";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(334, 38);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(71, 17);
-            this.checkBox6.TabIndex = 7;
-            this.checkBox6.Text = "Serialized";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 55);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Group:";
+            this.group_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.group_cbo.FormattingEnabled = true;
+            this.group_cbo.Location = new System.Drawing.Point(74, 52);
+            this.group_cbo.Name = "group_cbo";
+            this.group_cbo.Size = new System.Drawing.Size(148, 21);
+            this.group_cbo.TabIndex = 9;
             // 
             // SearchPart
             // 
@@ -383,10 +394,12 @@
             this.Load += new System.EventHandler(this.SearchPart_Load);
             this.tabControl1.ResumeLayout(false);
             this.Basic.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SearchResultGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.Advanced.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchResultGrid)).EndInit();
             this.HorizMajorContainer.Panel1.ResumeLayout(false);
             this.HorizMajorContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.HorizMajorContainer)).EndInit();
@@ -395,8 +408,6 @@
             this.VerticalTopContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.VerticalTopContainer)).EndInit();
             this.VerticalTopContainer.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -429,6 +440,7 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox type_cbo;
+        private System.Windows.Forms.ComboBox group_cbo;
     }
 }

@@ -37,11 +37,42 @@ namespace EpicorIntegration
 
             DataSet ds = (DataSet)BOReader.GetList("PartClass", "", "ClassID,Description");
 
-            TestTableViewer test = new TestTableViewer(ds);
-
-            test.ShowDialog();
-
             return ds;
+        }
+
+        public PartDataSet AddDatum(PartDataSet Part, string tableName, int rowNum, string colName, string Input)
+        {
+            DataTable PartDT = Part.Tables[tableName];
+
+            DataRow[] WorkRow = PartDT.Select(null, null, DataViewRowState.Added);
+
+            WorkRow[0] = PartDT.Rows[rowNum];
+
+            try
+            {
+                WorkRow[0][colName] = Input;
+            }
+            catch (System.Exception ex)
+            {
+                try
+                {
+                    WorkRow[0][colName] = double.Parse(Input);
+                }
+                catch (System.Exception ex1)
+                {
+                    try
+                    {
+                        WorkRow[0][colName] = (int)(double.Parse(Input));
+                    }
+                    catch (System.Exception ex2)
+                    {
+                        System.Windows.Forms.MessageBox.Show(ex.Message, "Error!", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    }
+                }
+
+            }
+
+            return Part;
         }
 
         public DataSet ProdGrupDataSet()
@@ -49,10 +80,6 @@ namespace EpicorIntegration
             BOReader BOReader = new BOReader(EpicConn);
 
             DataSet ds = (DataSet)BOReader.GetList("ProdGrup", "", "ProdCode,Description");
-
-            TestTableViewer test = new TestTableViewer(ds);
-
-            test.ShowDialog();
 
             return ds;
         }
@@ -118,17 +145,15 @@ namespace EpicorIntegration
         /// </summary>
         /// <param name="WhereStatement">Equivalent to the SQL WHERE function; Leave blank for all possiblities</param>
         /// <returns>Dataset of parts meeting the WhereStatement criteria</returns>
-        public DataSet PartSearchDataSet(string WhereStatement)
+        public PartDataSet PartSearchDataSet(string WhereStatement)
         {
             Part Part = new Part(EpicConn);
 
             bool More;
 
-            DataSet ds = Part.GetList(WhereStatement, 0, 0, out More);
-            
-            TestTableViewer test = new TestTableViewer(ds);
+            DataSet dss = ((DataSet)Part.GetList(WhereStatement, 0, 0, out More));
 
-            test.ShowDialog();
+            PartDataSet ds = (PartDataSet)dss;
 
             return ds;
         }
@@ -262,7 +287,7 @@ namespace EpicorIntegration
         /// <returns></returns>
         public override string ToString()
         {
-            return _Description;
+            return _Code;
         }
 
         public string Code

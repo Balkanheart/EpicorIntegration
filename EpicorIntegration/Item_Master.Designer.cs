@@ -32,12 +32,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Partnumber_txt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Description_txt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.type_cbo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.NetWeight = new System.Windows.Forms.NumericUpDown();
+            this.NetVolume = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.group_cbo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,8 +57,8 @@
             this.uomvol_cbo = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NetVolume)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -88,12 +88,12 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Description:";
             // 
-            // textBox1
+            // Description_txt
             // 
-            this.textBox1.Location = new System.Drawing.Point(9, 71);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(333, 20);
-            this.textBox1.TabIndex = 5;
+            this.Description_txt.Location = new System.Drawing.Point(9, 71);
+            this.Description_txt.Name = "Description_txt";
+            this.Description_txt.Size = new System.Drawing.Size(333, 20);
+            this.Description_txt.TabIndex = 5;
             // 
             // label5
             // 
@@ -122,33 +122,33 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "Unit Net Weight";
             // 
-            // numericUpDown1
+            // NetWeight
             // 
-            this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Location = new System.Drawing.Point(9, 150);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.NetWeight.DecimalPlaces = 2;
+            this.NetWeight.Location = new System.Drawing.Point(9, 150);
+            this.NetWeight.Maximum = new decimal(new int[] {
             1410065407,
             2,
             0,
             131072});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(102, 20);
-            this.numericUpDown1.TabIndex = 13;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.NetWeight.Name = "NetWeight";
+            this.NetWeight.Size = new System.Drawing.Size(102, 20);
+            this.NetWeight.TabIndex = 13;
+            this.NetWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // numericUpDown2
+            // NetVolume
             // 
-            this.numericUpDown2.DecimalPlaces = 2;
-            this.numericUpDown2.Location = new System.Drawing.Point(9, 189);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.NetVolume.DecimalPlaces = 2;
+            this.NetVolume.Location = new System.Drawing.Point(9, 189);
+            this.NetVolume.Maximum = new decimal(new int[] {
             1410065407,
             2,
             0,
             131072});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(102, 20);
-            this.numericUpDown2.TabIndex = 15;
-            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.NetVolume.Name = "NetVolume";
+            this.NetVolume.Size = new System.Drawing.Size(102, 20);
+            this.NetVolume.TabIndex = 15;
+            this.NetVolume.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label6
             // 
@@ -329,14 +329,14 @@
             this.groupBox1.Controls.Add(this.Partnumber_txt);
             this.groupBox1.Controls.Add(this.uomweight_cbo);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.Description_txt);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.type_cbo);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.NetWeight);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.numericUpDown2);
+            this.groupBox1.Controls.Add(this.NetVolume);
             this.groupBox1.Controls.Add(this.uom_cbo);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.uomclass_cbo);
@@ -380,8 +380,8 @@
             this.Name = "Item_Master";
             this.Text = "Epicor Item Injection";
             this.Load += new System.EventHandler(this.Item_Master_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NetVolume)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -395,12 +395,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox Partnumber_txt;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Description_txt;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox type_cbo;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown NetWeight;
+        private System.Windows.Forms.NumericUpDown NetVolume;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox group_cbo;
         private System.Windows.Forms.Label label2;

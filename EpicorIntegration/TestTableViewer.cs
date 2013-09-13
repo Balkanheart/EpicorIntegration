@@ -20,7 +20,33 @@ namespace EpicorIntegration
 
             BindingSource bindingsource1 = new BindingSource();
 
-            bindingsource1.DataSource = ds.Tables["PartPlant"];
+            bindingsource1.DataSource = ds.Tables[0];
+
+            dataGridView1.DataSource = bindingsource1;
+        }
+
+        public TestTableViewer(DataSet ds, string TableName)
+        {
+            InitializeComponent();
+
+            dataGridView1.AutoGenerateColumns = true;
+
+            BindingSource bindingsource1 = new BindingSource();
+
+            bindingsource1.DataSource = ds.Tables[TableName];
+
+            dataGridView1.DataSource = bindingsource1;
+        }
+
+        public TestTableViewer(DataSet ds, int TableIndex)
+        {
+            InitializeComponent();
+
+            dataGridView1.AutoGenerateColumns = true;
+
+            BindingSource bindingsource1 = new BindingSource();
+
+            bindingsource1.DataSource = ds.Tables[TableIndex];
 
             dataGridView1.DataSource = bindingsource1;
         }

@@ -13,8 +13,7 @@ namespace EpicorIntegration
     public class DataList
     {
 
-         public static BLConnectionPool EpicConn = new BLConnectionPool(Properties.Settings.Default.uname, Properties.Settings.Default.passw, "AppServerDC://" + Properties.Settings.Default.svrname + ":" + Properties.Settings.Default.svrport);
-
+        public static BLConnectionPool EpicConn = new BLConnectionPool(Properties.Settings.Default.uname, Properties.Settings.Default.passw, "AppServerDC://" + Properties.Settings.Default.svrname + ":" + Properties.Settings.Default.svrport);
 
         public void EpicClose()
         {
@@ -25,11 +24,9 @@ namespace EpicorIntegration
                 Progress.Open4GL.DynamicAPI.Session Session = EpicConn.Get();
 
                 EpicConn.Release(Session);
-
-                //EpicConn.Dispose();
         }
 
-        public BOReader BOReader
+        public static BOReader BOReader
         {
             get
             {
@@ -100,6 +97,22 @@ namespace EpicorIntegration
             }
 
             return Part;
+        }
+
+        public PartDataSet UpdateDatum(PartDataSet Part, string tableName, int rowNum, string colName, string Input)
+        {
+            try
+            {
+                Part.Tables[tableName].Rows[rowNum][colName] = Input;
+
+                return Part;
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message, "Error!", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+
+                return Part;	
+            }
         }
 
         public DataSet ProdGrupDataSet()
@@ -197,83 +210,31 @@ namespace EpicorIntegration
     /// </summary>
     public class PartData
     {
-        public string PartNumber
-        {
-            get;
-            set;
-        }
+        public string PartNumber;
 
-        public string Description
-        {
-            get;
-            set;
-        }
+        public string Description;
 
-        public string PMT
-        {
-            get;
-            set;
-        }
+        public string PMT;
 
-        public string UOM_Class
-        {
-            get;
-            set;
-        }
+        public string UOM_Class;
 
-        public string Net_Weight
-        {
-            get;
-            set;
-        }
+        public decimal Net_Weight;
 
-        public string Net_Vol
-        {
-            get;
-            set;
-        }
+        public decimal Net_Vol;
 
-        public string Net_Weight_UM
-        {
-            get;
-            set;
-        }
+        public string Net_Weight_UM;
 
-        public string Net_Vol_UM
-        {
-            get;
-            set;
-        }
+        public string Net_Vol_UM;
 
-        public string Primary_UOM
-        {
-            get;
-            set;
-        }
+        public string Primary_UOM;
 
-        public string PartGroup
-        {
-            get;
-            set;
-        }
+        public string PartGroup;
 
-        public string PartClass
-        {
-            get;
-            set;
-        }
+        public string PartClass;
 
-        public string PartPlant
-        {
-            get;
-            set;
-        }
+        public string PartPlant;
 
-        public string PlantWhse
-        {
-            get;
-            set;
-        }
+        public string PlantWhse;
     }
 
     /// <summary>

@@ -42,6 +42,62 @@ namespace EpicorIntegration
             InitializeComponent();
         }
 
+        public Item_Master(PartData Part)
+        {
+            InitializeComponent();
+            try
+            {
+                //Use Part to fill data fields
+
+                Partnumber_txt.Text = Part.PartNumber;
+
+                Description_txt.Text = Part.Description;
+
+                type_cbo.SelectedIndex = type_cbo.Items.IndexOf(Part.PMT);
+
+                NetWeight.Value = Part.Net_Weight;
+
+                NetVolume.Value = Part.Net_Vol;
+
+                group_cbo.SelectedIndex = group_cbo.Items.IndexOf(Part.PartGroup);
+
+                class_cbo.SelectedIndex = class_cbo.Items.IndexOf(Part.PartClass);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error importing data fields.  Default values will show.\n" + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        public Item_Master(string PartNumber,string Description,string Type, decimal Weight, decimal Volume,string Group, string Class)
+        {
+            InitializeComponent();
+
+            try
+            {
+                //Fill fields on form with inputs
+
+                Partnumber_txt.Text = PartNumber;
+
+                Description_txt.Text = Description;
+
+                type_cbo.SelectedIndex = type_cbo.Items.IndexOf(Type);
+
+                NetWeight.Value = Weight;
+
+                NetVolume.Value = Volume;
+
+                group_cbo.SelectedIndex = group_cbo.Items.IndexOf(Group);
+
+                class_cbo.SelectedIndex = class_cbo.Items.IndexOf(Class);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error importing data fields.  Default values will show.\n" + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+
         private void Item_Master_Load(object sender, EventArgs e)
         {
             try
@@ -76,11 +132,13 @@ namespace EpicorIntegration
 
                 plant_cbo.DisplayMember = DL.PlantDataSet().Tables[0].Columns["NAME"].ToString();
 
+                plant_cbo.ValueMember = "Plant";
+
                 whse_cbo.DataSource = DL.WarehseDataSet().Tables[0];
 
                 whse_cbo.DisplayMember = DL.WarehseDataSet().Tables[0].Columns["Description"].ToString();
 
-                whse_cbo.ValueMember = DL.WarehseDataSet().Tables[0].Columns["WarehouseCode"].ToString();
+                whse_cbo.ValueMember = "WarehouseCode";
 
                 DataSet DS = DL.UOMSearchDataSet();
 
@@ -109,7 +167,6 @@ namespace EpicorIntegration
                 uomweight_cbo.ValueMember = "UOMCode";
 
                 #endregion
-               
             }
             catch (System.Exception ex)
             {
@@ -172,35 +229,43 @@ namespace EpicorIntegration
 
                     DL.AddDatum(Pdata, "Part", 0, "ClassID", class_cbo.SelectedValue.ToString());
 
-                    Part.GetNewPartPlant(Pdata, PartNumber);
-
-                    DL.AddDatum(Pdata, "PartPlant", 0, "PrimWhse", whse_cbo.SelectedValue.ToString());
-
-                    DL.AddDatum(Pdata, "PartPlant", 0, "Plant", plant_cbo.SelectedValue.ToString());
-
                     string Type_Code = type_cbo.SelectedItem.ToString();
 
                     Part.ChangePartTypeCode(Type_Code, Pdata);
 
                     Part.ChangePartProdCode(group_cbo.SelectedValue.ToString(), Pdata);
 
-                    //Potential implementation of CheckPartChanges
-
+                    //Add data to allow BO to create plant tables
                     Part.Update(Pdata);
 
+                    //retrieve the new copy of the data
+                    Pdata = Part.GetByID(PartNumber);
+
+                    DL.UpdateDatum(Pdata, "PartPlant", 0, "PrimWhse", whse_cbo.SelectedValue.ToString());
+
+                    DL.UpdateDatum (Pdata,"PartPlant",0,"PrimWhseDescription",whse_cbo.Text);
+
+                    DL.UpdateDatum(Pdata, "PartPlant", 0, "DBRowIdent", null);
+
+                    //Update with warehouse information
+                    Part.Update(Pdata);
+
+                    //Potential implementation of CheckPartChanges
+
                     DL.EpicClose();
-                
                 }
                 else
                 {
                     MessageBox.Show("Part already exists in database!  Use revision to make changes.");
                 }
-
-                this.Close();
             }
             catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            finally
+            {
+                this.Close();
             }
             
 

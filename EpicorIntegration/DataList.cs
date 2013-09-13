@@ -82,13 +82,13 @@ namespace EpicorIntegration
                 {
                     WorkRow[0][colName] = double.Parse(Input);
                 }
-                catch (System.Exception ex1)
+                catch //(System.Exception ex1)
                 {
                     try
                     {
                         WorkRow[0][colName] = (int)(double.Parse(Input));
                     }
-                    catch (System.Exception ex2)
+                    catch //(System.Exception ex2)
                     {
                         System.Windows.Forms.MessageBox.Show(ex.Message, "Error!", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     }

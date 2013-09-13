@@ -88,6 +88,7 @@ namespace EpicorIntegration
             {
                 try
                 {
+                    /*
                     if (ctrl.GetType() is TextBox)
                         ctrl.Text = "";
 
@@ -102,8 +103,9 @@ namespace EpicorIntegration
 
                         ctrlcbo.SelectedIndex = 0;
                     }
+                    */
                 }
-                catch (System.Exception ex)
+                catch //(System.Exception ex)
                 {
 
                 }

@@ -73,6 +73,16 @@ namespace EpicorIntegration.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
+        internal static System.Drawing.Icon N2_0 {
+            get {
+                object obj = ResourceManager.GetObject("N2_0", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
         internal static System.Drawing.Icon Norco_Round {
             get {
                 object obj = ResourceManager.GetObject("Norco_Round", resourceCulture);

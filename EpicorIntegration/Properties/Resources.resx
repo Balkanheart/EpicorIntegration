@@ -121,6 +121,9 @@
   <data name="Categories_preferences_other" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Categories-preferences-other.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="N2_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\N2.0.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Norco_Round" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Norco Round.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

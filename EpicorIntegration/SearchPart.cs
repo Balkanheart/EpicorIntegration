@@ -41,7 +41,13 @@ namespace EpicorIntegration
 
             DataSet ds = DL.PartClassDataSet();
 
-            ds.Tables[0].Rows.Add("", "Any");
+            DataRow dr = ds.Tables[0].NewRow();
+
+            dr[0] = "";
+
+            dr[1] = "Any";
+
+            ds.Tables[0].Rows.InsertAt(dr,0);
 
             group_cbo.DataSource = ds.Tables[0];
 
@@ -59,9 +65,11 @@ namespace EpicorIntegration
 
             type_cbo.DisplayMember = "Description";
 
-            type_cbo.SelectedIndex = type_cbo.Items.IndexOf("Any");
+            type_cbo.SelectedIndex = 0;
 
-            group_cbo.SelectedIndex = group_cbo.Items.IndexOf("Any");
+            group_cbo.SelectedIndex = 0;
+
+            sortby_cbo.SelectedIndex = 0;
         }
 
         void SearchPart_ClientSizeChanged(object sender, EventArgs e)
@@ -88,28 +96,51 @@ namespace EpicorIntegration
             {
                 try
                 {
-                    /*
-                    if (ctrl.GetType() is TextBox)
+                    if (ctrl.GetType() == typeof(TextBox))
                         ctrl.Text = "";
 
-                    if (ctrl.GetType() is CheckBox)
+                    if (ctrl.GetType() == typeof(CheckBox))
                     {
                         CheckBox ctrlcb = (CheckBox)ctrl;
 
+                        ctrlcb.Checked = false;
                     }
-                    if (ctrl.GetType() is ComboBox)
+                    if (ctrl.GetType() == typeof(ComboBox))
                     {
                         ComboBox ctrlcbo = (ComboBox)ctrl;
 
                         ctrlcbo.SelectedIndex = 0;
                     }
-                    */
                 }
                 catch //(System.Exception ex)
                 {
 
                 }
             }
+
+            foreach (Control ctrl in advgroup.Controls)
+            {
+                try
+                {
+                    if (ctrl.GetType() == typeof(TextBox))
+                        ctrl.Text = "";
+
+                    if (ctrl.GetType() == typeof(CheckBox))
+                    {
+                        CheckBox ctrlcb = (CheckBox)ctrl;
+
+                        ctrlcb.Checked = false;
+                    }
+                }
+                catch //(System.Exception ex)
+                {
+
+                }
+            }
+
+            type_cbo.SelectedIndex = 0;
+
+            group_cbo.SelectedIndex = 0;
         }
 
     }

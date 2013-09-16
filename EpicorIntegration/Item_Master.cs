@@ -250,7 +250,7 @@ namespace EpicorIntegration
                     //Update with warehouse information
                     Part.Update(Pdata);
 
-                    DL.EpicClose();
+                    DataList.EpicClose();
                 }
                 else
                 {

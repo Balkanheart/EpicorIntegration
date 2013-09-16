@@ -33,6 +33,12 @@
             this.tabs = new System.Windows.Forms.TabControl();
             this.Basic = new System.Windows.Forms.TabPage();
             this.basicgroup = new System.Windows.Forms.GroupBox();
+            this.group_cbo = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.type_cbo = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.status_cbo = new System.Windows.Forms.ComboBox();
             this.sortby_cbo = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,17 +46,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.PartNumber = new System.Windows.Forms.TextBox();
             this.Advanced = new System.Windows.Forms.TabPage();
+            this.advSplit = new System.Windows.Forms.SplitContainer();
             this.advgroup = new System.Windows.Forms.GroupBox();
-            this.group_cbo = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.serial_chk = new System.Windows.Forms.CheckBox();
-            this.inactive_chk = new System.Windows.Forms.CheckBox();
             this.onhold_chk = new System.Windows.Forms.CheckBox();
-            this.phantom_chk = new System.Windows.Forms.CheckBox();
             this.qtybearing_chk = new System.Windows.Forms.CheckBox();
             this.nonstock_chk = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.type_cbo = new System.Windows.Forms.ComboBox();
             this.SearchResultGrid = new System.Windows.Forms.DataGridView();
             this.HorizMajorContainer = new System.Windows.Forms.SplitContainer();
             this.VerticalTopContainer = new System.Windows.Forms.SplitContainer();
@@ -58,10 +59,29 @@
             this.Clearbtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.SearchBtn = new System.Windows.Forms.Button();
+            this.AdvSearch = new System.Windows.Forms.CheckBox();
+            this.PartNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PartDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TypeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SearchWord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClassID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nonstock = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.OnHold = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Inactive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PhantomBOM = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TrackLots = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TrackSerialNum = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.QtyBearing = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.phantom_chk = new System.Windows.Forms.CheckBox();
             this.tabs.SuspendLayout();
             this.Basic.SuspendLayout();
             this.basicgroup.SuspendLayout();
             this.Advanced.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.advSplit)).BeginInit();
+            this.advSplit.Panel1.SuspendLayout();
+            this.advSplit.Panel2.SuspendLayout();
+            this.advSplit.SuspendLayout();
             this.advgroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SearchResultGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HorizMajorContainer)).BeginInit();
@@ -100,6 +120,12 @@
             // basicgroup
             // 
             this.basicgroup.BackColor = System.Drawing.SystemColors.Control;
+            this.basicgroup.Controls.Add(this.group_cbo);
+            this.basicgroup.Controls.Add(this.label5);
+            this.basicgroup.Controls.Add(this.label4);
+            this.basicgroup.Controls.Add(this.type_cbo);
+            this.basicgroup.Controls.Add(this.label6);
+            this.basicgroup.Controls.Add(this.status_cbo);
             this.basicgroup.Controls.Add(this.sortby_cbo);
             this.basicgroup.Controls.Add(this.label3);
             this.basicgroup.Controls.Add(this.label2);
@@ -107,11 +133,70 @@
             this.basicgroup.Controls.Add(this.label1);
             this.basicgroup.Controls.Add(this.PartNumber);
             this.basicgroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.basicgroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.basicgroup.Location = new System.Drawing.Point(3, 3);
             this.basicgroup.Name = "basicgroup";
             this.basicgroup.Size = new System.Drawing.Size(522, 130);
             this.basicgroup.TabIndex = 3;
             this.basicgroup.TabStop = false;
+            // 
+            // group_cbo
+            // 
+            this.group_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.group_cbo.FormattingEnabled = true;
+            this.group_cbo.Location = new System.Drawing.Point(366, 39);
+            this.group_cbo.Name = "group_cbo";
+            this.group_cbo.Size = new System.Drawing.Size(148, 21);
+            this.group_cbo.TabIndex = 13;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(298, 42);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Group:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(298, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Type Code:";
+            // 
+            // type_cbo
+            // 
+            this.type_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.type_cbo.FormattingEnabled = true;
+            this.type_cbo.Location = new System.Drawing.Point(366, 12);
+            this.type_cbo.Name = "type_cbo";
+            this.type_cbo.Size = new System.Drawing.Size(148, 21);
+            this.type_cbo.TabIndex = 10;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(79, 95);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Status:";
+            // 
+            // status_cbo
+            // 
+            this.status_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.status_cbo.FormattingEnabled = true;
+            this.status_cbo.Items.AddRange(new object[] {
+            "Any",
+            "Active",
+            "Inactive"});
+            this.status_cbo.Location = new System.Drawing.Point(125, 92);
+            this.status_cbo.Name = "status_cbo";
+            this.status_cbo.Size = new System.Drawing.Size(167, 21);
+            this.status_cbo.TabIndex = 4;
             // 
             // sortby_cbo
             // 
@@ -119,6 +204,7 @@
             this.sortby_cbo.FormattingEnabled = true;
             this.sortby_cbo.Items.AddRange(new object[] {
             "Part Number",
+            "Description",
             "Search Word"});
             this.sortby_cbo.Location = new System.Drawing.Point(125, 65);
             this.sortby_cbo.Name = "sortby_cbo";
@@ -169,7 +255,7 @@
             // Advanced
             // 
             this.Advanced.BackColor = System.Drawing.SystemColors.Control;
-            this.Advanced.Controls.Add(this.advgroup);
+            this.Advanced.Controls.Add(this.advSplit);
             this.Advanced.Location = new System.Drawing.Point(4, 22);
             this.Advanced.Name = "Advanced";
             this.Advanced.Padding = new System.Windows.Forms.Padding(3);
@@ -177,120 +263,82 @@
             this.Advanced.TabIndex = 1;
             this.Advanced.Text = "Advanced";
             // 
+            // advSplit
+            // 
+            this.advSplit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.advSplit.Location = new System.Drawing.Point(3, 3);
+            this.advSplit.Name = "advSplit";
+            this.advSplit.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // advSplit.Panel1
+            // 
+            this.advSplit.Panel1.Controls.Add(this.AdvSearch);
+            this.advSplit.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advSplit.Panel1MinSize = 17;
+            // 
+            // advSplit.Panel2
+            // 
+            this.advSplit.Panel2.Controls.Add(this.advgroup);
+            this.advSplit.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advSplit.Size = new System.Drawing.Size(522, 130);
+            this.advSplit.SplitterDistance = 17;
+            this.advSplit.TabIndex = 0;
+            // 
             // advgroup
             // 
-            this.advgroup.Controls.Add(this.group_cbo);
-            this.advgroup.Controls.Add(this.label5);
             this.advgroup.Controls.Add(this.serial_chk);
-            this.advgroup.Controls.Add(this.inactive_chk);
             this.advgroup.Controls.Add(this.onhold_chk);
             this.advgroup.Controls.Add(this.phantom_chk);
             this.advgroup.Controls.Add(this.qtybearing_chk);
             this.advgroup.Controls.Add(this.nonstock_chk);
-            this.advgroup.Controls.Add(this.label4);
-            this.advgroup.Controls.Add(this.type_cbo);
             this.advgroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.advgroup.Location = new System.Drawing.Point(3, 3);
+            this.advgroup.Enabled = false;
+            this.advgroup.Location = new System.Drawing.Point(0, 0);
             this.advgroup.Name = "advgroup";
-            this.advgroup.Size = new System.Drawing.Size(522, 130);
+            this.advgroup.Size = new System.Drawing.Size(522, 109);
             this.advgroup.TabIndex = 0;
             this.advgroup.TabStop = false;
-            // 
-            // group_cbo
-            // 
-            this.group_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.group_cbo.FormattingEnabled = true;
-            this.group_cbo.Location = new System.Drawing.Point(74, 52);
-            this.group_cbo.Name = "group_cbo";
-            this.group_cbo.Size = new System.Drawing.Size(148, 21);
-            this.group_cbo.TabIndex = 9;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 55);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Group:";
             // 
             // serial_chk
             // 
             this.serial_chk.AutoSize = true;
-            this.serial_chk.Location = new System.Drawing.Point(334, 38);
+            this.serial_chk.Location = new System.Drawing.Point(112, 16);
             this.serial_chk.Name = "serial_chk";
             this.serial_chk.Size = new System.Drawing.Size(71, 17);
             this.serial_chk.TabIndex = 7;
             this.serial_chk.Text = "Serialized";
             this.serial_chk.UseVisualStyleBackColor = true;
             // 
-            // inactive_chk
-            // 
-            this.inactive_chk.AutoSize = true;
-            this.inactive_chk.Location = new System.Drawing.Point(334, 15);
-            this.inactive_chk.Name = "inactive_chk";
-            this.inactive_chk.Size = new System.Drawing.Size(64, 17);
-            this.inactive_chk.TabIndex = 6;
-            this.inactive_chk.Text = "Inactive";
-            this.inactive_chk.UseVisualStyleBackColor = true;
-            // 
             // onhold_chk
             // 
             this.onhold_chk.AutoSize = true;
-            this.onhold_chk.Location = new System.Drawing.Point(228, 84);
+            this.onhold_chk.Location = new System.Drawing.Point(189, 16);
             this.onhold_chk.Name = "onhold_chk";
             this.onhold_chk.Size = new System.Drawing.Size(65, 17);
             this.onhold_chk.TabIndex = 5;
             this.onhold_chk.Text = "On Hold";
             this.onhold_chk.UseVisualStyleBackColor = true;
             // 
-            // phantom_chk
-            // 
-            this.phantom_chk.AutoSize = true;
-            this.phantom_chk.Location = new System.Drawing.Point(228, 61);
-            this.phantom_chk.Name = "phantom_chk";
-            this.phantom_chk.Size = new System.Drawing.Size(95, 17);
-            this.phantom_chk.TabIndex = 4;
-            this.phantom_chk.Text = "Phantom BOM";
-            this.phantom_chk.UseVisualStyleBackColor = true;
-            // 
             // qtybearing_chk
             // 
             this.qtybearing_chk.AutoSize = true;
-            this.qtybearing_chk.Location = new System.Drawing.Point(228, 38);
+            this.qtybearing_chk.Location = new System.Drawing.Point(112, 39);
             this.qtybearing_chk.Name = "qtybearing_chk";
             this.qtybearing_chk.Size = new System.Drawing.Size(81, 17);
             this.qtybearing_chk.TabIndex = 3;
             this.qtybearing_chk.Text = "Qty Bearing";
             this.qtybearing_chk.UseVisualStyleBackColor = true;
+            this.qtybearing_chk.Visible = false;
             // 
             // nonstock_chk
             // 
             this.nonstock_chk.AutoSize = true;
-            this.nonstock_chk.Location = new System.Drawing.Point(228, 15);
+            this.nonstock_chk.Location = new System.Drawing.Point(6, 16);
             this.nonstock_chk.Name = "nonstock_chk";
             this.nonstock_chk.Size = new System.Drawing.Size(100, 17);
             this.nonstock_chk.TabIndex = 2;
             this.nonstock_chk.Text = "Non-Stock Item";
             this.nonstock_chk.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Type Code:";
-            // 
-            // type_cbo
-            // 
-            this.type_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.type_cbo.FormattingEnabled = true;
-            this.type_cbo.Location = new System.Drawing.Point(74, 13);
-            this.type_cbo.Name = "type_cbo";
-            this.type_cbo.Size = new System.Drawing.Size(148, 21);
-            this.type_cbo.TabIndex = 0;
             // 
             // SearchResultGrid
             // 
@@ -299,15 +347,34 @@
             this.SearchResultGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.SearchResultGrid.BackgroundColor = System.Drawing.Color.White;
             this.SearchResultGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SearchResultGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PartNum,
+            this.PartDescription,
+            this.TypeCode,
+            this.ProdCode,
+            this.SearchWord,
+            this.ClassID,
+            this.Nonstock,
+            this.OnHold,
+            this.Inactive,
+            this.PhantomBOM,
+            this.TrackLots,
+            this.TrackSerialNum,
+            this.QtyBearing});
             this.SearchResultGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearchResultGrid.Location = new System.Drawing.Point(0, 0);
             this.SearchResultGrid.Name = "SearchResultGrid";
+            this.SearchResultGrid.ReadOnly = true;
+            this.SearchResultGrid.RowHeadersVisible = false;
+            this.SearchResultGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SearchResultGrid.Size = new System.Drawing.Size(684, 196);
             this.SearchResultGrid.TabIndex = 0;
+            this.SearchResultGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SearchResultGrid_CellContentClick);
             // 
             // HorizMajorContainer
             // 
             this.HorizMajorContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HorizMajorContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.HorizMajorContainer.Location = new System.Drawing.Point(0, 0);
             this.HorizMajorContainer.Name = "HorizMajorContainer";
             this.HorizMajorContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -327,12 +394,14 @@
             // VerticalTopContainer
             // 
             this.VerticalTopContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.VerticalTopContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.VerticalTopContainer.Location = new System.Drawing.Point(0, 0);
             this.VerticalTopContainer.Name = "VerticalTopContainer";
             // 
             // VerticalTopContainer.Panel1
             // 
             this.VerticalTopContainer.Panel1.Controls.Add(this.tabs);
+            this.VerticalTopContainer.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             // 
             // VerticalTopContainer.Panel2
             // 
@@ -340,6 +409,8 @@
             this.VerticalTopContainer.Panel2.Controls.Add(this.Clearbtn);
             this.VerticalTopContainer.Panel2.Controls.Add(this.CancelBtn);
             this.VerticalTopContainer.Panel2.Controls.Add(this.SearchBtn);
+            this.VerticalTopContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.VerticalTopContainer.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.VerticalTopContainer.Size = new System.Drawing.Size(684, 162);
             this.VerticalTopContainer.SplitterDistance = 536;
             this.VerticalTopContainer.TabIndex = 2;
@@ -352,6 +423,7 @@
             this.OptionsBtn.TabIndex = 5;
             this.OptionsBtn.Text = "&Options";
             this.OptionsBtn.UseVisualStyleBackColor = true;
+            this.OptionsBtn.Click += new System.EventHandler(this.OptionsBtn_Click);
             // 
             // Clearbtn
             // 
@@ -382,6 +454,126 @@
             this.SearchBtn.TabIndex = 0;
             this.SearchBtn.Text = "&Search";
             this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
+            // 
+            // AdvSearch
+            // 
+            this.AdvSearch.AutoSize = true;
+            this.AdvSearch.Location = new System.Drawing.Point(3, 3);
+            this.AdvSearch.Name = "AdvSearch";
+            this.AdvSearch.Size = new System.Drawing.Size(112, 17);
+            this.AdvSearch.TabIndex = 0;
+            this.AdvSearch.Text = "Advanced Search";
+            this.AdvSearch.UseVisualStyleBackColor = true;
+            this.AdvSearch.CheckedChanged += new System.EventHandler(this.AdvSearch_CheckedChanged);
+            // 
+            // PartNum
+            // 
+            this.PartNum.DataPropertyName = "PartNum";
+            this.PartNum.HeaderText = "Part Number";
+            this.PartNum.Name = "PartNum";
+            this.PartNum.ReadOnly = true;
+            // 
+            // PartDescription
+            // 
+            this.PartDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PartDescription.DataPropertyName = "PartDescription";
+            this.PartDescription.HeaderText = "Description";
+            this.PartDescription.Name = "PartDescription";
+            this.PartDescription.ReadOnly = true;
+            this.PartDescription.Width = 85;
+            // 
+            // TypeCode
+            // 
+            this.TypeCode.DataPropertyName = "TypeCode";
+            this.TypeCode.HeaderText = "Type Code";
+            this.TypeCode.Name = "TypeCode";
+            this.TypeCode.ReadOnly = true;
+            // 
+            // ProdCode
+            // 
+            this.ProdCode.DataPropertyName = "ProdCode";
+            this.ProdCode.HeaderText = "Product Code";
+            this.ProdCode.Name = "ProdCode";
+            this.ProdCode.ReadOnly = true;
+            // 
+            // SearchWord
+            // 
+            this.SearchWord.DataPropertyName = "SearchWord";
+            this.SearchWord.HeaderText = "Search Word";
+            this.SearchWord.Name = "SearchWord";
+            this.SearchWord.ReadOnly = true;
+            // 
+            // ClassID
+            // 
+            this.ClassID.DataPropertyName = "ClassID";
+            this.ClassID.HeaderText = "Product Class";
+            this.ClassID.Name = "ClassID";
+            this.ClassID.ReadOnly = true;
+            // 
+            // Nonstock
+            // 
+            this.Nonstock.DataPropertyName = "Nonstock";
+            this.Nonstock.HeaderText = "NonStock";
+            this.Nonstock.Name = "Nonstock";
+            this.Nonstock.ReadOnly = true;
+            // 
+            // OnHold
+            // 
+            this.OnHold.DataPropertyName = "OnHold";
+            this.OnHold.HeaderText = "On Hold";
+            this.OnHold.Name = "OnHold";
+            this.OnHold.ReadOnly = true;
+            // 
+            // Inactive
+            // 
+            this.Inactive.DataPropertyName = "Inactive";
+            this.Inactive.HeaderText = "Inactive";
+            this.Inactive.Name = "Inactive";
+            this.Inactive.ReadOnly = true;
+            // 
+            // PhantomBOM
+            // 
+            this.PhantomBOM.DataPropertyName = "PhantomBOM";
+            this.PhantomBOM.HeaderText = "Phantom BOM";
+            this.PhantomBOM.Name = "PhantomBOM";
+            this.PhantomBOM.ReadOnly = true;
+            // 
+            // TrackLots
+            // 
+            this.TrackLots.DataPropertyName = "TrackLots";
+            this.TrackLots.HeaderText = "Lot Tracking";
+            this.TrackLots.Name = "TrackLots";
+            this.TrackLots.ReadOnly = true;
+            this.TrackLots.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TrackLots.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // TrackSerialNum
+            // 
+            this.TrackSerialNum.DataPropertyName = "TrackSerialNum";
+            this.TrackSerialNum.HeaderText = "Serial Number Tracking";
+            this.TrackSerialNum.Name = "TrackSerialNum";
+            this.TrackSerialNum.ReadOnly = true;
+            this.TrackSerialNum.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TrackSerialNum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // QtyBearing
+            // 
+            this.QtyBearing.DataPropertyName = "QtyBearing";
+            this.QtyBearing.HeaderText = "QtyBearing";
+            this.QtyBearing.Name = "QtyBearing";
+            this.QtyBearing.ReadOnly = true;
+            // 
+            // phantom_chk
+            // 
+            this.phantom_chk.AutoSize = true;
+            this.phantom_chk.Location = new System.Drawing.Point(6, 39);
+            this.phantom_chk.Name = "phantom_chk";
+            this.phantom_chk.Size = new System.Drawing.Size(95, 17);
+            this.phantom_chk.TabIndex = 4;
+            this.phantom_chk.Text = "Phantom BOM";
+            this.phantom_chk.UseVisualStyleBackColor = true;
+            this.phantom_chk.Visible = false;
             // 
             // SearchPart
             // 
@@ -402,6 +594,11 @@
             this.basicgroup.ResumeLayout(false);
             this.basicgroup.PerformLayout();
             this.Advanced.ResumeLayout(false);
+            this.advSplit.Panel1.ResumeLayout(false);
+            this.advSplit.Panel1.PerformLayout();
+            this.advSplit.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.advSplit)).EndInit();
+            this.advSplit.ResumeLayout(false);
             this.advgroup.ResumeLayout(false);
             this.advgroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SearchResultGrid)).EndInit();
@@ -437,15 +634,31 @@
         private System.Windows.Forms.ComboBox sortby_cbo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox advgroup;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox serial_chk;
-        private System.Windows.Forms.CheckBox inactive_chk;
         private System.Windows.Forms.CheckBox onhold_chk;
-        private System.Windows.Forms.CheckBox phantom_chk;
         private System.Windows.Forms.CheckBox qtybearing_chk;
         private System.Windows.Forms.CheckBox nonstock_chk;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox status_cbo;
+        private System.Windows.Forms.ComboBox group_cbo;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox type_cbo;
-        private System.Windows.Forms.ComboBox group_cbo;
+        private System.Windows.Forms.SplitContainer advSplit;
+        private System.Windows.Forms.CheckBox AdvSearch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PartNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PartDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TypeCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProdCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SearchWord;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClassID;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Nonstock;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn OnHold;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Inactive;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn PhantomBOM;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn TrackLots;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn TrackSerialNum;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn QtyBearing;
+        private System.Windows.Forms.CheckBox phantom_chk;
     }
 }

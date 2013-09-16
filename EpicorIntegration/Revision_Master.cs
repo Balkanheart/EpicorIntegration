@@ -47,5 +47,10 @@ namespace EpicorIntegration
         {
             this.Close();
         }
+
+        private void Searchbtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

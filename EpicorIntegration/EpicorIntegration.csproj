@@ -69,6 +69,9 @@
     <Reference Include="Epicor.Mfg.BO.EpiSearch">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.EpiSearch.dll</HintPath>
     </Reference>
+    <Reference Include="Epicor.Mfg.BO.Menu">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Menu.dll</HintPath>
+    </Reference>
     <Reference Include="Epicor.Mfg.BO.Part">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Part.dll</HintPath>
     </Reference>
@@ -80,6 +83,9 @@
     </Reference>
     <Reference Include="Epicor.Mfg.BO.QuickSearch">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.QuickSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.BO.SysMonitor">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.SysMonitor.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.Core.BLConnectionPool">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Core.BLConnectionPool.dll</HintPath>
@@ -195,6 +201,12 @@
     <Compile Include="Revision_Master.Designer.cs">
       <DependentUpon>Revision_Master.cs</DependentUpon>
     </Compile>
+    <Compile Include="SearchOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchOptions.Designer.cs">
+      <DependentUpon>SearchOptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="SearchPart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +243,9 @@
     </Compile>
     <EmbeddedResource Include="Revision_Master.resx">
       <DependentUpon>Revision_Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchOptions.resx">
+      <DependentUpon>SearchOptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchPart.resx">
       <DependentUpon>SearchPart.cs</DependentUpon>

@@ -82,5 +82,29 @@ namespace EpicorIntegration.Properties {
                 this["validated"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool allresults {
+            get {
+                return ((bool)(this["allresults"]));
+            }
+            set {
+                this["allresults"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int linelimit {
+            get {
+                return ((int)(this["linelimit"]));
+            }
+            set {
+                this["linelimit"] = value;
+            }
+        }
     }
 }

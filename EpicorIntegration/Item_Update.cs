@@ -241,7 +241,7 @@ namespace EpicorIntegration
 
                     //Potential implementation of CheckPartChanges
 
-                    DL.EpicClose();
+                    DataList.EpicClose();
             }
             catch (System.Exception ex)
             {

@@ -15,7 +15,7 @@ namespace EpicorIntegration
 
         public static BLConnectionPool EpicConn = new BLConnectionPool(Properties.Settings.Default.uname, Properties.Settings.Default.passw, "AppServerDC://" + Properties.Settings.Default.svrname + ":" + Properties.Settings.Default.svrport);
 
-        public void EpicClose()
+        public static void EpicClose()
         {
                 SessionMod SM = new SessionMod(EpicConn);
                 
@@ -203,6 +203,216 @@ namespace EpicorIntegration
 
             return ds;
         }
+
+        public DataSet GetProjectRoles()
+        {
+            EngWorkBench EngWB = new EngWorkBench(EpicConn);
+
+            DataSet MethodReturned = EngWB.GetProjectRoles();
+
+            EpicClose();
+
+            return MethodReturned;
+        }
+
+        public string GetCodeDescList()
+        {
+            EngWorkBench EngWB = new EngWorkBench(EpicConn);
+
+            string ReturnMethod = EngWB.GetCodeDescList("ECORev", "ProcessMode");
+
+            EpicClose();
+
+            return ReturnMethod;
+        }
+
+        public void GetAvailTaskSets(out string NewList)
+        {
+            EngWorkBench EngWB = new EngWorkBench(EpicConn);
+
+            EngWB.GetAvailTaskSets(out NewList);
+
+            EpicClose();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ipGroupID">ECO Group ID</param>
+        public void GroupLock(string ipGroupID)
+        {
+            EngWorkBench EngWB = new EngWorkBench(EpicConn);
+
+            EngWB.GroupLock(ipGroupID);
+
+            EpicClose();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ipGroupID">ECO Group ID</param>
+        /// <param name="ipCheckOutStatus">Normally should be true</param>
+        /// <returns></returns>
+        public EngWorkBenchDataSet GetECORevData(string ipGroupID, bool ipCheckOutStatus)
+        {
+            EngWorkBench EngWB = new EngWorkBench(EpicConn);
+
+            EngWorkBenchDataSet ReturnMethod = EngWB.GetECORevData(ipGroupID, ipCheckOutStatus);
+
+            EpicClose();
+
+            return ReturnMethod;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ipGroupID">ECO Group ID</param>
+        /// <param name="ipPartNum">Part Number</param>
+        /// <param name="ipRevisionNum">Revision Number</param>
+        /// <param name="ipAltMethod">Normally Null string</param>
+        /// <param name="ipAsOfDate">Current Date/Time</param>
+        /// <param name="ipCompleteTree">Normally False</param>
+        /// <param name="ipUseMEthodForParts">Normally True</param>
+        /// <returns></returns>
+        public EngWorkBenchDataSet GetDatasetForTree(string ipGroupID, string ipPartNum, string ipRevisionNum, string ipAltMethod, DateTime? ipAsOfDate, bool ipCompleteTree, bool ipUseMEthodForParts)
+        {
+            EngWorkBench EngWB = new EngWorkBench(EpicConn);
+
+            EngWorkBenchDataSet MethodReturned = EngWB.GetDatasetForTree(ipGroupID,ipPartNum,ipRevisionNum,ipAltMethod,ipAsOfDate,ipCompleteTree,ipUseMEthodForParts);
+
+            EpicClose();
+
+            return MethodReturned;
+        }
+
+        public ECOGroupListDataSet GetList(string ipGroupID)
+        {
+            EngWorkBench EngWB = new EngWorkBench(EpicConn);
+
+            bool morePages;
+
+            ECOGroupListDataSet ReturnMethod = EngWB.GetList("GroupID = '" + ipGroupID + "' BY GroupID", 0, 0, out morePages);
+
+            EpicClose();
+
+            return ReturnMethod;
+        }
+
+        public EngWorkBenchDataSet CheckOut(string ipGroupID, string ipPartNum, string ipRevisionNum, string ipAltMethod, DateTime? ipAsOfDate, bool ipCompleteTree, bool ipValidPassword, bool ipReturn, bool ipGetDatasetForTree, bool ipUseMethodForParts, out string opCheckedOutRevisionNum, out string altMethodMsg, out bool altMethodFlg)
+        {
+            EngWorkBench EngWB = new EngWorkBench(EpicConn);
+
+            EngWorkBenchDataSet ReturnMethod = EngWB.CheckOut(ipGroupID, ipPartNum, ipRevisionNum, ipAltMethod, ipAsOfDate, ipCompleteTree, ipValidPassword, ipReturn, ipGetDatasetForTree, ipUseMethodForParts, out opCheckedOutRevisionNum, out altMethodMsg, out altMethodFlg);
+
+            EpicClose();
+
+            return ReturnMethod;
+        }
+    }
+
+    public class ECOGroup
+    {
+        public string Company;
+        public string GroupID;
+        public string Description;
+        public bool GroupClosed;
+        public string Character01;
+        public string Character02;
+        public string Character03;
+        public string Character04;
+        public string Character05;
+        public string Character06;
+        public string Character07;
+        public string Character08;
+        public string Character09;
+        public string Character10;
+        public int Number01;
+        public int Number02;
+        public int Number03;
+        public int Number04;
+        public int Number05;
+        public int Number06;
+        public int Number07;
+        public int Number08;
+        public int Number09;
+        public int Number10;
+        public bool CheckBox01;
+        public bool CheckBox02;
+        public bool CheckBox03;
+        public bool CheckBox04;
+        public bool Checkbox05;
+        public string CommentText;
+        public DateTime DueDate;
+        public DateTime CreatedDate;
+        public string CreatedBy;
+        public int CreatedTime;
+        public string ClosedBy;
+        public int ClosedTime;
+        public string ECO;
+        public string TaskSetID;
+        public string CurrentWFStageID;
+        public string ActiveTaskID;
+        public string LastTaskID;
+        public bool CheckInAllowed;
+        public string PrimeSalesRepCode;
+        public string WFGroupID;
+        public bool CheckOutAllowed;
+        public bool WFComplete;
+        public bool SingleUser;
+        public bool GrpLocked;
+        public string GrpLockedBy;
+        public int Number11;
+        public int Number12;
+        public int Number13;
+        public int Number14;
+        public int Number15;
+        public int Number16;
+        public int Number17;
+        public int Number18;
+        public int Number19;
+        public int Number20;
+        public bool CheckBox06;
+        public bool CheckBox07;
+        public bool CheckBox08;
+        public bool CheckBox09;
+        public bool CheckBox10;
+        public bool CheckBox11;
+        public bool CheckBox12;
+        public bool CheckBox13;
+        public bool CheckBox14;
+        public bool CheckBox15;
+        public bool CheckBox16;
+        public bool CheckBox17;
+        public bool CheckBox18;
+        public bool CheckBox19;
+        public bool CheckBox20;
+        public string ShortChar01;
+        public string ShortChar02;
+        public string ShortChar03;
+        public string ShortChar04;
+        public string ShortChar05;
+        public string ShortChar06;
+        public string ShortChar07;
+        public string ShortChar08;
+        public string ShortChar09;
+        public string ShortChar10;
+        public Guid SysRowID;
+        public string SysRevID;
+        public byte BitFlag;
+        public bool MassAssignDesc;
+        public bool MassAssignECO;
+        public bool MassAssignEffectiveDate;
+        public bool CanApproveAll;
+        public bool MultiBOMAllowed;
+        public bool CanCheckInAll;
+        public bool WFGroupIDDesc;
+        public bool UseMethodForPartsInTree;
+        public string CurrentWFStageDesc;
+        public bool EnableCheckInAll;
+        public string TaskSetIDTastSetDescription;
+        public string TaskSetIDWorkflowType;
     }
 
     /// <summary>

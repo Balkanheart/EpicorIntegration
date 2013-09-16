@@ -98,6 +98,7 @@
             this.Searchbtn.TabIndex = 38;
             this.Searchbtn.Text = "&Search";
             this.Searchbtn.UseVisualStyleBackColor = true;
+            this.Searchbtn.Click += new System.EventHandler(this.Searchbtn_Click);
             // 
             // Searchtxt
             // 

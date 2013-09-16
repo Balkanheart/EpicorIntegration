@@ -67,9 +67,7 @@ namespace EpicorIntegration
 
                 Properties.Settings.Default.Save();
 
-                DataList DL = new DataList();
-
-                DL.EpicClose();
+                DataList.EpicClose();
 
                 this.Close();
 

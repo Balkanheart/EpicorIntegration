@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Epicor.Mfg.BO;
 
 namespace EpicorIntegration
 {
@@ -55,7 +56,7 @@ namespace EpicorIntegration
 
             group_cbo.DisplayMember = "Description";
 
-            type_cbo.Items.Add(new PartTypeCode("Any", ""));
+            type_cbo.Items.Add(new PartTypeCode("Any", "%"));
 
             type_cbo.Items.Add(new PartTypeCode("Manufactured", "M"));
 
@@ -70,19 +71,19 @@ namespace EpicorIntegration
             group_cbo.SelectedIndex = 0;
 
             sortby_cbo.SelectedIndex = 0;
+
+            status_cbo.SelectedIndex = 0;
         }
 
         void SearchPart_ClientSizeChanged(object sender, EventArgs e)
         {
-            HorizMajorContainer.SplitterDistance = 162;
-            VerticalTopContainer.SplitterDistance = this.Width - 536;
+            //HorizMajorContainer.SplitterDistance = 162;
+            //VerticalTopContainer.SplitterDistance = this.Width - 536;
         }
 
         private void SearchPart_Load(object sender, EventArgs e)
         {
 
-
-            
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
@@ -141,7 +142,134 @@ namespace EpicorIntegration
             type_cbo.SelectedIndex = 0;
 
             group_cbo.SelectedIndex = 0;
+
+            status_cbo.SelectedIndex = 0;
+
+            SearchResultGrid.DataSource = "";
         }
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            Part Part = new Part(DataList.EpicConn);
+
+            PartListDataSet PartList = new PartListDataSet();
+
+            string WhereClause = "PartNum >= '" + PartNumber.Text + "'" + Desc() + OfType() + Activity() + OnHold() + NonStock() + TrackLots() + SortBy();
+
+            int pageSize;
+
+            if (Properties.Settings.Default.allresults)
+                pageSize = 0;
+            else
+                pageSize = Properties.Settings.Default.linelimit;
+
+            bool morePages;
+
+            PartList = Part.GetList(WhereClause, pageSize, 0, out morePages);
+
+            DataList.EpicClose();
+
+            SearchResultGrid.AutoGenerateColumns = false;
+
+            SearchResultGrid.DataSource = PartList.Tables[0];
+        }
+
+        public string TrackLots()
+        {
+            if (AdvSearch.Checked)
+            {
+                if (serial_chk.Checked)
+                    return " AND TrackSerialNum = true";
+                else
+                    return " AND TrackSerialNum = false";
+            }
+            return null;
+        }
+
+        public string Desc()
+        {
+            if (!(Description.Text == ""))
+                return "AND Description >= '" + Description.Text + "'";
+            return null;
+        }
+
+        public string NonStock()
+        {
+            if (AdvSearch.Checked)
+            {
+                if (nonstock_chk.Checked)
+                    return "AND NonStock = true";
+
+                return "AND NonStock = false";
+            }
+            else
+                return null;
+        }
+
+        public string OnHold()
+        {
+            if (AdvSearch.Checked)
+            {
+                if (onhold_chk.Checked)
+                    return "AND OnHold = true";
+
+                return "AND OnHold = false";
+            }
+            return null;
+        }
+
+        public string OfType()
+        {
+            if (!type_cbo.Text.Contains("Any"))
+                return " AND TypeCode = '" + type_cbo.SelectedItem.ToString() + "'";
+
+            return null;
+        }
+
+        public string SortBy()
+        {
+            if (sortby_cbo.Text == "Part Number")
+                return " BY PartNum";
+
+            if (sortby_cbo.Text == "Search Word")
+                return " BY SearchWord";
+
+            if (sortby_cbo.Text == "Description")
+                return " BY PartDescription";
+
+            return null;
+        }
+
+        public string Activity()
+        {
+            if (status_cbo.SelectedIndex == 1)
+                return  "AND InActive = false";
+
+            if (status_cbo.SelectedIndex == 2)
+                return " AND InActive = true";
+
+            return null;
+        }
+
+        private void OptionsBtn_Click(object sender, EventArgs e)
+        {
+            SearchOptions SearchOpt = new SearchOptions();
+
+            SearchOpt.ShowDialog();
+        }
+
+        private void AdvSearch_CheckedChanged(object sender, EventArgs e)
+        {
+            advgroup.Enabled = AdvSearch.Checked;
+        }
+
+        private void SearchResultGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Pass selected part number on
+            _PartNumber = SearchResultGrid[0,SearchResultGrid.SelectedRows
+        }
+
+        public static string _PartNumber;
 
     }
 }

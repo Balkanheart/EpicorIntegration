@@ -24,6 +24,28 @@ namespace EpicorIntegration
             gid_cbo.ValueMember = "Description";
 
             gid_cbo.DisplayMember = "GroupID";
+
+            Searchtxt.Leave += Searchtxt_TextChanged;
+        }
+
+        void Searchtxt_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                currev_txt.Text = DataList.GetCurrentRev(Searchtxt.Text);
+
+                char[] NewRev = currev_txt.Text.ToCharArray();
+
+                byte[] RevChars = new int[currev_txt.Text.Length];
+
+                for (int i = 0; i < NewRev.GetUpperBound(0); i++)
+                {
+                    RevChars[i] = Encoding.ASCII.GetBytes(NewRev[i].ToString());
+                }
+            }
+            catch
+            {
+            }
         }
 
         public Revision_Master(string PartNumber, string Revision, string RevisionDesc, string GroupID)
@@ -42,9 +64,13 @@ namespace EpicorIntegration
 
             Searchtxt.Text = PartNumber;
 
-            revname_txt.Text = Revision;
+            newrev_txt.Text = Revision;
+
+            currev_txt.Text = DataList.GetCurrentRev(PartNumber);
 
             revdesc_txt.Text = RevisionDesc;
+
+            Searchtxt.Leave += Searchtxt_TextChanged;
         }
 
         private void gid_cbo_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,15 +86,8 @@ namespace EpicorIntegration
         private void savebtn_Click(object sender, EventArgs e)
         {
             //Add revision
-            Part Part = new Part(DataList.EpicConn);
 
-            PartDataSet PartData = new PartDataSet();
-
-            PartData = Part.GetByID(Searchtxt.Text);
-
-            Part.GetNewPartRev(PartData, Searchtxt.Text, revname_txt.Text);
-
-            DataList.UpdateDatum(PartData, "PartRev", 0, "RevShortDesc", revdesc_txt.Text);
+            bool valid = DataList.CreatePartRevision(Searchtxt.Text, currev_txt.Text, newrev_txt.Text, revdesc_txt.Text);
 
             EngWorkBench EngWb = new EngWorkBench(DataList.EpicConn);
 
@@ -80,10 +99,13 @@ namespace EpicorIntegration
 
             EngWorkBenchDataSet EngDataSet = new EngWorkBenchDataSet();
 
-            EngDataSet =  EngWb.CheckOut(gid_cbo.SelectedValue.ToString(), Searchtxt.Text, revname_txt.Text, "", DateTime.Now, false, false,false,true,false,out CheckedOutRevNum, out altMethodMsg, out altMethodFlg);
+            EngWb.CheckOut(gid_cbo.Text.ToString(), Searchtxt.Text, newrev_txt.Text, "", DateTime.Today, false, false,false,true,false,out CheckedOutRevNum, out altMethodMsg, out altMethodFlg);
 
+            EngDataSet = EngWb.GetDatasetForTree(gid_cbo.Text.ToString(), Searchtxt.Text, newrev_txt.Text, "", DateTime.Now, false, false);
+            
+            string opMessage;
 
-
+            EngWb.CheckIn(gid_cbo.Text.ToString(), Searchtxt.Text, newrev_txt.Text, "", DateTime.Now, false, false, true, true, false, "FOR EPICOR INTEGRATION MODULE", out opMessage);
 
             //Open Item_Master for changes (Need to alter to allow for edits)
             //Determine if BOO exists, if (exists) Open BOO_Master

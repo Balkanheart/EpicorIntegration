@@ -310,6 +310,62 @@ namespace EpicorIntegration
 
             return ReturnMethod;
         }
+
+        public static string GetCurrentRev(string PartNumber)
+        {
+            try
+            {
+                Part Part = new Part(DataList.EpicConn);
+
+                PartDataSet PartData = new PartDataSet();
+
+                PartData = Part.GetByID(PartNumber);
+
+                int LastRowIndex = PartData.Tables["PartRev"].Rows.Count - 1;
+
+                string PartRev = PartData.Tables["PartRev"].Rows[LastRowIndex]["RevisionNum"].ToString();
+
+                EpicClose();
+
+                return PartRev;
+            }
+            catch { return ""; }
+        }
+
+        public static bool CreatePartRevision(string PartNumber, string CurrentRev, string NewRev, string RevDesc)
+        {
+            bool _results;
+
+            try
+            {
+                Part Part = new Part(DataList.EpicConn);
+
+                PartDataSet PartData = new PartDataSet();
+
+                PartData = Part.GetByID(PartNumber);
+
+                Part.GetNewPartRev(PartData, PartNumber, CurrentRev);
+
+                int Y = PartData.Tables["PartRev"].Rows.Count - 1;
+
+                DataList.UpdateDatum(PartData, "PartRev", Y, "RevShortDesc", RevDesc);
+
+                DataList.UpdateDatum(PartData, "PartRev", Y, "RevisionNum", NewRev);
+
+                DataList.UpdateDatum(PartData, "PartRev", Y, "AltMethod", "");
+
+                Part.Update(PartData);
+
+                _results = true;
+            }
+            catch { _results = false; }
+            finally
+            {
+                EpicClose();
+            }
+
+            return _results;
+        }
     }
 
     public class ECOGroup

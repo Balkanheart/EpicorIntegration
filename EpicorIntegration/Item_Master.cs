@@ -209,25 +209,25 @@ namespace EpicorIntegration
 
                     Part.ChangePartNum(PartNumber, Pdata);
 
-                    DL.AddDatum(Pdata, "Part",  0, "PartDescription", Description_txt.Text);
+                    DataList.AddDatum(Pdata, "Part",  0, "PartDescription", Description_txt.Text);
             
                     //SearchWord has 8 character limit
                     if (Description_txt.Text.Length > 8)
-                        DL.AddDatum(Pdata, "Part", 0, "SearchWord", Description_txt.Text.Substring(0,8));
+                        DataList.AddDatum(Pdata, "Part", 0, "SearchWord", Description_txt.Text.Substring(0, 8));
                     else
-                        DL.AddDatum(Pdata, "Part",  0, "SearchWord", Description_txt.Text);
+                        DataList.AddDatum(Pdata, "Part", 0, "SearchWord", Description_txt.Text);
 
-                    DL.AddDatum(Pdata, "Part",  0, "NetWeight", NetWeight.Text);
+                    DataList.AddDatum(Pdata, "Part", 0, "NetWeight", NetWeight.Text);
 
-                    DL.AddDatum(Pdata, "Part", 0, "NetWeightUOM", uomweight_cbo.SelectedValue.ToString());
+                    DataList.AddDatum(Pdata, "Part", 0, "NetWeightUOM", uomweight_cbo.SelectedValue.ToString());
 
-                    DL.AddDatum(Pdata, "Part", 0, "NetVolume", NetVolume.Text);
+                    DataList.AddDatum(Pdata, "Part", 0, "NetVolume", NetVolume.Text);
 
-                    DL.AddDatum(Pdata, "Part", 0, "NetVolumeUOM",uomvol_cbo.SelectedValue.ToString());
+                    DataList.AddDatum(Pdata, "Part", 0, "NetVolumeUOM", uomvol_cbo.SelectedValue.ToString());
 
-                    DL.AddDatum(Pdata, "Part", 0, "IUM", uom_cbo.SelectedValue.ToString());
+                    DataList.AddDatum(Pdata, "Part", 0, "IUM", uom_cbo.SelectedValue.ToString());
 
-                    DL.AddDatum(Pdata, "Part", 0, "ClassID", class_cbo.SelectedValue.ToString());
+                    DataList.AddDatum(Pdata, "Part", 0, "ClassID", class_cbo.SelectedValue.ToString());
 
                     string Type_Code = type_cbo.SelectedItem.ToString();
 
@@ -241,11 +241,11 @@ namespace EpicorIntegration
                     //retrieve the new copy of the data
                     Pdata = Part.GetByID(PartNumber);
 
-                    DL.UpdateDatum(Pdata, "PartPlant", 0, "PrimWhse", whse_cbo.SelectedValue.ToString());
+                    DataList.UpdateDatum(Pdata, "PartPlant", 0, "PrimWhse", whse_cbo.SelectedValue.ToString());
 
-                    DL.UpdateDatum (Pdata,"PartPlant",0,"PrimWhseDescription",whse_cbo.Text);
+                    DataList.UpdateDatum(Pdata, "PartPlant", 0, "PrimWhseDescription", whse_cbo.Text);
 
-                    DL.UpdateDatum(Pdata, "PartPlant", 0, "DBRowIdent", null);
+                    DataList.UpdateDatum(Pdata, "PartPlant", 0, "DBRowIdent", null);
 
                     //Update with warehouse information
                     Part.Update(Pdata);

@@ -64,7 +64,7 @@ namespace EpicorIntegration
         /// <param name="colName"></param>
         /// <param name="Input"></param>
         /// <returns></returns>
-        public PartDataSet AddDatum(PartDataSet Part, string tableName, int rowNum, string colName, string Input)
+        public static PartDataSet AddDatum(PartDataSet Part, string tableName, int rowNum, string colName, string Input)
         {
             DataTable PartDT = Part.Tables[tableName];
 
@@ -99,7 +99,7 @@ namespace EpicorIntegration
             return Part;
         }
 
-        public PartDataSet UpdateDatum(PartDataSet Part, string tableName, int rowNum, string colName, string Input)
+        public static PartDataSet UpdateDatum(PartDataSet Part, string tableName, int rowNum, string colName, string Input)
         {
             try
             {

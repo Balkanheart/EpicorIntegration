@@ -38,6 +38,8 @@ namespace EpicorIntegration
         {
             InitializeComponent();
 
+            this.SearchResultGrid.DoubleClick += SearchResultGrid_DoubleClick;
+
             this.ClientSizeChanged += SearchPart_ClientSizeChanged;
 
             DataSet ds = DL.PartClassDataSet();
@@ -75,6 +77,63 @@ namespace EpicorIntegration
             status_cbo.SelectedIndex = 0;
         }
 
+        public SearchPart(string initial)
+        {
+            InitializeComponent();
+
+            PartNumber.Text = initial;
+
+            this.SearchResultGrid.DoubleClick += SearchResultGrid_DoubleClick;
+
+            this.ClientSizeChanged += SearchPart_ClientSizeChanged;
+
+            DataSet ds = DL.PartClassDataSet();
+
+            DataRow dr = ds.Tables[0].NewRow();
+
+            dr[0] = "";
+
+            dr[1] = "Any";
+
+            ds.Tables[0].Rows.InsertAt(dr, 0);
+
+            group_cbo.DataSource = ds.Tables[0];
+
+            group_cbo.ValueMember = "ClassID";
+
+            group_cbo.DisplayMember = "Description";
+
+            type_cbo.Items.Add(new PartTypeCode("Any", "%"));
+
+            type_cbo.Items.Add(new PartTypeCode("Manufactured", "M"));
+
+            type_cbo.Items.Add(new PartTypeCode("Purchased", "P"));
+
+            type_cbo.Items.Add(new PartTypeCode("Sales Kit", "K"));
+
+            type_cbo.DisplayMember = "Description";
+
+            type_cbo.SelectedIndex = 0;
+
+            group_cbo.SelectedIndex = 0;
+
+            sortby_cbo.SelectedIndex = 0;
+
+            status_cbo.SelectedIndex = 0;
+        }
+
+        void SearchResultGrid_DoubleClick(object sender, EventArgs e)
+        {
+            //Pass selected part number on
+            int y = SearchResultGrid.Rows.IndexOf(SearchResultGrid.SelectedRows[0]);
+
+            _PartNumber = SearchResultGrid["PartNum", y].Value.ToString();
+
+            DialogResult = DialogResult.OK;
+
+            this.Close();
+        }
+
         void SearchPart_ClientSizeChanged(object sender, EventArgs e)
         {
             //HorizMajorContainer.SplitterDistance = 162;
@@ -88,6 +147,8 @@ namespace EpicorIntegration
 
         private void CancelBtn_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
+            
             this.Close();
         }
 
@@ -154,7 +215,7 @@ namespace EpicorIntegration
 
             PartListDataSet PartList = new PartListDataSet();
 
-            string WhereClause = "PartNum >= '" + PartNumber.Text + "'" + Desc() + OfType() + Activity() + OnHold() + NonStock() + TrackLots() + SortBy();
+            string WhereClause = PartNo() + Desc() + OfType() + Activity() + OnHold() + NonStock() + TrackLots() + SortBy();
 
             int pageSize;
 
@@ -172,6 +233,19 @@ namespace EpicorIntegration
             SearchResultGrid.AutoGenerateColumns = false;
 
             SearchResultGrid.DataSource = PartList.Tables[0];
+
+            if (PartList.Tables[0].Rows.Count < 1)
+                SearchResultGrid.DataSource = "";
+        }
+
+        public string PartNo()
+        {       
+            string PartNum = PartNumber.Text.Replace('*','%');
+
+            if (PartNumber.Text != "")
+                return "PartNum >= '" + PartNum + "'";
+
+            return null;
         }
 
         public string TrackLots()
@@ -189,7 +263,12 @@ namespace EpicorIntegration
         public string Desc()
         {
             if (!(Description.Text == ""))
-                return "AND Description >= '" + Description.Text + "'";
+            {
+                if (PartNo() != "")
+                return "PartDescription CONTAINS '" + Description.Text + "'";
+
+                return " AND PartDescription CONTAINS '" + Description.Text + "'";
+            }
             return null;
         }
 
@@ -265,11 +344,10 @@ namespace EpicorIntegration
 
         private void SearchResultGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Pass selected part number on
-            _PartNumber = SearchResultGrid[0,SearchResultGrid.SelectedRows
+
         }
 
-        public static string _PartNumber;
+        public string _PartNumber;
 
     }
 }

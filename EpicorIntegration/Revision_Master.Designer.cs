@@ -37,13 +37,17 @@
             this.Searchbtn = new System.Windows.Forms.Button();
             this.Searchtxt = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.revdesc_txt = new System.Windows.Forms.TextBox();
+            this.revname_txt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // savebtn
             // 
-            this.savebtn.Location = new System.Drawing.Point(12, 166);
+            this.savebtn.Location = new System.Drawing.Point(12, 240);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
             this.savebtn.TabIndex = 36;
@@ -54,7 +58,7 @@
             // cancelbtn
             // 
             this.cancelbtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelbtn.Location = new System.Drawing.Point(139, 166);
+            this.cancelbtn.Location = new System.Drawing.Point(139, 240);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(75, 23);
             this.cancelbtn.TabIndex = 35;
@@ -109,14 +113,50 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.revname_txt);
+            this.groupBox2.Controls.Add(this.revdesc_txt);
             this.groupBox2.Controls.Add(this.Searchbtn);
             this.groupBox2.Controls.Add(this.Searchtxt);
             this.groupBox2.Location = new System.Drawing.Point(12, 101);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(202, 59);
+            this.groupBox2.Size = new System.Drawing.Size(202, 133);
             this.groupBox2.TabIndex = 40;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Part";
+            // 
+            // revdesc_txt
+            // 
+            this.revdesc_txt.Location = new System.Drawing.Point(6, 99);
+            this.revdesc_txt.Name = "revdesc_txt";
+            this.revdesc_txt.Size = new System.Drawing.Size(181, 20);
+            this.revdesc_txt.TabIndex = 40;
+            // 
+            // revname_txt
+            // 
+            this.revname_txt.Location = new System.Drawing.Point(87, 47);
+            this.revname_txt.Name = "revname_txt";
+            this.revname_txt.Size = new System.Drawing.Size(100, 20);
+            this.revname_txt.TabIndex = 41;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 83);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 13);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "Revision Description:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(30, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Revision:";
             // 
             // Revision_Master
             // 
@@ -124,7 +164,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelbtn;
-            this.ClientSize = new System.Drawing.Size(227, 203);
+            this.ClientSize = new System.Drawing.Size(227, 275);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.savebtn);
@@ -154,5 +194,9 @@
         private System.Windows.Forms.Button Searchbtn;
         private System.Windows.Forms.TextBox Searchtxt;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox revname_txt;
+        private System.Windows.Forms.TextBox revdesc_txt;
     }
 }

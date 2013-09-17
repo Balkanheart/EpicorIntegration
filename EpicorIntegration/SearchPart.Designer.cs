@@ -67,10 +67,10 @@
             this.SearchWord = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClassID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nonstock = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.OnHold = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            //this.OnHold = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Inactive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PhantomBOM = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.TrackLots = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            //this.TrackLots = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TrackSerialNum = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.QtyBearing = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.phantom_chk = new System.Windows.Forms.CheckBox();
@@ -355,10 +355,10 @@
             this.SearchWord,
             this.ClassID,
             this.Nonstock,
-            this.OnHold,
+            //this.OnHold,
             this.Inactive,
             this.PhantomBOM,
-            this.TrackLots,
+            //this.TrackLots,
             this.TrackSerialNum,
             this.QtyBearing});
             this.SearchResultGrid.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -519,12 +519,12 @@
             this.Nonstock.ReadOnly = true;
             // 
             // OnHold
-            // 
+            /* 
             this.OnHold.DataPropertyName = "OnHold";
             this.OnHold.HeaderText = "On Hold";
             this.OnHold.Name = "OnHold";
             this.OnHold.ReadOnly = true;
-            // 
+            */ 
             // Inactive
             // 
             this.Inactive.DataPropertyName = "Inactive";
@@ -540,14 +540,14 @@
             this.PhantomBOM.ReadOnly = true;
             // 
             // TrackLots
-            // 
+            /* 
             this.TrackLots.DataPropertyName = "TrackLots";
             this.TrackLots.HeaderText = "Lot Tracking";
             this.TrackLots.Name = "TrackLots";
             this.TrackLots.ReadOnly = true;
             this.TrackLots.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.TrackLots.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
+            /*/ 
             // TrackSerialNum
             // 
             this.TrackSerialNum.DataPropertyName = "TrackSerialNum";
@@ -653,10 +653,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SearchWord;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClassID;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Nonstock;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn OnHold;
+        //private System.Windows.Forms.DataGridViewCheckBoxColumn OnHold;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Inactive;
         private System.Windows.Forms.DataGridViewCheckBoxColumn PhantomBOM;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn TrackLots;
+        //private System.Windows.Forms.DataGridViewCheckBoxColumn TrackLots;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TrackSerialNum;
         private System.Windows.Forms.DataGridViewCheckBoxColumn QtyBearing;
         private System.Windows.Forms.CheckBox phantom_chk;

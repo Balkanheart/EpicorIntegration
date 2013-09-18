@@ -72,6 +72,9 @@
     <Reference Include="Epicor.Mfg.BO.Menu">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Menu.dll</HintPath>
     </Reference>
+    <Reference Include="Epicor.Mfg.BO.OpMaster">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.OpMaster.dll</HintPath>
+    </Reference>
     <Reference Include="Epicor.Mfg.BO.Part">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.Part.dll</HintPath>
     </Reference>
@@ -111,6 +114,9 @@
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IEpiSearch">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IEpiSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IOpMaster">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IOpMaster.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IPart, Version=9.5.702.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -230,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Item_Master.resx">
       <DependentUpon>Item_Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operations_Master.resx">
+      <DependentUpon>Operations_Master.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

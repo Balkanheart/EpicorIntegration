@@ -81,36 +81,8 @@ namespace EpicorIntegration
             //Add revision
 
             bool valid = DataList.CreatePartRevision(Searchtxt.Text, currev_txt.Text, newrev_txt.Text, revdesc_txt.Text);
-
-            EngWorkBench EngWb = new EngWorkBench(DataList.EpicConn);
-
-            string CheckedOutRevNum;
-
-            string altMethodMsg;
-
-            bool altMethodFlg;
-
-            EngWorkBenchDataSet EngDataSet = new EngWorkBenchDataSet();
-
-            EngWb.CheckOut(gid_cbo.Text.ToString(), Searchtxt.Text, newrev_txt.Text, "", DateTime.Today, false, false,false,true,false,out CheckedOutRevNum, out altMethodMsg, out altMethodFlg);
-
-            EngDataSet = EngWb.GetDatasetForTree(gid_cbo.Text.ToString(), Searchtxt.Text, newrev_txt.Text, "", DateTime.Now, false, false);
-            
-            string opMessage;
-
-            EngDataSet.Tables["ECORev"].Rows[0]["Approved"] = true;
-            
-            EngWb.CheckECORevApproved(true, false, EngDataSet);
-
-            EngWb.Update(EngDataSet);
-
-            EngWb.CheckIn(gid_cbo.Text.ToString(), Searchtxt.Text, newrev_txt.Text, "", DateTime.Now, false, false, true, true, false, "FOR EPICOR INTEGRATION MODULE", out opMessage);
-
-            //Open Item_Master for changes (Need to alter to allow for edits)
-            //Determine if BOO exists, if (exists) Open BOO_Master
-            //Determine if BOM exists, if (exists) Open BOM_Master
-
-            DataList.EpicClose();
+           
+            this.Close();
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)

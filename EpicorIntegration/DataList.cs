@@ -214,6 +214,47 @@ namespace EpicorIntegration
             return ds;
         }
 
+        public static void CheckOutPart(string GroupID, string PartNumber, string Revision)
+        {
+            string CheckedOutRevNum;
+
+            string altMethodMsg;
+
+            bool altMethodFlg;
+
+            EngWorkBench EngWb = new EngWorkBench(EpicConn);
+
+            EngWb.CheckOut(GroupID, PartNumber, Revision, "", DateTime.Today, false, false, false, true, false, out CheckedOutRevNum, out altMethodMsg, out altMethodFlg);
+
+            EpicClose();
+        }
+
+        public static void ApprovePart(EngWorkBenchDataSet EngDataSet,string GroupID,string PartNumber, string Revision)
+        {
+            EngWorkBench EngWb = new EngWorkBench(EpicConn);
+
+            EngDataSet = EngWb.GetDatasetForTree(GroupID, PartNumber, Revision, "", DateTime.Now, false, false);
+
+            EngDataSet.Tables["ECORev"].Rows[0]["Approved"] = true;
+
+            EngWb.CheckECORevApproved(true, false, EngDataSet);
+
+            EngWb.Update(EngDataSet);
+
+            EpicClose();
+        }
+
+        public static void CheckInPart(string GroupID, string PartNumber, string Revision)
+        {
+            EngWorkBench EngWb = new EngWorkBench(EpicConn);
+
+            string opMessage;
+
+            EngWb.CheckIn(GroupID, PartNumber, Revision, "", DateTime.Now, false, false, true, true, false, "FOR EPICOR INTEGRATION MODULE", out opMessage);
+
+            EpicClose();
+        }
+
         /// <summary>
         /// Search Function for retrieving Part lists
         /// </summary>

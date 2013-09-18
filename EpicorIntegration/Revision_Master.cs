@@ -34,14 +34,7 @@ namespace EpicorIntegration
             {
                 currev_txt.Text = DataList.GetCurrentRev(Searchtxt.Text);
 
-                char[] NewRev = currev_txt.Text.ToCharArray();
-
-                byte[] RevChars = new int[currev_txt.Text.Length];
-
-                for (int i = 0; i < NewRev.GetUpperBound(0); i++)
-                {
-                    RevChars[i] = Encoding.ASCII.GetBytes(NewRev[i].ToString());
-                }
+                newrev_txt.Text = DataList.AdvanceRevision(currev_txt.Text);
             }
             catch
             {
@@ -104,6 +97,12 @@ namespace EpicorIntegration
             EngDataSet = EngWb.GetDatasetForTree(gid_cbo.Text.ToString(), Searchtxt.Text, newrev_txt.Text, "", DateTime.Now, false, false);
             
             string opMessage;
+
+            EngDataSet.Tables["ECORev"].Rows[0]["Approved"] = true;
+            
+            EngWb.CheckECORevApproved(true, false, EngDataSet);
+
+            EngWb.Update(EngDataSet);
 
             EngWb.CheckIn(gid_cbo.Text.ToString(), Searchtxt.Text, newrev_txt.Text, "", DateTime.Now, false, false, true, true, false, "FOR EPICOR INTEGRATION MODULE", out opMessage);
 

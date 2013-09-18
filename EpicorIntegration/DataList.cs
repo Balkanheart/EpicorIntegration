@@ -55,6 +55,36 @@ namespace EpicorIntegration
             return ds;
         }
 
+        public static string AdvanceRevision(string CurrentRevision)
+        {
+            char[] InVal = CurrentRevision.ToUpper().ToCharArray();
+
+            long retval = 0;
+
+            for (int i = InVal.GetUpperBound(0); i >= 0; i--)
+            {
+                int charval = (int)InVal[i];
+
+                int x = InVal.GetUpperBound(0);
+
+                retval += (int)Math.Pow(26, x - i) * ((int)InVal[i] - 64);
+
+            }
+
+            retval++;
+
+            string s = "";
+            for (long i = (long)Convert.ToDouble(Math.Log(Convert.ToDouble(25 * (Convert.ToDouble(retval) + 1))) / Math.Log(26)) - 1; i >= 0; i--)
+            {
+                long x = (long)Convert.ToDouble(Math.Pow(26, i + 1) - 1) / 25 - 1;
+                if (retval > x)
+                {
+                    s += (char)(((retval - x - 1) / Convert.ToDouble(Math.Pow(26, i))) % 26 + 65);
+                }
+            }
+            return s;
+        }
+
         /// <summary>
         /// Adds data in specified column at row number and table all into PartDataSet given
         /// </summary>

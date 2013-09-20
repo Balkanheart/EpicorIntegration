@@ -85,6 +85,17 @@ namespace EpicorIntegration
             return s;
         }
 
+        public static DataSet EngWB_DS(string GroupID, string PartNumber, string Rev)
+        {
+            EngWorkBench EngWB = new EngWorkBench(EpicConn);
+
+            EngWorkBenchDataSet EngWBDS = new EngWorkBenchDataSet();
+
+            EngWBDS = EngWB.GetDatasetForTree(GroupID,PartNumber,Rev, "", DateTime.Today, false, false);
+
+            return (DataSet)EngWBDS;
+        }
+
         /// <summary>
         /// Adds data in specified column at row number and table all into PartDataSet given
         /// </summary>

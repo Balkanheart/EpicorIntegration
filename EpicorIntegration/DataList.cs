@@ -225,6 +225,24 @@ namespace EpicorIntegration
             return ds;
         }
 
+        public static DataSet ResourceGroup()
+        {
+            DataSet ds = (DataSet)BOReader.GetList("ResourceGroup", "Inactive=False", "ResourceGrpID,Inactive,Description");
+
+            EpicClose();
+
+            return ds;
+        }
+
+        public static DataSet Resource(string ResourceGrpId)
+        {
+            DataSet ds = (DataSet)BOReader.GetList("Resource", "(Inactive=False) AND ResourceGrpID='" + ResourceGrpId +"'", "ResourceID,Inactive,ResourceGrpId,Description");
+
+            EpicClose();
+
+            return ds;
+        }
+
         public static void CheckOutPart(string GroupID, string PartNumber, string Revision)
         {
             string CheckedOutRevNum;
@@ -645,6 +663,39 @@ namespace EpicorIntegration
             get
             {
                 return _Description;
+            }
+        }
+    }
+
+    class ProdStdType
+    {
+        private string _Code;
+        private string _Desc;
+
+        public ProdStdType(string Description, string Code)
+        {
+            _Code = Code;
+            _Desc = Description;
+        }
+
+        public override string ToString()
+        {
+            return _Code;
+        }
+
+        public string Code
+        {
+            get
+            {
+                return _Code;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return _Desc;
             }
         }
     }

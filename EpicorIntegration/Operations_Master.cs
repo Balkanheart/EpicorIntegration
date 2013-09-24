@@ -25,9 +25,32 @@ namespace EpicorIntegration
             set { _EngWBDS = value; }
         }
 
+        public void FillProdStd()
+        {
+            prodstd_cbo.Items.Add(new ProdStdType("Minutes/Piece", "MP"));
+
+            prodstd_cbo.Items.Add(new ProdStdType("Hours/Piece", "HP"));
+
+            prodstd_cbo.Items.Add(new ProdStdType("Pieces/Minute", "PM"));
+
+            prodstd_cbo.Items.Add(new ProdStdType("Pieces/Hour", "HM"));
+
+            prodstd_cbo.Items.Add(new ProdStdType("Operations/Minute", "OM"));
+
+            prodstd_cbo.Items.Add(new ProdStdType("Operations/Hour", "OH"));
+
+            prodstd_cbo.Items.Add(new ProdStdType("Fixed Hours", "HR"));
+
+            prodstd_cbo.DisplayMember = "Description";
+
+            prodstd_cbo.SelectedIndex = 0;
+        }
+
         public Operations_Master(string PartNumber, string GroupID, string Rev)
         {
             InitializeComponent();
+
+            OPDataGrid.AutoGenerateColumns = false;
 
             partnumber_txt.Text = PartNumber;
 
@@ -47,8 +70,6 @@ namespace EpicorIntegration
 
             opmast_cbo.DisplayMember = ds.Tables["OPMaster"].Columns["OPDesc"].ToString();
 
-            opnum_txt.Text = GetNextOp().ToString();
-
             EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
             OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
@@ -59,6 +80,8 @@ namespace EpicorIntegration
         public Operations_Master()
         {
             InitializeComponent();
+
+            OPDataGrid.AutoGenerateColumns = false;
 
             bool morePages;
 
@@ -72,15 +95,35 @@ namespace EpicorIntegration
 
             opmast_cbo.DisplayMember = ds.Tables["OPMaster"].Columns["OPDesc"].ToString();
 
-            opnum_txt.Text = GetNextOp().ToString();
-
             DataList.EpicClose();
         }
 
         private void Operations_Master_Load(object sender, EventArgs e)
         {
+            OPDataGrid.SelectionChanged += OPDataGrid_SelectionChanged;
 
+            FillProdStd();
+        }
 
+        void OPDataGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string CurrentOp = OPDataGrid["OpDesc", OPDataGrid.CurrentCellAddress.Y].Value.ToString();
+
+                string CurrentStd = (OPDataGrid["Stdformat", OPDataGrid.CurrentCellAddress.Y].Value.ToString());
+
+                if (CurrentOp != null)
+                    opmast_cbo.SelectedIndex = opmast_cbo.FindStringExact(CurrentOp);
+                else
+                    opmast_cbo.SelectedIndex = 1;
+
+                if (CurrentStd != null)
+                    prodstd_cbo.SelectedText = CurrentStd;
+                else
+                    prodstd_cbo.SelectedIndex = 1;
+            }
+            catch { }
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -93,6 +136,14 @@ namespace EpicorIntegration
         private void savebtn_Click(object sender, EventArgs e)
         {
             EngWB.Update(EngWBDS);
+
+            EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+
+            resource_show.Enabled = true;
+
+            EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
+
+            OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
         }
 
         private void addbtn_Click(object sender, EventArgs e)
@@ -101,23 +152,83 @@ namespace EpicorIntegration
 
             int RowIndex = OPDataGrid.Rows.Count - 1;
 
+            OPDataGrid.ClearSelection();
+
+            OPDataGrid.CurrentCell = OPDataGrid.Rows[RowIndex].Cells[0];
+
             EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpCode"] = opmast_cbo.SelectedValue.ToString();
 
             EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpDesc"] = opmast_cbo.Text;
 
+            EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
 
+            resource_show.Enabled = false;
         }
 
         private void removebtn_Click(object sender, EventArgs e)
         {
+            int RowIndex = OPDataGrid.CurrentCell.RowIndex;
 
+            EngWBDS.Tables["ECOOpr"].Rows[RowIndex].Delete();
+
+            EngWB.ResequenceOperations(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, true, true, false);
+
+            resource_show.Enabled = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void refresh_btn_Click(object sender, EventArgs e)
         {
             EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, partnumber_txt.Text, rev_txt.Text, "", DateTime.Today, false, false);
 
             OPDataGrid.DataSource = EngWBDS.Tables["ECOOpr"];
+        }
+
+        private void opmast_cbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int RowIndex = OPDataGrid.CurrentCell.RowIndex;
+
+                EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpCode"] = opmast_cbo.SelectedValue.ToString();
+
+                EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpDesc"] = opmast_cbo.Text;
+
+                EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
+
+                resource_show.Enabled = false;
+            }
+            catch { }
+        }
+
+        private void prodhrs_num_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int RowIndex = OPDataGrid.CurrentCell.RowIndex;
+
+                EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
+
+                resource_show.Enabled = false;
+            }
+            catch { }
+        }
+
+        private void resource_show_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void prodstd_cbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int RowIndex = OPDataGrid.CurrentCell.RowIndex;
+
+                EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["Stdformat"] = prodstd_cbo.SelectedItem.ToString();
+
+                resource_show.Enabled = false;
+            }
+            catch { }
         }
     }
 }

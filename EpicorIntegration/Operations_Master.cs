@@ -27,21 +27,31 @@ namespace EpicorIntegration
 
         public void FillProdStd()
         {
-            prodstd_cbo.Items.Add(new ProdStdType("Minutes/Piece", "MP"));
+            List<ProdStdType> ProdStdDS = new List<ProdStdType>();
 
-            prodstd_cbo.Items.Add(new ProdStdType("Hours/Piece", "HP"));
+            ProdStdDS.Add(new ProdStdType("Minutes/Piece", "MP"));
 
-            prodstd_cbo.Items.Add(new ProdStdType("Pieces/Minute", "PM"));
+            ProdStdDS.Add(new ProdStdType("Hours/Piece", "HP"));
 
-            prodstd_cbo.Items.Add(new ProdStdType("Pieces/Hour", "HM"));
+            ProdStdDS.Add(new ProdStdType("Pieces/Minute", "PM"));
 
-            prodstd_cbo.Items.Add(new ProdStdType("Operations/Minute", "OM"));
+            ProdStdDS.Add(new ProdStdType("Pieces/Hour", "HM"));
 
-            prodstd_cbo.Items.Add(new ProdStdType("Operations/Hour", "OH"));
+            ProdStdDS.Add(new ProdStdType("Operations/Minute", "OM"));
 
-            prodstd_cbo.Items.Add(new ProdStdType("Fixed Hours", "HR"));
+            ProdStdDS.Add(new ProdStdType("Operations/Hour", "OH"));
+
+            ProdStdDS.Add(new ProdStdType("Fixed Hours", "HR"));
+
+            BindingSource bind = new BindingSource();
+
+            bind.DataSource = ProdStdDS;
+
+            prodstd_cbo.DataSource = bind;
 
             prodstd_cbo.DisplayMember = "Description";
+
+            prodstd_cbo.ValueMember = "Code";
 
             prodstd_cbo.SelectedIndex = 0;
         }
@@ -113,15 +123,21 @@ namespace EpicorIntegration
 
                 string CurrentStd = (OPDataGrid["Stdformat", OPDataGrid.CurrentCellAddress.Y].Value.ToString());
 
+                int CurrentProd = (int)double.Parse(OPDataGrid["ProdStandard", OPDataGrid.CurrentCellAddress.Y].Value.ToString());
+               
                 if (CurrentOp != null)
                     opmast_cbo.SelectedIndex = opmast_cbo.FindStringExact(CurrentOp);
                 else
                     opmast_cbo.SelectedIndex = 1;
 
                 if (CurrentStd != null)
-                    prodstd_cbo.SelectedText = CurrentStd;
+                {
+                    prodstd_cbo.SelectedValue = CurrentStd;
+                }
                 else
                     prodstd_cbo.SelectedIndex = 1;
+
+                prodhrs_num.Value = CurrentProd;
             }
             catch { }
         }

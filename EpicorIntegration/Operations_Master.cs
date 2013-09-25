@@ -231,7 +231,11 @@ namespace EpicorIntegration
 
         private void resource_show_Click(object sender, EventArgs e)
         {
+            string operation = OPDataGrid["OprSeq", OPDataGrid.CurrentCellAddress.Y].Value.ToString();
 
+            Resource_Master Resource_Mast = new Resource_Master(partnumber_txt.Text, rev_txt.Text, gid_txt.Text, operation, EngWBDS);
+
+            Resource_Mast.ShowDialog();
         }
 
         private void prodstd_cbo_SelectedIndexChanged(object sender, EventArgs e)

@@ -46,6 +46,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.opmast_cbo = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.copy_btn = new System.Windows.Forms.Button();
             this.newbtn = new System.Windows.Forms.Button();
             this.removebtn = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
@@ -100,7 +101,6 @@
             this.gid_txt.Name = "gid_txt";
             this.gid_txt.Size = new System.Drawing.Size(130, 20);
             this.gid_txt.TabIndex = 13;
-            this.gid_txt.Text = "tw";
             // 
             // label5
             // 
@@ -117,7 +117,6 @@
             this.rev_txt.Name = "rev_txt";
             this.rev_txt.Size = new System.Drawing.Size(48, 20);
             this.rev_txt.TabIndex = 11;
-            this.rev_txt.Text = "d";
             // 
             // label4
             // 
@@ -134,7 +133,6 @@
             this.partnumber_txt.Name = "partnumber_txt";
             this.partnumber_txt.Size = new System.Drawing.Size(130, 20);
             this.partnumber_txt.TabIndex = 9;
-            this.partnumber_txt.Text = "test12";
             // 
             // label2
             // 
@@ -230,6 +228,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.copy_btn);
             this.groupBox1.Controls.Add(this.newbtn);
             this.groupBox1.Controls.Add(this.removebtn);
             this.groupBox1.Controls.Add(this.cancelbtn);
@@ -239,6 +238,15 @@
             this.groupBox1.Size = new System.Drawing.Size(88, 165);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
+            // 
+            // copy_btn
+            // 
+            this.copy_btn.Location = new System.Drawing.Point(6, 103);
+            this.copy_btn.Name = "copy_btn";
+            this.copy_btn.Size = new System.Drawing.Size(75, 23);
+            this.copy_btn.TabIndex = 14;
+            this.copy_btn.Text = "&Copy From...";
+            this.copy_btn.UseVisualStyleBackColor = true;
             // 
             // newbtn
             // 
@@ -421,5 +429,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ProdStandard;
         private System.Windows.Forms.DataGridViewTextBoxColumn stdformat;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrimaryResourceGrpDesc;
+        private System.Windows.Forms.Button copy_btn;
     }
 }

@@ -28,10 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Resource_Master));
             this.MajorHorizSplit = new System.Windows.Forms.SplitContainer();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.resourcegrp_cbo = new System.Windows.Forms.ComboBox();
+            this.resource_cbo = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.operation_txt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gid_txt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -39,10 +44,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.partnumber_txt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.resource_cbo = new System.Windows.Forms.ComboBox();
-            this.resourcegrp_cbo = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.addbtn = new System.Windows.Forms.Button();
             this.removebtn = new System.Windows.Forms.Button();
@@ -53,6 +54,7 @@
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
             this.MajorHorizSplit.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ResourceGrid)).BeginInit();
             this.SuspendLayout();
@@ -67,7 +69,8 @@
             // 
             // MajorHorizSplit.Panel1
             // 
-            this.MajorHorizSplit.Panel1.Controls.Add(this.textBox1);
+            this.MajorHorizSplit.Panel1.Controls.Add(this.groupBox2);
+            this.MajorHorizSplit.Panel1.Controls.Add(this.operation_txt);
             this.MajorHorizSplit.Panel1.Controls.Add(this.label1);
             this.MajorHorizSplit.Panel1.Controls.Add(this.gid_txt);
             this.MajorHorizSplit.Panel1.Controls.Add(this.label5);
@@ -75,25 +78,70 @@
             this.MajorHorizSplit.Panel1.Controls.Add(this.label4);
             this.MajorHorizSplit.Panel1.Controls.Add(this.partnumber_txt);
             this.MajorHorizSplit.Panel1.Controls.Add(this.label2);
-            this.MajorHorizSplit.Panel1.Controls.Add(this.label7);
-            this.MajorHorizSplit.Panel1.Controls.Add(this.label6);
-            this.MajorHorizSplit.Panel1.Controls.Add(this.resource_cbo);
-            this.MajorHorizSplit.Panel1.Controls.Add(this.resourcegrp_cbo);
             this.MajorHorizSplit.Panel1.Controls.Add(this.groupBox1);
             // 
             // MajorHorizSplit.Panel2
             // 
             this.MajorHorizSplit.Panel2.Controls.Add(this.ResourceGrid);
-            this.MajorHorizSplit.Size = new System.Drawing.Size(731, 404);
+            this.MajorHorizSplit.Size = new System.Drawing.Size(495, 404);
             this.MajorHorizSplit.SplitterDistance = 167;
             this.MajorHorizSplit.TabIndex = 0;
             // 
-            // textBox1
+            // groupBox2
             // 
-            this.textBox1.Location = new System.Drawing.Point(87, 65);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(220, 20);
-            this.textBox1.TabIndex = 26;
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.resourcegrp_cbo);
+            this.groupBox2.Controls.Add(this.resource_cbo);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Location = new System.Drawing.Point(12, 91);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(381, 64);
+            this.groupBox2.TabIndex = 27;
+            this.groupBox2.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(88, 13);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Resource Group:";
+            // 
+            // resourcegrp_cbo
+            // 
+            this.resourcegrp_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.resourcegrp_cbo.FormattingEnabled = true;
+            this.resourcegrp_cbo.Location = new System.Drawing.Point(9, 32);
+            this.resourcegrp_cbo.Name = "resourcegrp_cbo";
+            this.resourcegrp_cbo.Size = new System.Drawing.Size(196, 21);
+            this.resourcegrp_cbo.TabIndex = 17;
+            this.resourcegrp_cbo.SelectedIndexChanged += new System.EventHandler(this.resourcegrp_cbo_SelectedIndexChanged);
+            // 
+            // resource_cbo
+            // 
+            this.resource_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.resource_cbo.FormattingEnabled = true;
+            this.resource_cbo.Location = new System.Drawing.Point(211, 30);
+            this.resource_cbo.Name = "resource_cbo";
+            this.resource_cbo.Size = new System.Drawing.Size(160, 21);
+            this.resource_cbo.TabIndex = 19;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(208, 11);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(56, 13);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Resource:";
+            // 
+            // operation_txt
+            // 
+            this.operation_txt.Location = new System.Drawing.Point(87, 65);
+            this.operation_txt.Name = "operation_txt";
+            this.operation_txt.Size = new System.Drawing.Size(220, 20);
+            this.operation_txt.TabIndex = 26;
             // 
             // label1
             // 
@@ -152,52 +200,15 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "Part Number:";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(214, 103);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 13);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "Resource:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 108);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(88, 13);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Resource Group:";
-            // 
-            // resource_cbo
-            // 
-            this.resource_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.resource_cbo.FormattingEnabled = true;
-            this.resource_cbo.Location = new System.Drawing.Point(217, 122);
-            this.resource_cbo.Name = "resource_cbo";
-            this.resource_cbo.Size = new System.Drawing.Size(160, 21);
-            this.resource_cbo.TabIndex = 19;
-            // 
-            // resourcegrp_cbo
-            // 
-            this.resourcegrp_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.resourcegrp_cbo.FormattingEnabled = true;
-            this.resourcegrp_cbo.Location = new System.Drawing.Point(15, 124);
-            this.resourcegrp_cbo.Name = "resourcegrp_cbo";
-            this.resourcegrp_cbo.Size = new System.Drawing.Size(196, 21);
-            this.resourcegrp_cbo.TabIndex = 17;
-            this.resourcegrp_cbo.SelectedIndexChanged += new System.EventHandler(this.resourcegrp_cbo_SelectedIndexChanged);
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.addbtn);
             this.groupBox1.Controls.Add(this.removebtn);
             this.groupBox1.Controls.Add(this.cancelbtn);
             this.groupBox1.Controls.Add(this.savebtn);
-            this.groupBox1.Location = new System.Drawing.Point(517, 14);
+            this.groupBox1.Location = new System.Drawing.Point(399, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(88, 141);
+            this.groupBox1.Size = new System.Drawing.Size(88, 144);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             // 
@@ -242,8 +253,8 @@
             // 
             this.ResourceGrid.AllowUserToAddRows = false;
             this.ResourceGrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ResourceGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ResourceGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.ResourceGrid.BackgroundColor = System.Drawing.Color.White;
             this.ResourceGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ResourceGrid.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -258,14 +269,14 @@
             this.ResourceGrid.ShowCellToolTips = false;
             this.ResourceGrid.ShowEditingIcon = false;
             this.ResourceGrid.ShowRowErrors = false;
-            this.ResourceGrid.Size = new System.Drawing.Size(731, 233);
+            this.ResourceGrid.Size = new System.Drawing.Size(495, 233);
             this.ResourceGrid.TabIndex = 1;
             // 
             // Resource_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(731, 404);
+            this.ClientSize = new System.Drawing.Size(495, 404);
             this.Controls.Add(this.MajorHorizSplit);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Resource_Master";
@@ -276,6 +287,8 @@
             this.MajorHorizSplit.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MajorHorizSplit)).EndInit();
             this.MajorHorizSplit.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ResourceGrid)).EndInit();
             this.ResumeLayout(false);
@@ -286,7 +299,7 @@
 
         private System.Windows.Forms.SplitContainer MajorHorizSplit;
         private System.Windows.Forms.DataGridView ResourceGrid;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox operation_txt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox gid_txt;
         private System.Windows.Forms.Label label5;
@@ -303,5 +316,6 @@
         private System.Windows.Forms.Button removebtn;
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.Button savebtn;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

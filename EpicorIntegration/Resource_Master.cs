@@ -15,6 +15,8 @@ namespace EpicorIntegration
 {
     public partial class Resource_Master : Form
     {
+        public EngWorkBenchDataSet EngWB_DS;
+
         public void FormStart()
         {
             DataSet ds = DataList.ResourceGroup();
@@ -25,11 +27,21 @@ namespace EpicorIntegration
 
             resourcegrp_cbo.DisplayMember = ds.Tables[0].Columns["Description"].ToString();
 
-            resourcegrp_cbo.Invalidate();
+            ds = DataList.Resource(resourcegrp_cbo.SelectedValue.ToString());
 
-            resourcegrp_cbo.Update();
+            DataRow dr = ds.Tables[0].NewRow();
 
-            resourcegrp_cbo.Refresh();
+            dr["Description"] = "";
+
+            dr["ResourceID"] = "";
+
+            ds.Tables[0].Rows.Add(dr);
+
+            resource_cbo.DataSource = ds.Tables[0];
+
+            resource_cbo.DisplayMember = ds.Tables[0].Columns["Description"].ToString();
+
+            resource_cbo.ValueMember = ds.Tables[0].Columns["ResourceID"].ToString();
         }
 
         public Resource_Master(string PartNumber, string Rev, string GroupID, string Operation,EngWorkBenchDataSet EngWBDS)
@@ -37,6 +49,16 @@ namespace EpicorIntegration
             InitializeComponent();
 
             FormStart();
+
+            partnumber_txt.Text = PartNumber;
+
+            rev_txt.Text = Rev;
+
+            gid_txt.Text = GroupID;
+
+            operation_txt.Text = Operation;
+
+            EngWB_DS = EngWBDS;
         }
 
         private void Resource_Master_Load(object sender, EventArgs e)
@@ -47,6 +69,14 @@ namespace EpicorIntegration
         private void resourcegrp_cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataSet ds = DataList.Resource(resourcegrp_cbo.SelectedValue.ToString());
+
+            DataRow dr = ds.Tables[0].NewRow();
+
+            dr["Description"] = "";
+
+            dr["ResourceID"] = "";
+
+            ds.Tables[0].Rows.Add(dr);
 
             resource_cbo.DataSource = ds.Tables[0];
 

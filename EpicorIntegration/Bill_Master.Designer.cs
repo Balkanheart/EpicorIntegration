@@ -28,11 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bill_Master));
+            this.SuspendLayout();
+            // 
+            // Bill_Master
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Bill_Master";
+            this.ClientSize = new System.Drawing.Size(293, 217);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Bill_Master";
+            this.Text = "Bill of Materials";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
     }
 }

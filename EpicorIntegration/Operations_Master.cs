@@ -210,8 +210,6 @@ namespace EpicorIntegration
                 EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["OpDesc"] = opmast_cbo.Text;
 
                 EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
-
-                resource_show.Enabled = false;
             }
             catch { }
         }
@@ -223,8 +221,6 @@ namespace EpicorIntegration
                 int RowIndex = OPDataGrid.CurrentCell.RowIndex;
 
                 EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["ProdStandard"] = prodhrs_num.Value;
-
-                resource_show.Enabled = false;
             }
             catch { }
         }
@@ -245,8 +241,6 @@ namespace EpicorIntegration
                 int RowIndex = OPDataGrid.CurrentCell.RowIndex;
 
                 EngWBDS.Tables["ECOOpr"].Rows[RowIndex]["Stdformat"] = prodstd_cbo.SelectedItem.ToString();
-
-                resource_show.Enabled = false;
             }
             catch { }
         }

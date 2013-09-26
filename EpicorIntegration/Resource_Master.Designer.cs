@@ -122,10 +122,11 @@
             // 
             this.resource_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.resource_cbo.FormattingEnabled = true;
-            this.resource_cbo.Location = new System.Drawing.Point(211, 30);
+            this.resource_cbo.Location = new System.Drawing.Point(211, 32);
             this.resource_cbo.Name = "resource_cbo";
             this.resource_cbo.Size = new System.Drawing.Size(160, 21);
             this.resource_cbo.TabIndex = 19;
+            this.resource_cbo.SelectedIndexChanged += new System.EventHandler(this.resource_cbo_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -239,6 +240,7 @@
             this.cancelbtn.TabIndex = 2;
             this.cancelbtn.Text = "&Cancel";
             this.cancelbtn.UseVisualStyleBackColor = true;
+            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
             // 
             // savebtn
             // 
@@ -248,6 +250,7 @@
             this.savebtn.TabIndex = 3;
             this.savebtn.Text = "&Save";
             this.savebtn.UseVisualStyleBackColor = true;
+            this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
             // ResourceGrid
             // 
@@ -276,6 +279,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.cancelbtn;
             this.ClientSize = new System.Drawing.Size(495, 404);
             this.Controls.Add(this.MajorHorizSplit);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

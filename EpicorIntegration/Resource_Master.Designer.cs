@@ -50,6 +50,9 @@
             this.cancelbtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
             this.ResourceGrid = new System.Windows.Forms.DataGridView();
+            this.ResourceGrpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OpDtlSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.MajorHorizSplit)).BeginInit();
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
@@ -83,7 +86,7 @@
             // MajorHorizSplit.Panel2
             // 
             this.MajorHorizSplit.Panel2.Controls.Add(this.ResourceGrid);
-            this.MajorHorizSplit.Size = new System.Drawing.Size(495, 404);
+            this.MajorHorizSplit.Size = new System.Drawing.Size(495, 292);
             this.MajorHorizSplit.SplitterDistance = 167;
             this.MajorHorizSplit.TabIndex = 0;
             // 
@@ -221,6 +224,7 @@
             this.addbtn.TabIndex = 0;
             this.addbtn.Text = "&New";
             this.addbtn.UseVisualStyleBackColor = true;
+            this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
             // removebtn
             // 
@@ -230,6 +234,7 @@
             this.removebtn.TabIndex = 1;
             this.removebtn.Text = "&Remove";
             this.removebtn.UseVisualStyleBackColor = true;
+            this.removebtn.Click += new System.EventHandler(this.removebtn_Click);
             // 
             // cancelbtn
             // 
@@ -260,6 +265,10 @@
             this.ResourceGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.ResourceGrid.BackgroundColor = System.Drawing.Color.White;
             this.ResourceGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ResourceGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ResourceGrpDesc,
+            this.ResourceDesc,
+            this.OpDtlSeq});
             this.ResourceGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ResourceGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ResourceGrid.Location = new System.Drawing.Point(0, 0);
@@ -272,19 +281,47 @@
             this.ResourceGrid.ShowCellToolTips = false;
             this.ResourceGrid.ShowEditingIcon = false;
             this.ResourceGrid.ShowRowErrors = false;
-            this.ResourceGrid.Size = new System.Drawing.Size(495, 233);
+            this.ResourceGrid.Size = new System.Drawing.Size(495, 121);
             this.ResourceGrid.TabIndex = 1;
+            // 
+            // ResourceGrpDesc
+            // 
+            this.ResourceGrpDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ResourceGrpDesc.DataPropertyName = "ResourceGrpDesc";
+            this.ResourceGrpDesc.HeaderText = "Resource Group";
+            this.ResourceGrpDesc.Name = "ResourceGrpDesc";
+            this.ResourceGrpDesc.ReadOnly = true;
+            this.ResourceGrpDesc.Width = 101;
+            // 
+            // ResourceDesc
+            // 
+            this.ResourceDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ResourceDesc.DataPropertyName = "ResourceDesc";
+            this.ResourceDesc.HeaderText = "Resource";
+            this.ResourceDesc.Name = "ResourceDesc";
+            this.ResourceDesc.ReadOnly = true;
+            this.ResourceDesc.Width = 78;
+            // 
+            // OpDtlSeq
+            // 
+            this.OpDtlSeq.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.OpDtlSeq.HeaderText = "Description";
+            this.OpDtlSeq.Name = "OpDtlSeq";
+            this.OpDtlSeq.ReadOnly = true;
             // 
             // Resource_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelbtn;
-            this.ClientSize = new System.Drawing.Size(495, 404);
+            this.ClientSize = new System.Drawing.Size(495, 292);
             this.Controls.Add(this.MajorHorizSplit);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Resource_Master";
-            this.Text = "Resource_Master";
+            this.Text = "Add Resource To...";
             this.Load += new System.EventHandler(this.Resource_Master_Load);
             this.MajorHorizSplit.Panel1.ResumeLayout(false);
             this.MajorHorizSplit.Panel1.PerformLayout();
@@ -321,5 +358,8 @@
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.Button savebtn;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResourceGrpDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResourceDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OpDtlSeq;
     }
 }

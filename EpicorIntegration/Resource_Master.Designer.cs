@@ -142,8 +142,10 @@
             // 
             // operation_txt
             // 
+            this.operation_txt.BackColor = System.Drawing.Color.White;
             this.operation_txt.Location = new System.Drawing.Point(87, 65);
             this.operation_txt.Name = "operation_txt";
+            this.operation_txt.ReadOnly = true;
             this.operation_txt.Size = new System.Drawing.Size(220, 20);
             this.operation_txt.TabIndex = 26;
             // 
@@ -158,8 +160,10 @@
             // 
             // gid_txt
             // 
+            this.gid_txt.BackColor = System.Drawing.Color.White;
             this.gid_txt.Location = new System.Drawing.Point(87, 37);
             this.gid_txt.Name = "gid_txt";
+            this.gid_txt.ReadOnly = true;
             this.gid_txt.Size = new System.Drawing.Size(130, 20);
             this.gid_txt.TabIndex = 24;
             // 
@@ -174,8 +178,10 @@
             // 
             // rev_txt
             // 
+            this.rev_txt.BackColor = System.Drawing.Color.White;
             this.rev_txt.Location = new System.Drawing.Point(259, 11);
             this.rev_txt.Name = "rev_txt";
+            this.rev_txt.ReadOnly = true;
             this.rev_txt.Size = new System.Drawing.Size(48, 20);
             this.rev_txt.TabIndex = 20;
             // 
@@ -190,8 +196,10 @@
             // 
             // partnumber_txt
             // 
+            this.partnumber_txt.BackColor = System.Drawing.Color.White;
             this.partnumber_txt.Location = new System.Drawing.Point(87, 11);
             this.partnumber_txt.Name = "partnumber_txt";
+            this.partnumber_txt.ReadOnly = true;
             this.partnumber_txt.Size = new System.Drawing.Size(130, 20);
             this.partnumber_txt.TabIndex = 16;
             // 

@@ -38,6 +38,7 @@
             this.partnumber_txt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.bom_btn = new System.Windows.Forms.Button();
             this.prodstd_cbo = new System.Windows.Forms.ComboBox();
             this.resource_show = new System.Windows.Forms.Button();
             this.refresh_btn = new System.Windows.Forms.Button();
@@ -97,8 +98,10 @@
             // 
             // gid_txt
             // 
+            this.gid_txt.BackColor = System.Drawing.Color.White;
             this.gid_txt.Location = new System.Drawing.Point(87, 35);
             this.gid_txt.Name = "gid_txt";
+            this.gid_txt.ReadOnly = true;
             this.gid_txt.Size = new System.Drawing.Size(130, 20);
             this.gid_txt.TabIndex = 13;
             // 
@@ -113,8 +116,10 @@
             // 
             // rev_txt
             // 
+            this.rev_txt.BackColor = System.Drawing.Color.White;
             this.rev_txt.Location = new System.Drawing.Point(259, 9);
             this.rev_txt.Name = "rev_txt";
+            this.rev_txt.ReadOnly = true;
             this.rev_txt.Size = new System.Drawing.Size(48, 20);
             this.rev_txt.TabIndex = 11;
             // 
@@ -129,8 +134,10 @@
             // 
             // partnumber_txt
             // 
+            this.partnumber_txt.BackColor = System.Drawing.Color.White;
             this.partnumber_txt.Location = new System.Drawing.Point(87, 9);
             this.partnumber_txt.Name = "partnumber_txt";
+            this.partnumber_txt.ReadOnly = true;
             this.partnumber_txt.Size = new System.Drawing.Size(130, 20);
             this.partnumber_txt.TabIndex = 9;
             // 
@@ -145,6 +152,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.bom_btn);
             this.groupBox2.Controls.Add(this.prodstd_cbo);
             this.groupBox2.Controls.Add(this.resource_show);
             this.groupBox2.Controls.Add(this.refresh_btn);
@@ -157,6 +165,15 @@
             this.groupBox2.Size = new System.Drawing.Size(466, 110);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
+            // 
+            // bom_btn
+            // 
+            this.bom_btn.Location = new System.Drawing.Point(385, 48);
+            this.bom_btn.Name = "bom_btn";
+            this.bom_btn.Size = new System.Drawing.Size(75, 23);
+            this.bom_btn.TabIndex = 10;
+            this.bom_btn.Text = "Add &BOM";
+            this.bom_btn.UseVisualStyleBackColor = true;
             // 
             // prodstd_cbo
             // 
@@ -180,7 +197,7 @@
             // 
             // refresh_btn
             // 
-            this.refresh_btn.Location = new System.Drawing.Point(385, 48);
+            this.refresh_btn.Location = new System.Drawing.Point(385, 79);
             this.refresh_btn.Name = "refresh_btn";
             this.refresh_btn.Size = new System.Drawing.Size(75, 23);
             this.refresh_btn.TabIndex = 1;
@@ -384,7 +401,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(600, 507);
             this.Name = "Operations_Master";
-            this.Text = "Operations_Master";
+            this.Text = "Create Operations";
             this.Load += new System.EventHandler(this.Operations_Master_Load);
             this.MajorContainer.Panel1.ResumeLayout(false);
             this.MajorContainer.Panel1.PerformLayout();
@@ -430,5 +447,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn stdformat;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrimaryResourceGrpDesc;
         private System.Windows.Forms.Button copy_btn;
+        private System.Windows.Forms.Button bom_btn;
     }
 }

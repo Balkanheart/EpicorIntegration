@@ -13,7 +13,7 @@ namespace EpicorIntegration
 {
     public partial class SearchPart : Form
     {
-        public PartData PartDatum
+        public static PartData PartDatum
         {
             get
             {
@@ -128,6 +128,8 @@ namespace EpicorIntegration
             int y = SearchResultGrid.Rows.IndexOf(SearchResultGrid.SelectedRows[0]);
 
             _PartNumber = SearchResultGrid["PartNum", y].Value.ToString();
+
+            _Description = SearchResultGrid["PartDescription", y].Value.ToString();
 
             DialogResult = DialogResult.OK;
 
@@ -342,12 +344,9 @@ namespace EpicorIntegration
             advgroup.Enabled = AdvSearch.Checked;
         }
 
-        private void SearchResultGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         public string _PartNumber;
+
+        public string _Description;
 
     }
 }

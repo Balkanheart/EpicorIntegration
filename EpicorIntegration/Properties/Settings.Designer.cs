@@ -106,5 +106,17 @@ namespace EpicorIntegration.Properties {
                 this["linelimit"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("part")]
+        public string mtlreqtype {
+            get {
+                return ((string)(this["mtlreqtype"]));
+            }
+            set {
+                this["mtlreqtype"] = value;
+            }
+        }
     }
 }

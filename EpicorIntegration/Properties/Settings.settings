@@ -23,5 +23,8 @@
     <Setting Name="linelimit" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
+    <Setting Name="mtlreqtype" Type="System.String" Scope="User">
+      <Value Profile="(Default)">part</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

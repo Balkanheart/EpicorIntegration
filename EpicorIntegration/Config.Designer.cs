@@ -37,7 +37,10 @@
             this.logininfobtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.mtlreseq_cbo = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // ServerName
@@ -92,7 +95,7 @@
             // 
             // logininfobtn
             // 
-            this.logininfobtn.Location = new System.Drawing.Point(12, 129);
+            this.logininfobtn.Location = new System.Drawing.Point(12, 187);
             this.logininfobtn.Name = "logininfobtn";
             this.logininfobtn.Size = new System.Drawing.Size(78, 23);
             this.logininfobtn.TabIndex = 3;
@@ -102,7 +105,7 @@
             // 
             // savebtn
             // 
-            this.savebtn.Location = new System.Drawing.Point(12, 158);
+            this.savebtn.Location = new System.Drawing.Point(12, 216);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
             this.savebtn.TabIndex = 4;
@@ -112,7 +115,7 @@
             // 
             // cancelbtn
             // 
-            this.cancelbtn.Location = new System.Drawing.Point(93, 158);
+            this.cancelbtn.Location = new System.Drawing.Point(93, 216);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(75, 23);
             this.cancelbtn.TabIndex = 5;
@@ -120,11 +123,31 @@
             this.cancelbtn.UseVisualStyleBackColor = true;
             this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.mtlreseq_cbo);
+            this.groupBox2.Location = new System.Drawing.Point(12, 129);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(159, 52);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Material Re-Sequence Type";
+            // 
+            // mtlreseq_cbo
+            // 
+            this.mtlreseq_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.mtlreseq_cbo.FormattingEnabled = true;
+            this.mtlreseq_cbo.Location = new System.Drawing.Point(6, 19);
+            this.mtlreseq_cbo.Name = "mtlreseq_cbo";
+            this.mtlreseq_cbo.Size = new System.Drawing.Size(144, 21);
+            this.mtlreseq_cbo.TabIndex = 0;
+            // 
             // Config
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(183, 192);
+            this.ClientSize = new System.Drawing.Size(186, 256);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.savebtn);
             this.Controls.Add(this.logininfobtn);
@@ -138,6 +161,7 @@
             this.Load += new System.EventHandler(this.Config_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -152,5 +176,7 @@
         private System.Windows.Forms.Button logininfobtn;
         private System.Windows.Forms.Button savebtn;
         private System.Windows.Forms.Button cancelbtn;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox mtlreseq_cbo;
     }
 }

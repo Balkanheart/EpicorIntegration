@@ -57,6 +57,14 @@
             this.mtlseq_txt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.BillDataGrid = new System.Windows.Forms.DataGridView();
+            this.MtlSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtyPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MtlPartNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MtlPartNumDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ViewAsAsm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.uom_cbo = new System.Windows.Forms.ComboBox();
+            this.ViewAsAsm_chk = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.MajorHorizSplit)).BeginInit();
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
@@ -159,6 +167,7 @@
             this.newbtn.TabIndex = 0;
             this.newbtn.Text = "&New";
             this.newbtn.UseVisualStyleBackColor = true;
+            this.newbtn.Click += new System.EventHandler(this.newbtn_Click);
             // 
             // removebtn
             // 
@@ -168,6 +177,7 @@
             this.removebtn.TabIndex = 1;
             this.removebtn.Text = "&Remove";
             this.removebtn.UseVisualStyleBackColor = true;
+            this.removebtn.Click += new System.EventHandler(this.removebtn_Click);
             // 
             // cancelbtn
             // 
@@ -188,6 +198,7 @@
             this.savebtn.TabIndex = 3;
             this.savebtn.Text = "&Save";
             this.savebtn.UseVisualStyleBackColor = true;
+            this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
             // label2
             // 
@@ -224,6 +235,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ViewAsAsm_chk);
+            this.groupBox1.Controls.Add(this.uom_cbo);
             this.groupBox1.Controls.Add(this.qty_num);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.desc_txt);
@@ -247,6 +260,7 @@
             this.qty_num.Name = "qty_num";
             this.qty_num.Size = new System.Drawing.Size(62, 20);
             this.qty_num.TabIndex = 9;
+            this.qty_num.ValueChanged += new System.EventHandler(this.qty_num_ValueChanged);
             // 
             // label6
             // 
@@ -290,6 +304,7 @@
             this.ops_cbo.Name = "ops_cbo";
             this.ops_cbo.Size = new System.Drawing.Size(211, 21);
             this.ops_cbo.TabIndex = 4;
+            this.ops_cbo.SelectedIndexChanged += new System.EventHandler(this.ops_cbo_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -334,6 +349,13 @@
             this.BillDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.BillDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.BillDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.BillDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MtlSeq,
+            this.QtyPer,
+            this.MtlPartNum,
+            this.MtlPartNumDescription,
+            this.OpDesc,
+            this.ViewAsAsm});
             this.BillDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BillDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.BillDataGrid.Location = new System.Drawing.Point(0, 0);
@@ -348,6 +370,79 @@
             this.BillDataGrid.ShowRowErrors = false;
             this.BillDataGrid.Size = new System.Drawing.Size(491, 200);
             this.BillDataGrid.TabIndex = 1;
+            // 
+            // MtlSeq
+            // 
+            this.MtlSeq.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MtlSeq.DataPropertyName = "MtlSeq";
+            this.MtlSeq.HeaderText = "Sequence";
+            this.MtlSeq.Name = "MtlSeq";
+            this.MtlSeq.ReadOnly = true;
+            this.MtlSeq.Width = 81;
+            // 
+            // QtyPer
+            // 
+            this.QtyPer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.QtyPer.DataPropertyName = "QtyPer";
+            this.QtyPer.HeaderText = "Qty";
+            this.QtyPer.Name = "QtyPer";
+            this.QtyPer.ReadOnly = true;
+            this.QtyPer.Width = 48;
+            // 
+            // MtlPartNum
+            // 
+            this.MtlPartNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MtlPartNum.DataPropertyName = "MtlPartNum";
+            this.MtlPartNum.HeaderText = "Part Number";
+            this.MtlPartNum.Name = "MtlPartNum";
+            this.MtlPartNum.ReadOnly = true;
+            this.MtlPartNum.Width = 91;
+            // 
+            // MtlPartNumDescription
+            // 
+            this.MtlPartNumDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MtlPartNumDescription.DataPropertyName = "MtlPartNumDescription";
+            this.MtlPartNumDescription.HeaderText = "Description";
+            this.MtlPartNumDescription.Name = "MtlPartNumDescription";
+            this.MtlPartNumDescription.ReadOnly = true;
+            this.MtlPartNumDescription.Width = 85;
+            // 
+            // OpDesc
+            // 
+            this.OpDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.OpDesc.DataPropertyName = "OpDesc";
+            this.OpDesc.HeaderText = "Operation";
+            this.OpDesc.Name = "OpDesc";
+            this.OpDesc.ReadOnly = true;
+            this.OpDesc.Width = 78;
+            // 
+            // ViewAsAsm
+            // 
+            this.ViewAsAsm.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ViewAsAsm.DataPropertyName = "ViewAsAsm";
+            this.ViewAsAsm.HeaderText = "View As Assembly";
+            this.ViewAsAsm.Name = "ViewAsAsm";
+            this.ViewAsAsm.ReadOnly = true;
+            // 
+            // uom_cbo
+            // 
+            this.uom_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.uom_cbo.FormattingEnabled = true;
+            this.uom_cbo.Location = new System.Drawing.Point(143, 123);
+            this.uom_cbo.Name = "uom_cbo";
+            this.uom_cbo.Size = new System.Drawing.Size(74, 21);
+            this.uom_cbo.TabIndex = 2;
+            this.uom_cbo.SelectedIndexChanged += new System.EventHandler(this.uom_cbo_SelectedIndexChanged);
+            // 
+            // ViewAsAsm_chk
+            // 
+            this.ViewAsAsm_chk.AutoSize = true;
+            this.ViewAsAsm_chk.Location = new System.Drawing.Point(175, 21);
+            this.ViewAsAsm_chk.Name = "ViewAsAsm_chk";
+            this.ViewAsAsm_chk.Size = new System.Drawing.Size(111, 17);
+            this.ViewAsAsm_chk.TabIndex = 10;
+            this.ViewAsAsm_chk.Text = "View As Assembly";
+            this.ViewAsAsm_chk.UseVisualStyleBackColor = true;
             // 
             // Bill_Master
             // 
@@ -405,6 +500,14 @@
         private System.Windows.Forms.TextBox parentrev_txt;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox gid_txt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MtlSeq;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QtyPer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MtlPartNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MtlPartNumDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ViewAsAsm;
+        private System.Windows.Forms.ComboBox uom_cbo;
+        private System.Windows.Forms.CheckBox ViewAsAsm_chk;
 
     }
 }

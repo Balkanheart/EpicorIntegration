@@ -432,6 +432,23 @@ namespace EpicorIntegration
             catch { return ""; }
         }
 
+        public static DataTable PartUOM(string PartNumber)
+        {
+            try
+            {
+                Part Part = new Part(EpicConn);
+
+                PartDataSet PartData = new PartDataSet();
+
+                PartData = Part.GetByID(PartNumber);
+
+                EpicClose();
+
+                return PartData.Tables["PartUOM"];
+            }
+            catch { return null; }
+        }
+
         public static bool CreatePartRevision(string PartNumber, string CurrentRev, string NewRev, string RevDesc)
         {
             bool _results;
@@ -667,7 +684,7 @@ namespace EpicorIntegration
         }
     }
 
-    class ProdStdType
+    public class ProdStdType
     {
         private string _Code;
         private string _Desc;
@@ -696,6 +713,40 @@ namespace EpicorIntegration
             get
             {
                 return _Desc;
+            }
+        }
+    }
+
+    public class MtlReseqType
+    {
+        private string _Name;
+        private string _Arg;
+
+        public MtlReseqType(string Name, string Arg)
+        {
+            _Name = Name;
+
+            _Arg = Arg;
+        }
+
+        public override string ToString()
+        {
+            return _Arg;
+        }
+
+        public string Arg
+        {
+            get
+            {
+                return _Arg;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return _Name;
             }
         }
     }

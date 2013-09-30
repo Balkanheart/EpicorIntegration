@@ -21,6 +21,29 @@ namespace EpicorIntegration
             SeverPort.KeyPress += SeverPort_KeyPress;
 
             SeverPort.Leave += SeverPort_Leave;
+
+            List<MtlReseqType> MtlReseq = new List<MtlReseqType>();
+
+            MtlReseq.Add(new MtlReseqType("Material","Material"));
+
+            MtlReseq.Add(new MtlReseqType("Part Number","Part"));
+
+            MtlReseq.Add (new MtlReseqType("Find Number","Item"));
+
+            BindingSource bind = new BindingSource();
+
+            bind.DataSource = MtlReseq;
+
+            mtlreseq_cbo.DataSource = bind;
+
+            mtlreseq_cbo.DisplayMember = "Name";
+
+            mtlreseq_cbo.ValueMember = "Arg";
+
+            mtlreseq_cbo.SelectedIndex = 0;
+
+            if (Properties.Settings.Default.mtlreqtype != null)
+                mtlreseq_cbo.SelectedValue = Properties.Settings.Default.mtlreqtype;
         }
 
         void SeverPort_Leave(object sender, EventArgs e)
@@ -69,6 +92,8 @@ namespace EpicorIntegration
         private void savebtn_Click(object sender, EventArgs e)
         {
             //Save information then close
+
+            Properties.Settings.Default.mtlreqtype = mtlreseq_cbo.SelectedValue.ToString();
 
             Properties.Settings.Default.svrname = ServerName.Text;
             

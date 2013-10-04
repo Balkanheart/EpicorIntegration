@@ -259,6 +259,45 @@ namespace EpicorIntegration
 
         }
 
+        private void LoadData(PartData pdata)
+        {
+            if (pdata.Description != "")
+                Description_txt.Text = pdata.Description;
+
+            if (pdata.PMT != "")
+                type_cbo.SelectedText = pdata.PMT;
+
+            if (pdata.UOM_Class != "")
+                uomclass_cbo.SelectedText = pdata.UOM_Class;
+
+            if (pdata.Net_Weight != 0)
+                NetWeight.Value = pdata.Net_Weight;
+
+            if (pdata.Net_Weight_UM != "")
+                uomweight_cbo.SelectedText = pdata.Net_Weight_UM;
+
+            if (pdata.Net_Vol != 0)
+                NetVolume.Value = pdata.Net_Vol;
+
+            if (pdata.Net_Vol_UM != "")
+                uomvol_cbo.SelectedText = pdata.Net_Vol_UM;
+
+            if (pdata.Primary_UOM != "")
+                uom_cbo.SelectedText = pdata.Primary_UOM;
+
+            if (pdata.PartGroup != "")
+                group_cbo.SelectedText = pdata.PartGroup;
+
+            if (pdata.PartClass != "")
+                class_cbo.SelectedText = pdata.PartClass;
+
+            if (pdata.PartPlant != "")
+                plant_cbo.SelectedText = pdata.PartPlant;
+
+            if (pdata.PlantWhse != "")
+                whse_cbo.SelectedText = pdata.PlantWhse;
+        }
+
         private void copy_btn_Click(object sender, EventArgs e)
         {
             Item_CopyFrom frm = new Item_CopyFrom();
@@ -277,7 +316,7 @@ namespace EpicorIntegration
             {
                 pdata = frm._Pdata;
 
-                Description_txt.Text = pdata.Description;
+                LoadData(pdata);
             }
         }
     }

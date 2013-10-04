@@ -26,17 +26,6 @@ namespace EpicorIntegration
             }
         }
 
-        public DataList DL
-        {
-            get
-            {
-                DataList DL = new DataList();
-
-                return DL;
-            }
-        
-        }
-
         public Item_Master()
         {
             InitializeComponent();
@@ -112,35 +101,35 @@ namespace EpicorIntegration
 
                 type_cbo.DisplayMember = "Description";
 
-                group_cbo.DataSource = DL.ProdGrupDataSet ().Tables[0];
+                group_cbo.DataSource = DataList.ProdGrupDataSet ().Tables[0];
                 
                 group_cbo.DisplayMember = "Description";
 
                 group_cbo.ValueMember = "ProdCode";
 
-                class_cbo.DataSource = DL.PartClassDataSet().Tables[0];
+                class_cbo.DataSource = DataList.PartClassDataSet().Tables[0];
 
-                class_cbo.DisplayMember = DL.PartClassDataSet().Tables[0].Columns["Description"].ToString();
+                class_cbo.DisplayMember = DataList.PartClassDataSet().Tables[0].Columns["Description"].ToString();
 
-                class_cbo.ValueMember = DL.PartClassDataSet().Tables[0].Columns["ClassID"].ToString();
+                class_cbo.ValueMember = DataList.PartClassDataSet().Tables[0].Columns["ClassID"].ToString();
 
-                uomclass_cbo.DataSource = DL.UOMClassDataSet().Tables[0];
+                uomclass_cbo.DataSource = DataList.UOMClassDataSet().Tables[0];
 
-                uomclass_cbo.DisplayMember = DL.UOMClassDataSet().Tables[0].Columns["Description"].ToString();
+                uomclass_cbo.DisplayMember = DataList.UOMClassDataSet().Tables[0].Columns["Description"].ToString();
 
-                plant_cbo.DataSource = DL.PlantDataSet().Tables[0];
+                plant_cbo.DataSource = DataList.PlantDataSet().Tables[0];
 
-                plant_cbo.DisplayMember = DL.PlantDataSet().Tables[0].Columns["NAME"].ToString();
+                plant_cbo.DisplayMember = DataList.PlantDataSet().Tables[0].Columns["NAME"].ToString();
 
                 plant_cbo.ValueMember = "Plant";
 
-                whse_cbo.DataSource = DL.WarehseDataSet().Tables[0];
+                whse_cbo.DataSource = DataList.WarehseDataSet().Tables[0];
 
-                whse_cbo.DisplayMember = DL.WarehseDataSet().Tables[0].Columns["Description"].ToString();
+                whse_cbo.DisplayMember = DataList.WarehseDataSet().Tables[0].Columns["Description"].ToString();
 
                 whse_cbo.ValueMember = "WarehouseCode";
 
-                DataSet DS = DL.UOMSearchDataSet();
+                DataSet DS = DataList.UOMSearchDataSet();
 
                 DS.Tables[0].Columns.Add("FullCode", typeof(string), "UOMCode + ' - ' + UOMDesc");
 
@@ -154,15 +143,15 @@ namespace EpicorIntegration
 
                 type_cbo.SelectedIndex = 0;
 
-                uomvol_cbo.DataSource = DL.UOMVolumeDataSet().Tables[0];
+                uomvol_cbo.DataSource = DataList.UOMVolumeDataSet().Tables[0];
 
-                uomvol_cbo.DisplayMember = DL.UOMVolumeDataSet().Tables[0].Columns["UOMCode"].ToString();
+                uomvol_cbo.DisplayMember = DataList.UOMVolumeDataSet().Tables[0].Columns["UOMCode"].ToString();
 
                 uomvol_cbo.ValueMember = "UOMCode";
 
-                uomweight_cbo.DataSource = DL.UOMWeightDataSet().Tables[0];
+                uomweight_cbo.DataSource = DataList.UOMWeightDataSet().Tables[0];
 
-                uomweight_cbo.DisplayMember = DL.UOMWeightDataSet().Tables[0].Columns["UOMCode"].ToString();
+                uomweight_cbo.DisplayMember = DataList.UOMWeightDataSet().Tables[0].Columns["UOMCode"].ToString();
 
                 uomweight_cbo.ValueMember = "UOMCode";
 
@@ -268,6 +257,28 @@ namespace EpicorIntegration
             
 
 
+        }
+
+        private void copy_btn_Click(object sender, EventArgs e)
+        {
+            Item_CopyFrom frm = new Item_CopyFrom();
+
+            PartData pdata = new PartData();
+
+            frm.ShowDialog();
+
+            if (frm.DialogResult == DialogResult.Ignore)
+            {
+                MessageBox.Show("Item was duplicated successfully.", "Item Duplicated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                this.Close();
+            }
+            else
+            {
+                pdata = frm._Pdata;
+
+                Description_txt.Text = pdata.Description;
+            }
         }
     }
 }

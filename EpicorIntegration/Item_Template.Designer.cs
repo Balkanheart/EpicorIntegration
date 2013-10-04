@@ -1,6 +1,6 @@
 ﻿namespace EpicorIntegration
 {
-    partial class Item_Update
+    partial class Item_Template
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Item_Update));
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Item_Template));
             this.label1 = new System.Windows.Forms.Label();
             this.Partnumber_txt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,10 +58,15 @@
             this.uomvol_cbo = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.engDataDataSet = new EpicorIntegration.ENGDataDataSet();
+            this.BS_EngDataDataSet = new System.Windows.Forms.BindingSource(this.components);
+            this.itemTemplateTableAdapter = new EpicorIntegration.ENGDataDataSetTableAdapters.ItemTemplateTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NetVolume)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BS_EngDataDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -76,7 +82,6 @@
             // 
             this.Partnumber_txt.Location = new System.Drawing.Point(9, 32);
             this.Partnumber_txt.Name = "Partnumber_txt";
-            this.Partnumber_txt.ReadOnly = true;
             this.Partnumber_txt.Size = new System.Drawing.Size(333, 20);
             this.Partnumber_txt.TabIndex = 1;
             // 
@@ -367,7 +372,21 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Plants";
             // 
-            // Item_Update
+            // engDataDataSet
+            // 
+            this.engDataDataSet.DataSetName = "ENGDataDataSet";
+            this.engDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // BS_EngDataDataSet
+            // 
+            this.BS_EngDataDataSet.DataMember = "ItemTemplate";
+            this.BS_EngDataDataSet.DataSource = this.engDataDataSet;
+            // 
+            // itemTemplateTableAdapter
+            // 
+            this.itemTemplateTableAdapter.ClearBeforeFill = true;
+            // 
+            // Item_Template
             // 
             this.AcceptButton = this.savebtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -380,7 +399,7 @@
             this.Controls.Add(this.cancelbtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Item_Update";
+            this.Name = "Item_Template";
             this.Text = "Epicor Item Injection";
             this.Load += new System.EventHandler(this.Item_Update_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).EndInit();
@@ -389,6 +408,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BS_EngDataDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -423,6 +444,9 @@
         private System.Windows.Forms.ComboBox uomvol_cbo;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private ENGDataDataSet engDataDataSet;
+        private System.Windows.Forms.BindingSource BS_EngDataDataSet;
+        private ENGDataDataSetTableAdapters.ItemTemplateTableAdapter itemTemplateTableAdapter;
     }
 }
 

@@ -16,7 +16,7 @@ namespace EpicorIntegration
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Bill_Master());
+            Application.Run(new Item_Master());
         }
     }
 }

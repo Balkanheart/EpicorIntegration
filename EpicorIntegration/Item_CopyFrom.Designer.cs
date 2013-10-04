@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Item_CopyFrom));
             this.template_cbo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,10 +39,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.rev_txt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.newtemplate_btn = new System.Windows.Forms.Button();
+            this.useselected_btn = new System.Windows.Forms.Button();
+            this.cancel_btn = new System.Windows.Forms.Button();
+            this.eNGDataDataSet = new EpicorIntegration.ENGDataDataSet();
+            this.BS_EngDataDataSet = new System.Windows.Forms.BindingSource(this.components);
+            this.itemTemplateTableAdapter = new EpicorIntegration.ENGDataDataSetTableAdapters.ItemTemplateTableAdapter();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.eNGDataDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BS_EngDataDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // template_cbo
@@ -125,52 +131,74 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Rev.";
             // 
-            // button3
+            // newtemplate_btn
             // 
-            this.button3.Location = new System.Drawing.Point(15, 179);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(84, 23);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "&New Template";
-            this.button3.UseVisualStyleBackColor = true;
+            this.newtemplate_btn.Location = new System.Drawing.Point(15, 179);
+            this.newtemplate_btn.Name = "newtemplate_btn";
+            this.newtemplate_btn.Size = new System.Drawing.Size(84, 23);
+            this.newtemplate_btn.TabIndex = 13;
+            this.newtemplate_btn.Text = "&New Template";
+            this.newtemplate_btn.UseVisualStyleBackColor = true;
+            this.newtemplate_btn.Click += new System.EventHandler(this.newtemplate_btn_Click);
             // 
-            // button2
+            // useselected_btn
             // 
-            this.button2.Location = new System.Drawing.Point(105, 179);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Use &Selected";
-            this.button2.UseVisualStyleBackColor = true;
+            this.useselected_btn.Location = new System.Drawing.Point(105, 179);
+            this.useselected_btn.Name = "useselected_btn";
+            this.useselected_btn.Size = new System.Drawing.Size(84, 23);
+            this.useselected_btn.TabIndex = 12;
+            this.useselected_btn.Text = "Use &Selected";
+            this.useselected_btn.UseVisualStyleBackColor = true;
+            this.useselected_btn.Click += new System.EventHandler(this.useselected_btn_Click);
             // 
-            // button1
+            // cancel_btn
             // 
-            this.button1.Location = new System.Drawing.Point(195, 179);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "&Cancel";
-            this.button1.UseVisualStyleBackColor = true;
+            this.cancel_btn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancel_btn.Location = new System.Drawing.Point(195, 179);
+            this.cancel_btn.Name = "cancel_btn";
+            this.cancel_btn.Size = new System.Drawing.Size(84, 23);
+            this.cancel_btn.TabIndex = 11;
+            this.cancel_btn.Text = "&Cancel";
+            this.cancel_btn.UseVisualStyleBackColor = true;
+            this.cancel_btn.Click += new System.EventHandler(this.cancel_btn_Click);
+            // 
+            // eNGDataDataSet
+            // 
+            this.eNGDataDataSet.DataSetName = "ENGDataDataSet";
+            this.eNGDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // BS_EngDataDataSet
+            // 
+            this.BS_EngDataDataSet.DataMember = "ItemTemplate";
+            this.BS_EngDataDataSet.DataSource = this.eNGDataDataSet;
+            // 
+            // itemTemplateTableAdapter
+            // 
+            this.itemTemplateTableAdapter.ClearBeforeFill = true;
             // 
             // Item_CopyFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.cancel_btn;
             this.ClientSize = new System.Drawing.Size(293, 217);
             this.Controls.Add(this.template_cbo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.newtemplate_btn);
+            this.Controls.Add(this.useselected_btn);
+            this.Controls.Add(this.cancel_btn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Item_CopyFrom";
             this.Text = "Copy Item From...";
+            this.Load += new System.EventHandler(this.Item_CopyFrom_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.eNGDataDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BS_EngDataDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,8 +215,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox rev_txt;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button newtemplate_btn;
+        private System.Windows.Forms.Button useselected_btn;
+        private System.Windows.Forms.Button cancel_btn;
+        private ENGDataDataSet eNGDataDataSet;
+        private System.Windows.Forms.BindingSource BS_EngDataDataSet;
+        private ENGDataDataSetTableAdapters.ItemTemplateTableAdapter itemTemplateTableAdapter;
     }
 }

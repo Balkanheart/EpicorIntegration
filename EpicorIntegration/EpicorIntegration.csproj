@@ -54,6 +54,9 @@
     <ApplicationIcon>Resources\Norco Round.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Epicor.Mfg.BO.BomSearch">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.BomSearch.dll</HintPath>
+    </Reference>
     <Reference Include="Epicor.Mfg.BO.CCCountCycle">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.BO.CCCountCycle.dll</HintPath>
     </Reference>
@@ -99,6 +102,9 @@
     </Reference>
     <Reference Include="Epicor.Mfg.Core.Session">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.Core.Session.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicor.Mfg.IF.IBomSearch">
+      <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.IBomSearch.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.ICCCountCycle">
       <HintPath>C:\Program Files\Epicor Software\Epicor905\Client\Epicor.Mfg.IF.ICCCountCycle.dll</HintPath>
@@ -168,6 +174,11 @@
     <Compile Include="Bill_Master.Designer.cs">
       <DependentUpon>Bill_Master.cs</DependentUpon>
     </Compile>
+    <Compile Include="ENGDataDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ENGDataDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Item_CopyFrom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,11 +191,11 @@
     <Compile Include="Operations_CopyFrom.Designer.cs">
       <DependentUpon>Operations_CopyFrom.cs</DependentUpon>
     </Compile>
-    <Compile Include="Item_Update.cs">
+    <Compile Include="Item_Template.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Item_Update.Designer.cs">
-      <DependentUpon>Item_Update.cs</DependentUpon>
+    <Compile Include="Item_Template.Designer.cs">
+      <DependentUpon>Item_Template.cs</DependentUpon>
     </Compile>
     <Compile Include="DataList.cs" />
     <Compile Include="Config.cs">
@@ -243,6 +254,12 @@
     <Compile Include="TestTableViewer.Designer.cs">
       <DependentUpon>TestTableViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Undo_Checkout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Undo_Checkout.Designer.cs">
+      <DependentUpon>Undo_Checkout.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Bill_CopyFrom.resx">
       <DependentUpon>Bill_CopyFrom.cs</DependentUpon>
     </EmbeddedResource>
@@ -258,8 +275,8 @@
     <EmbeddedResource Include="Operations_CopyFrom.resx">
       <DependentUpon>Operations_CopyFrom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Item_Update.resx">
-      <DependentUpon>Item_Update.cs</DependentUpon>
+    <EmbeddedResource Include="Item_Template.resx">
+      <DependentUpon>Item_Template.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EpicLogin.resx">
       <DependentUpon>EpicLogin.cs</DependentUpon>
@@ -295,6 +312,20 @@
     <EmbeddedResource Include="TestTableViewer.resx">
       <DependentUpon>TestTableViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Undo_Checkout.resx">
+      <DependentUpon>Undo_Checkout.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ENGDataDataSet.xsc">
+      <DependentUpon>ENGDataDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ENGDataDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ENGDataDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ENGDataDataSet.xss">
+      <DependentUpon>ENGDataDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

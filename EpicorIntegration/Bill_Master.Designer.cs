@@ -46,6 +46,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.parent_txt = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ViewAsAsm_chk = new System.Windows.Forms.CheckBox();
+            this.uom_cbo = new System.Windows.Forms.ComboBox();
             this.qty_num = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.desc_txt = new System.Windows.Forms.TextBox();
@@ -63,8 +65,6 @@
             this.MtlPartNumDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewAsAsm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.uom_cbo = new System.Windows.Forms.ComboBox();
-            this.ViewAsAsm_chk = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.MajorHorizSplit)).BeginInit();
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
@@ -118,7 +118,7 @@
             this.parentrev_txt.Name = "parentrev_txt";
             this.parentrev_txt.Size = new System.Drawing.Size(82, 20);
             this.parentrev_txt.TabIndex = 10;
-            this.parentrev_txt.Text = "D";
+            this.parentrev_txt.Text = "A";
             // 
             // label7
             // 
@@ -158,6 +158,7 @@
             this.copy_btn.TabIndex = 14;
             this.copy_btn.Text = "&Copy From...";
             this.copy_btn.UseVisualStyleBackColor = true;
+            this.copy_btn.Click += new System.EventHandler(this.copy_btn_Click);
             // 
             // newbtn
             // 
@@ -252,6 +253,26 @@
             this.groupBox1.Size = new System.Drawing.Size(369, 161);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // ViewAsAsm_chk
+            // 
+            this.ViewAsAsm_chk.AutoSize = true;
+            this.ViewAsAsm_chk.Location = new System.Drawing.Point(175, 21);
+            this.ViewAsAsm_chk.Name = "ViewAsAsm_chk";
+            this.ViewAsAsm_chk.Size = new System.Drawing.Size(111, 17);
+            this.ViewAsAsm_chk.TabIndex = 10;
+            this.ViewAsAsm_chk.Text = "View As Assembly";
+            this.ViewAsAsm_chk.UseVisualStyleBackColor = true;
+            // 
+            // uom_cbo
+            // 
+            this.uom_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.uom_cbo.FormattingEnabled = true;
+            this.uom_cbo.Location = new System.Drawing.Point(143, 123);
+            this.uom_cbo.Name = "uom_cbo";
+            this.uom_cbo.Size = new System.Drawing.Size(74, 21);
+            this.uom_cbo.TabIndex = 2;
+            this.uom_cbo.SelectedIndexChanged += new System.EventHandler(this.uom_cbo_SelectedIndexChanged);
             // 
             // qty_num
             // 
@@ -396,7 +417,7 @@
             this.MtlPartNum.HeaderText = "Part Number";
             this.MtlPartNum.Name = "MtlPartNum";
             this.MtlPartNum.ReadOnly = true;
-            this.MtlPartNum.Width = 91;
+            this.MtlPartNum.Width = 84;
             // 
             // MtlPartNumDescription
             // 
@@ -423,26 +444,6 @@
             this.ViewAsAsm.HeaderText = "View As Assembly";
             this.ViewAsAsm.Name = "ViewAsAsm";
             this.ViewAsAsm.ReadOnly = true;
-            // 
-            // uom_cbo
-            // 
-            this.uom_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.uom_cbo.FormattingEnabled = true;
-            this.uom_cbo.Location = new System.Drawing.Point(143, 123);
-            this.uom_cbo.Name = "uom_cbo";
-            this.uom_cbo.Size = new System.Drawing.Size(74, 21);
-            this.uom_cbo.TabIndex = 2;
-            this.uom_cbo.SelectedIndexChanged += new System.EventHandler(this.uom_cbo_SelectedIndexChanged);
-            // 
-            // ViewAsAsm_chk
-            // 
-            this.ViewAsAsm_chk.AutoSize = true;
-            this.ViewAsAsm_chk.Location = new System.Drawing.Point(175, 21);
-            this.ViewAsAsm_chk.Name = "ViewAsAsm_chk";
-            this.ViewAsAsm_chk.Size = new System.Drawing.Size(111, 17);
-            this.ViewAsAsm_chk.TabIndex = 10;
-            this.ViewAsAsm_chk.Text = "View As Assembly";
-            this.ViewAsAsm_chk.UseVisualStyleBackColor = true;
             // 
             // Bill_Master
             // 

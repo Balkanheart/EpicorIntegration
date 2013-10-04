@@ -37,7 +37,7 @@ namespace EpicorIntegration
 
         }
 
-        public DataSet PlantDataSet()
+        public static DataSet PlantDataSet()
         {
             DataSet ds = (DataSet)BOReader.GetList("Plant", "", "Company,Plant,Name,Company");
 
@@ -46,7 +46,7 @@ namespace EpicorIntegration
             return ds;
         }
 
-        public DataSet PartClassDataSet()
+        public static DataSet PartClassDataSet()
         {
             DataSet ds = (DataSet)BOReader.GetList("PartClass", "", "ClassID,Description");
 
@@ -156,7 +156,7 @@ namespace EpicorIntegration
             }
         }
 
-        public DataSet ProdGrupDataSet()
+        public static DataSet ProdGrupDataSet()
         {
             DataSet ds = (DataSet)BOReader.GetList("ProdGrup", "", "ProdCode,Description");
 
@@ -165,7 +165,7 @@ namespace EpicorIntegration
             return ds;
         }
 
-        public DataSet UOMSearchDataSet()
+        public static DataSet UOMSearchDataSet()
         {
             DataSet ds = (DataSet)BOReader.GetList("UOMSearch", "((Active=True) AND (UOMClassID = 'NORCO'))", "UOMCode,UOMDesc");
 
@@ -174,7 +174,7 @@ namespace EpicorIntegration
             return ds;
         }
 
-        public DataSet UOMClassDataSet()
+        public static DataSet UOMClassDataSet()
         {
             BOReader BOReader = new BOReader(EpicConn);
 
@@ -185,7 +185,7 @@ namespace EpicorIntegration
             return ds;
         }
 
-        public DataSet UOMWeightDataSet()
+        public static DataSet UOMWeightDataSet()
         {
             DataSet ds = (DataSet)BOReader.GetList("UOMSearch", "((Active=True) AND (ClassType='Weight'))", "UOMCode,UOMDesc");
 
@@ -194,7 +194,7 @@ namespace EpicorIntegration
             return ds;
         }
 
-        public DataSet UOMVolumeDataSet()
+        public static DataSet UOMVolumeDataSet()
         {
             DataSet ds = (DataSet)BOReader.GetList("UOMSearch", "((Active=True) AND (ClassType='Volume'))", "UOMCode,UOMDesc");
 
@@ -203,7 +203,7 @@ namespace EpicorIntegration
             return ds;
         }
 
-        public DataSet WarehseDataSet()
+        public static DataSet WarehseDataSet()
         {
             DataSet ds = (DataSet)BOReader.GetList("WarehseSearch", "MfgSys", "");
 
@@ -212,7 +212,7 @@ namespace EpicorIntegration
             return ds;
         }
 
-        public DataSet GroupIDDataSet()
+        public static DataSet GroupIDDataSet()
         {
             bool MorePages;
 
@@ -409,6 +409,27 @@ namespace EpicorIntegration
             EpicClose();
 
             return ReturnMethod;
+        }
+
+        public static string GetCurrentDesc(string PartNumber)
+        {
+            try
+            {
+                Part Part = new Part(EpicConn);
+
+                PartDataSet PartData = new PartDataSet();
+
+                PartData = Part.GetByID(PartNumber);
+
+                int LastRowIndex = PartData.Tables["Part"].Rows.Count - 1;
+
+                string PartDesc = PartData.Tables["Part"].Rows[LastRowIndex]["PartDescription"].ToString();
+
+                EpicClose();
+
+                return PartDesc;
+            }
+            catch { return null; }
         }
 
         public static string GetCurrentRev(string PartNumber)

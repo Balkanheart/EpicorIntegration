@@ -23,17 +23,6 @@ namespace EpicorIntegration
             }
         }
 
-        public DataList DL
-        {
-            get
-            {
-                DataList DL = new DataList();
-
-                return DL;
-            }
-
-        }
-
         public SearchPart()
         {
             InitializeComponent();
@@ -42,7 +31,7 @@ namespace EpicorIntegration
 
             this.ClientSizeChanged += SearchPart_ClientSizeChanged;
 
-            DataSet ds = DL.PartClassDataSet();
+            DataSet ds = DataList.PartClassDataSet();
 
             DataRow dr = ds.Tables[0].NewRow();
 
@@ -87,7 +76,7 @@ namespace EpicorIntegration
 
             this.ClientSizeChanged += SearchPart_ClientSizeChanged;
 
-            DataSet ds = DL.PartClassDataSet();
+            DataSet ds = DataList.PartClassDataSet();
 
             DataRow dr = ds.Tables[0].NewRow();
 

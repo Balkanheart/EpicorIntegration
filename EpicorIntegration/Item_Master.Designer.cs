@@ -57,6 +57,7 @@
             this.uomvol_cbo = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.copy_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NetVolume)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -366,6 +367,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Plants";
             // 
+            // copy_btn
+            // 
+            this.copy_btn.Location = new System.Drawing.Point(20, 476);
+            this.copy_btn.Name = "copy_btn";
+            this.copy_btn.Size = new System.Drawing.Size(75, 23);
+            this.copy_btn.TabIndex = 35;
+            this.copy_btn.Text = "Copy From...";
+            this.copy_btn.UseVisualStyleBackColor = true;
+            this.copy_btn.Click += new System.EventHandler(this.copy_btn_Click);
+            // 
             // Item_Master
             // 
             this.AcceptButton = this.savebtn;
@@ -373,6 +384,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelbtn;
             this.ClientSize = new System.Drawing.Size(378, 512);
+            this.Controls.Add(this.copy_btn);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.savebtn);
@@ -422,6 +434,7 @@
         private System.Windows.Forms.ComboBox uomvol_cbo;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button copy_btn;
     }
 }
 

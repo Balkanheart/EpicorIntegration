@@ -105,7 +105,7 @@ namespace EpicorIntegration
 
             uom_cbo.ValueMember = "UOMCode";
 
-            //ViewAsAsm_chk.Checked = IsAssembly();
+            ViewAsAsm_chk.Checked = IsAssembly();
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -252,16 +252,17 @@ namespace EpicorIntegration
         {
             bool retval = false;
 
-            try
-            {
-                string currentrev = DataList.GetCurrentRev(partnum_txt.Text);
+            string currentrev = DataList.GetCurrentRev(partnum_txt.Text);
 
+            EngWorkBenchDataSet temp = new EngWorkBenchDataSet();
 
+            bool morePages;
 
-                if (temp.Tables["ECOMtl"].Rows.Count > 0)
+            
+
+            if (temp.Tables[0].Rows.Count > 0)
                     retval = true;
-            }
-            catch { }
+
             return retval;
         }
 
@@ -278,6 +279,11 @@ namespace EpicorIntegration
             EngWBDS = EngWB.GetDatasetForTree(gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "", null, false, false);
 
             BillDataGrid.DataSource = EngWBDS.Tables["ECOMtl"];
+        }
+
+        private void copy_btn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

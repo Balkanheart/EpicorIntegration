@@ -14,7 +14,7 @@ using Epicor.Mfg.Lib;
 
 namespace EpicorIntegration
 {
-    public partial class Item_Update : Form
+    public partial class Item_Template : Form
     {
         public PartData PartDatum
         {
@@ -37,12 +37,12 @@ namespace EpicorIntegration
         
         }
 
-        public Item_Update()
+        public Item_Template()
         {
             InitializeComponent();
         }
 
-        public Item_Update(PartData Part)
+        public Item_Template(PartData Part)
         {
             InitializeComponent();
             try
@@ -69,7 +69,7 @@ namespace EpicorIntegration
             }
         }
 
-        public Item_Update(string PartNumber, string Description, string Type, decimal Weight, decimal Volume, string Group, string Class)
+        public Item_Template(string PartNumber, string Description, string Type, decimal Weight, decimal Volume, string Group, string Class)
         {
             InitializeComponent();
 
@@ -104,6 +104,8 @@ namespace EpicorIntegration
             {
                 #region Fill DataLists
 
+                type_cbo.Items.Add(new PartTypeCode("", ""));
+
                 type_cbo.Items.Add(new PartTypeCode("Manufactured", "M"));
 
                 type_cbo.Items.Add(new PartTypeCode("Purchased", "P"));
@@ -112,37 +114,83 @@ namespace EpicorIntegration
 
                 type_cbo.DisplayMember = "Description";
 
-                group_cbo.DataSource = DL.ProdGrupDataSet ().Tables[0];
-                
+                DataTable dt = DataList.ProdGrupDataSet().Tables[0];
+
+                DataRow dr = dt.NewRow();
+
+                dr["Description"] = "";
+
+                dt.Rows.InsertAt(dr, 0);
+
+                group_cbo.DataSource = dt;
+
                 group_cbo.DisplayMember = "Description";
 
                 group_cbo.ValueMember = "ProdCode";
 
-                class_cbo.DataSource = DL.PartClassDataSet().Tables[0];
+                dt = DataList.PartClassDataSet().Tables[0];
 
-                class_cbo.DisplayMember = DL.PartClassDataSet().Tables[0].Columns["Description"].ToString();
+                dr = dt.NewRow();
 
-                class_cbo.ValueMember = DL.PartClassDataSet().Tables[0].Columns["ClassID"].ToString();
+                dr["Description"] = "";
 
-                uomclass_cbo.DataSource = DL.UOMClassDataSet().Tables[0];
+                dt.Rows.InsertAt(dr, 0);
 
-                uomclass_cbo.DisplayMember = DL.UOMClassDataSet().Tables[0].Columns["Description"].ToString();
+                class_cbo.DataSource = dt;
 
-                plant_cbo.DataSource = DL.PlantDataSet().Tables[0];
+                class_cbo.DisplayMember = DataList.PartClassDataSet().Tables[0].Columns["Description"].ToString();
 
-                plant_cbo.DisplayMember = DL.PlantDataSet().Tables[0].Columns["NAME"].ToString();
+                class_cbo.ValueMember = DataList.PartClassDataSet().Tables[0].Columns["ClassID"].ToString();
+
+                dt = DataList.UOMClassDataSet().Tables[0];
+
+                dr = dt.NewRow();
+
+                dr["Description"] = "";
+
+                dt.Rows.InsertAt(dr, 0);
+
+                uomclass_cbo.DataSource = dt;
+
+                uomclass_cbo.DisplayMember = DataList.UOMClassDataSet().Tables[0].Columns["Description"].ToString();
+
+                dt = DataList.PlantDataSet().Tables[0];
+
+                dr = dt.NewRow();
+
+                dr["NAME"] = "";
+
+                dt.Rows.InsertAt(dr, 0);
+
+                plant_cbo.DataSource = dt;
+
+                plant_cbo.DisplayMember = DataList.PlantDataSet().Tables[0].Columns["NAME"].ToString();
 
                 plant_cbo.ValueMember = "Plant";
 
-                whse_cbo.DataSource = DL.WarehseDataSet().Tables[0];
+                dt = DataList.WarehseDataSet().Tables[0];
 
-                whse_cbo.DisplayMember = DL.WarehseDataSet().Tables[0].Columns["Description"].ToString();
+                dr = dt.NewRow();
+
+                dr["Description"] = "";
+
+                dt.Rows.InsertAt(dr, 0);
+
+                whse_cbo.DataSource = dt;
+
+                whse_cbo.DisplayMember = DataList.WarehseDataSet().Tables[0].Columns["Description"].ToString();
 
                 whse_cbo.ValueMember = "WarehouseCode";
 
-                DataSet DS = DL.UOMSearchDataSet();
+                DataSet DS = DataList.UOMSearchDataSet();
 
                 DS.Tables[0].Columns.Add("FullCode", typeof(string), "UOMCode + ' - ' + UOMDesc");
+
+                dr = DS.Tables[0].NewRow();
+
+                dr["FullCode"] = "";
+
+                DS.Tables[0].Rows.InsertAt(dr, 0);
 
                 uom_cbo.DataSource = DS.Tables[0];
 
@@ -154,15 +202,31 @@ namespace EpicorIntegration
 
                 type_cbo.SelectedIndex = 0;
 
-                uomvol_cbo.DataSource = DL.UOMVolumeDataSet().Tables[0];
+                dt = DataList.UOMVolumeDataSet().Tables[0];
 
-                uomvol_cbo.DisplayMember = DL.UOMVolumeDataSet().Tables[0].Columns["UOMCode"].ToString();
+                dr = dt.NewRow();
+
+                dr["UOMCode"] = "";
+
+                dt.Rows.InsertAt(dr, 0);
+
+                uomvol_cbo.DataSource = dt;
+
+                uomvol_cbo.DisplayMember = DataList.UOMVolumeDataSet().Tables[0].Columns["UOMCode"].ToString();
 
                 uomvol_cbo.ValueMember = "UOMCode";
 
-                uomweight_cbo.DataSource = DL.UOMWeightDataSet().Tables[0];
+                dt = DataList.UOMWeightDataSet().Tables[0];
 
-                uomweight_cbo.DisplayMember = DL.UOMWeightDataSet().Tables[0].Columns["UOMCode"].ToString();
+                dr = dt.NewRow();
+
+                dr["UOMCode"] = "";
+
+                dt.Rows.InsertAt(dr, 0);
+
+                uomweight_cbo.DataSource = dt;
+
+                uomweight_cbo.DisplayMember = DataList.UOMWeightDataSet().Tables[0].Columns["UOMCode"].ToString();
 
                 uomweight_cbo.ValueMember = "UOMCode";
 
@@ -185,9 +249,10 @@ namespace EpicorIntegration
         {
             try
             {
+                #region Commit to Epicor
                 //Commit Part Changes
 
-                Part Part = new Part(DataList.EpicConn);
+                /*Part Part = new Part(DataList.EpicConn);
 
                 PartDataSet Pdata = new PartDataSet();
 
@@ -241,7 +306,10 @@ namespace EpicorIntegration
 
                     //Potential implementation of CheckPartChanges
 
-                    DataList.EpicClose();
+                    DataList.EpicClose();*/
+                #endregion
+
+                itemTemplateTableAdapter.Insert(Partnumber_txt.Text, Description_txt.Text, type_cbo.Text, uomclass_cbo.Text, (double)NetWeight.Value, uomweight_cbo.Text, (double)NetVolume.Value, uomvol_cbo.Text, uom_cbo.Text, group_cbo.SelectedValue.ToString(), class_cbo.Text, plant_cbo.Text, whse_cbo.Text);
             }
             catch (System.Exception ex)
             {

@@ -118,5 +118,25 @@ namespace EpicorIntegration.Properties {
                 this["mtlreqtype"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ENGSVR01;User ID=sa")]
+        public string ConnectionString {
+            get {
+                return ((string)(this["ConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ENGSVR01;Initial Catalog=ENGData;User ID=sa;Password=Norco!2013")]
+        public string ENGDataConnectionString {
+            get {
+                return ((string)(this["ENGDataConnectionString"]));
+            }
+        }
     }
 }

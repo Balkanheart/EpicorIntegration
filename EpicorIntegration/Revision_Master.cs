@@ -17,9 +17,7 @@ namespace EpicorIntegration
         {
             InitializeComponent();
 
-            DataList DL = new DataList();
-
-            gid_cbo.DataSource = DL.GroupIDDataSet().Tables[0];
+            gid_cbo.DataSource = DataList.GroupIDDataSet().Tables[0];
 
             gid_cbo.ValueMember = "Description";
 
@@ -45,9 +43,7 @@ namespace EpicorIntegration
         {
             InitializeComponent();
 
-            DataList DL = new DataList();
-
-            gid_cbo.DataSource = DL.GroupIDDataSet().Tables[0];
+            gid_cbo.DataSource = DataList.GroupIDDataSet().Tables[0];
 
             gid_cbo.ValueMember = "Description";
 

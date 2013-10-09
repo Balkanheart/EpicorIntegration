@@ -7,13 +7,6 @@ Add toolbox form to turn on/off controls.
 
 Manage Template Form:
 Add/Delete/Edit Templates (both varieties)
-View selected template
-
-Item_CopyFrom:
-View selected template values
-
-Opr_CopyFrom:
-View selected template values
 
 OprTemplates:
 Create DB

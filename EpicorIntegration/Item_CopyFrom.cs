@@ -81,7 +81,7 @@ namespace EpicorIntegration
             {
                 //Use Listed Template
 
-                DataRow dr = eNGDataDataSet.Tables[0].Rows[template_cbo.SelectedIndex];
+                DataRow dr = eNGDataDataSet.Tables[0].Rows[template_cbo.SelectedIndex + 1];
 
                 _Pdata.Description = dr["Desc"].ToString();
 
@@ -89,17 +89,11 @@ namespace EpicorIntegration
 
                 _Pdata.UOM_Class = dr["UOMClass"].ToString();
 
-                decimal fail = 0;
-
-                decimal.TryParse(dr["NetWeight"].ToString(), out fail);
-
-                _Pdata.Net_Weight = fail;
+                _Pdata.Net_Weight = decimal.Parse(dr["NetWeight"].ToString());
 
                 _Pdata.Net_Weight_UM = dr["UOMWeight"].ToString();
 
-                decimal.TryParse(dr["NetVol"].ToString(),out fail);
-
-                _Pdata.Net_Vol = fail;
+                _Pdata.Net_Vol = decimal.Parse(dr["NetVol"].ToString());
 
                 _Pdata.Net_Vol_UM = dr["UOMVol"].ToString();
 

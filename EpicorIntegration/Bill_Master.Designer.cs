@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bill_Master));
             this.MajorHorizSplit = new System.Windows.Forms.SplitContainer();
@@ -62,9 +63,10 @@
             this.MtlSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MtlPartNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MtlPartNumDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MtlPartNumPartDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewAsAsm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PartTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MajorHorizSplit)).BeginInit();
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
@@ -99,7 +101,7 @@
             // MajorHorizSplit.Panel2
             // 
             this.MajorHorizSplit.Panel2.Controls.Add(this.BillDataGrid);
-            this.MajorHorizSplit.Size = new System.Drawing.Size(491, 466);
+            this.MajorHorizSplit.Size = new System.Drawing.Size(554, 466);
             this.MajorHorizSplit.SplitterDistance = 262;
             this.MajorHorizSplit.TabIndex = 1;
             // 
@@ -144,7 +146,7 @@
             this.groupBox2.Controls.Add(this.removebtn);
             this.groupBox2.Controls.Add(this.cancelbtn);
             this.groupBox2.Controls.Add(this.savebtn);
-            this.groupBox2.Location = new System.Drawing.Point(387, 12);
+            this.groupBox2.Location = new System.Drawing.Point(454, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(88, 239);
             this.groupBox2.TabIndex = 7;
@@ -250,7 +252,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(12, 90);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(369, 161);
+            this.groupBox1.Size = new System.Drawing.Size(436, 161);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -263,6 +265,7 @@
             this.ViewAsAsm_chk.TabIndex = 10;
             this.ViewAsAsm_chk.Text = "View As Assembly";
             this.ViewAsAsm_chk.UseVisualStyleBackColor = true;
+            this.ViewAsAsm_chk.CheckedChanged += new System.EventHandler(this.ViewAsAsm_chk_CheckedChanged);
             // 
             // uom_cbo
             // 
@@ -316,6 +319,7 @@
             this.partnum_txt.Name = "partnum_txt";
             this.partnum_txt.Size = new System.Drawing.Size(211, 20);
             this.partnum_txt.TabIndex = 5;
+            this.partnum_txt.TextChanged += new System.EventHandler(this.partnum_txt_TextChanged);
             // 
             // ops_cbo
             // 
@@ -350,6 +354,7 @@
             // 
             this.mtlseq_txt.Location = new System.Drawing.Point(75, 19);
             this.mtlseq_txt.Name = "mtlseq_txt";
+            this.mtlseq_txt.ReadOnly = true;
             this.mtlseq_txt.Size = new System.Drawing.Size(62, 20);
             this.mtlseq_txt.TabIndex = 1;
             // 
@@ -374,7 +379,7 @@
             this.MtlSeq,
             this.QtyPer,
             this.MtlPartNum,
-            this.MtlPartNumDescription,
+            this.MtlPartNumPartDescription,
             this.OpDesc,
             this.ViewAsAsm});
             this.BillDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -389,7 +394,7 @@
             this.BillDataGrid.ShowCellToolTips = false;
             this.BillDataGrid.ShowEditingIcon = false;
             this.BillDataGrid.ShowRowErrors = false;
-            this.BillDataGrid.Size = new System.Drawing.Size(491, 200);
+            this.BillDataGrid.Size = new System.Drawing.Size(554, 200);
             this.BillDataGrid.TabIndex = 1;
             // 
             // MtlSeq
@@ -417,16 +422,16 @@
             this.MtlPartNum.HeaderText = "Part Number";
             this.MtlPartNum.Name = "MtlPartNum";
             this.MtlPartNum.ReadOnly = true;
-            this.MtlPartNum.Width = 84;
+            this.MtlPartNum.Width = 91;
             // 
-            // MtlPartNumDescription
+            // MtlPartNumPartDescription
             // 
-            this.MtlPartNumDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MtlPartNumDescription.DataPropertyName = "MtlPartNumDescription";
-            this.MtlPartNumDescription.HeaderText = "Description";
-            this.MtlPartNumDescription.Name = "MtlPartNumDescription";
-            this.MtlPartNumDescription.ReadOnly = true;
-            this.MtlPartNumDescription.Width = 85;
+            this.MtlPartNumPartDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MtlPartNumPartDescription.DataPropertyName = "MtlPartNumPartDescription";
+            this.MtlPartNumPartDescription.HeaderText = "Description";
+            this.MtlPartNumPartDescription.Name = "MtlPartNumPartDescription";
+            this.MtlPartNumPartDescription.ReadOnly = true;
+            this.MtlPartNumPartDescription.Width = 85;
             // 
             // OpDesc
             // 
@@ -445,16 +450,21 @@
             this.ViewAsAsm.Name = "ViewAsAsm";
             this.ViewAsAsm.ReadOnly = true;
             // 
+            // PartTimer
+            // 
+            this.PartTimer.Interval = 750;
+            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
+            // 
             // Bill_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelbtn;
-            this.ClientSize = new System.Drawing.Size(491, 466);
+            this.ClientSize = new System.Drawing.Size(554, 466);
             this.Controls.Add(this.MajorHorizSplit);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(507, 504);
+            this.MinimumSize = new System.Drawing.Size(570, 504);
             this.Name = "Bill_Master";
             this.Text = "Add Materials To...";
             this.Load += new System.EventHandler(this.Bill_Master_Load);
@@ -501,14 +511,15 @@
         private System.Windows.Forms.TextBox parentrev_txt;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox gid_txt;
+        private System.Windows.Forms.ComboBox uom_cbo;
+        private System.Windows.Forms.CheckBox ViewAsAsm_chk;
         private System.Windows.Forms.DataGridViewTextBoxColumn MtlSeq;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtyPer;
         private System.Windows.Forms.DataGridViewTextBoxColumn MtlPartNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MtlPartNumDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MtlPartNumPartDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ViewAsAsm;
-        private System.Windows.Forms.ComboBox uom_cbo;
-        private System.Windows.Forms.CheckBox ViewAsAsm_chk;
+        private System.Windows.Forms.Timer PartTimer;
 
     }
 }

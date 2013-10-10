@@ -248,6 +248,12 @@
     <Compile Include="SearchPart.Designer.cs">
       <DependentUpon>SearchPart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Template_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Template_Master.Designer.cs">
+      <DependentUpon>Template_Master.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestTableViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -308,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SearchPart.resx">
       <DependentUpon>SearchPart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Template_Master.resx">
+      <DependentUpon>Template_Master.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestTableViewer.resx">
       <DependentUpon>TestTableViewer.cs</DependentUpon>

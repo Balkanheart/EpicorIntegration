@@ -37,8 +37,6 @@
             this.type_cbo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.NetWeight = new System.Windows.Forms.NumericUpDown();
-            this.NetVolume = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
             this.group_cbo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.class_cbo = new System.Windows.Forms.ComboBox();
@@ -54,12 +52,16 @@
             this.cancelbtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
             this.uomweight_cbo = new System.Windows.Forms.ComboBox();
-            this.uomvol_cbo = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.qtybearing = new System.Windows.Forms.CheckBox();
+            this.userevision = new System.Windows.Forms.CheckBox();
+            this.trackserial = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.copy_btn = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.addwhse_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NetVolume)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -113,6 +115,7 @@
             this.type_cbo.Name = "type_cbo";
             this.type_cbo.Size = new System.Drawing.Size(157, 21);
             this.type_cbo.TabIndex = 10;
+            this.type_cbo.SelectedIndexChanged += new System.EventHandler(this.type_cbo_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -137,29 +140,6 @@
             this.NetWeight.TabIndex = 13;
             this.NetWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // NetVolume
-            // 
-            this.NetVolume.DecimalPlaces = 2;
-            this.NetVolume.Location = new System.Drawing.Point(9, 189);
-            this.NetVolume.Maximum = new decimal(new int[] {
-            1410065407,
-            2,
-            0,
-            131072});
-            this.NetVolume.Name = "NetVolume";
-            this.NetVolume.Size = new System.Drawing.Size(102, 20);
-            this.NetVolume.TabIndex = 15;
-            this.NetVolume.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 173);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Unit Net Volume";
-            // 
             // group_cbo
             // 
             this.group_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -168,7 +148,7 @@
             "Purchased",
             "Manufacturer",
             "Sales Kit"});
-            this.group_cbo.Location = new System.Drawing.Point(9, 268);
+            this.group_cbo.Location = new System.Drawing.Point(8, 229);
             this.group_cbo.Name = "group_cbo";
             this.group_cbo.Size = new System.Drawing.Size(210, 21);
             this.group_cbo.TabIndex = 17;
@@ -176,7 +156,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 252);
+            this.label2.Location = new System.Drawing.Point(5, 213);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 16;
@@ -190,7 +170,7 @@
             "Purchased",
             "Manufacturer",
             "Sales Kit"});
-            this.class_cbo.Location = new System.Drawing.Point(9, 308);
+            this.class_cbo.Location = new System.Drawing.Point(8, 269);
             this.class_cbo.Name = "class_cbo";
             this.class_cbo.Size = new System.Drawing.Size(210, 21);
             this.class_cbo.TabIndex = 19;
@@ -198,7 +178,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 292);
+            this.label7.Location = new System.Drawing.Point(5, 253);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 18;
@@ -236,7 +216,7 @@
             "Purchased",
             "Manufacturer",
             "Sales Kit"});
-            this.uom_cbo.Location = new System.Drawing.Point(9, 228);
+            this.uom_cbo.Location = new System.Drawing.Point(8, 189);
             this.uom_cbo.Name = "uom_cbo";
             this.uom_cbo.Size = new System.Drawing.Size(180, 21);
             this.uom_cbo.TabIndex = 23;
@@ -244,7 +224,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 212);
+            this.label9.Location = new System.Drawing.Point(5, 173);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(82, 13);
             this.label9.TabIndex = 24;
@@ -265,7 +245,7 @@
             this.whse_cbo.FormattingEnabled = true;
             this.whse_cbo.Location = new System.Drawing.Point(8, 72);
             this.whse_cbo.Name = "whse_cbo";
-            this.whse_cbo.Size = new System.Drawing.Size(321, 21);
+            this.whse_cbo.Size = new System.Drawing.Size(240, 21);
             this.whse_cbo.TabIndex = 25;
             // 
             // label11
@@ -289,7 +269,7 @@
             // cancelbtn
             // 
             this.cancelbtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelbtn.Location = new System.Drawing.Point(290, 476);
+            this.cancelbtn.Location = new System.Drawing.Point(290, 507);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(75, 23);
             this.cancelbtn.TabIndex = 29;
@@ -299,7 +279,7 @@
             // 
             // savebtn
             // 
-            this.savebtn.Location = new System.Drawing.Point(209, 476);
+            this.savebtn.Location = new System.Drawing.Point(209, 507);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
             this.savebtn.TabIndex = 30;
@@ -316,19 +296,12 @@
             this.uomweight_cbo.Size = new System.Drawing.Size(72, 21);
             this.uomweight_cbo.TabIndex = 31;
             // 
-            // uomvol_cbo
-            // 
-            this.uomvol_cbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.uomvol_cbo.FormattingEnabled = true;
-            this.uomvol_cbo.Location = new System.Drawing.Point(117, 188);
-            this.uomvol_cbo.Name = "uomvol_cbo";
-            this.uomvol_cbo.Size = new System.Drawing.Size(72, 21);
-            this.uomvol_cbo.TabIndex = 32;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.qtybearing);
+            this.groupBox1.Controls.Add(this.userevision);
+            this.groupBox1.Controls.Add(this.trackserial);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.uomvol_cbo);
             this.groupBox1.Controls.Add(this.Partnumber_txt);
             this.groupBox1.Controls.Add(this.uomweight_cbo);
             this.groupBox1.Controls.Add(this.label3);
@@ -337,9 +310,7 @@
             this.groupBox1.Controls.Add(this.type_cbo);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.NetWeight);
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.NetVolume);
             this.groupBox1.Controls.Add(this.uom_cbo);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.uomclass_cbo);
@@ -349,27 +320,60 @@
             this.groupBox1.Controls.Add(this.class_cbo);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(353, 344);
+            this.groupBox1.Size = new System.Drawing.Size(353, 300);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detail";
             // 
+            // qtybearing
+            // 
+            this.qtybearing.AutoSize = true;
+            this.qtybearing.Location = new System.Drawing.Point(224, 145);
+            this.qtybearing.Name = "qtybearing";
+            this.qtybearing.Size = new System.Drawing.Size(81, 17);
+            this.qtybearing.TabIndex = 34;
+            this.qtybearing.Text = "Qty Bearing";
+            this.qtybearing.UseVisualStyleBackColor = true;
+            // 
+            // userevision
+            // 
+            this.userevision.AutoSize = true;
+            this.userevision.Location = new System.Drawing.Point(224, 168);
+            this.userevision.Name = "userevision";
+            this.userevision.Size = new System.Drawing.Size(89, 17);
+            this.userevision.TabIndex = 33;
+            this.userevision.Text = "Use Revision";
+            this.userevision.UseVisualStyleBackColor = true;
+            // 
+            // trackserial
+            // 
+            this.trackserial.AutoSize = true;
+            this.trackserial.Location = new System.Drawing.Point(224, 191);
+            this.trackserial.Name = "trackserial";
+            this.trackserial.Size = new System.Drawing.Size(123, 17);
+            this.trackserial.TabIndex = 32;
+            this.trackserial.Text = "Track Serial Number";
+            this.trackserial.UseVisualStyleBackColor = true;
+            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.addwhse_btn);
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.whse_cbo);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.plant_cbo);
-            this.groupBox2.Location = new System.Drawing.Point(12, 362);
+            this.groupBox2.Location = new System.Drawing.Point(13, 318);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(353, 108);
+            this.groupBox2.Size = new System.Drawing.Size(353, 163);
             this.groupBox2.TabIndex = 34;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Plants";
             // 
             // copy_btn
             // 
-            this.copy_btn.Location = new System.Drawing.Point(20, 476);
+            this.copy_btn.Location = new System.Drawing.Point(20, 507);
             this.copy_btn.Name = "copy_btn";
             this.copy_btn.Size = new System.Drawing.Size(75, 23);
             this.copy_btn.TabIndex = 35;
@@ -377,13 +381,41 @@
             this.copy_btn.UseVisualStyleBackColor = true;
             this.copy_btn.Click += new System.EventHandler(this.copy_btn_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 96);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.TabIndex = 29;
+            this.label6.Text = "Planner:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(8, 112);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(321, 21);
+            this.comboBox1.TabIndex = 30;
+            // 
+            // addwhse_btn
+            // 
+            this.addwhse_btn.Location = new System.Drawing.Point(254, 70);
+            this.addwhse_btn.Name = "addwhse_btn";
+            this.addwhse_btn.Size = new System.Drawing.Size(75, 23);
+            this.addwhse_btn.TabIndex = 31;
+            this.addwhse_btn.Text = "&Add";
+            this.addwhse_btn.UseVisualStyleBackColor = true;
+            this.addwhse_btn.Click += new System.EventHandler(this.addwhse_btn_Click);
+            // 
             // Item_Master
             // 
             this.AcceptButton = this.savebtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelbtn;
-            this.ClientSize = new System.Drawing.Size(378, 512);
+            this.ClientSize = new System.Drawing.Size(378, 542);
             this.Controls.Add(this.copy_btn);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -395,7 +427,6 @@
             this.Text = "Epicor Item Injection";
             this.Load += new System.EventHandler(this.Item_Master_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NetVolume)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -414,8 +445,6 @@
         private System.Windows.Forms.ComboBox type_cbo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown NetWeight;
-        private System.Windows.Forms.NumericUpDown NetVolume;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox group_cbo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox class_cbo;
@@ -431,10 +460,15 @@
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.Button savebtn;
         private System.Windows.Forms.ComboBox uomweight_cbo;
-        private System.Windows.Forms.ComboBox uomvol_cbo;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button copy_btn;
+        private System.Windows.Forms.CheckBox qtybearing;
+        private System.Windows.Forms.CheckBox userevision;
+        private System.Windows.Forms.CheckBox trackserial;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button addwhse_btn;
     }
 }
 

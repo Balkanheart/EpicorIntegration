@@ -46,7 +46,13 @@ namespace EpicorIntegration
 
                 NetWeight.Value = Part.Net_Weight;
 
-                NetVolume.Value = Part.Net_Vol;
+                userevision.Checked = Part.UseRevision;
+
+                qtybearing.Checked = Part.QtyBearing;
+
+                trackserial.Checked = Part.TrackSerial;
+
+                //NetVolume.Value = Part.Net_Vol;
 
                 group_cbo.SelectedIndex = group_cbo.Items.IndexOf(Part.PartGroup);
 
@@ -74,7 +80,7 @@ namespace EpicorIntegration
 
                 NetWeight.Value = Weight;
 
-                NetVolume.Value = Volume;
+                //NetVolume.Value = Volume;
 
                 group_cbo.SelectedIndex = group_cbo.Items.IndexOf(Group);
 
@@ -89,6 +95,12 @@ namespace EpicorIntegration
 
         private void Item_Master_Load(object sender, EventArgs e)
         {
+            DataList.PlannerList();
+
+            Partnumber_txt.Leave += Partnumber_txt_Leave;
+
+            Description_txt.Leave += Description_txt_Leave;
+
             try
             {
                 #region Fill DataLists
@@ -123,11 +135,11 @@ namespace EpicorIntegration
 
                 plant_cbo.ValueMember = "Plant";
 
-                whse_cbo.DataSource = DataList.WarehseDataSet().Tables[0];
+                //whse_cbo.DataSource = DataList.WarehseDataSet().Tables[0];
 
-                whse_cbo.DisplayMember = DataList.WarehseDataSet().Tables[0].Columns["Description"].ToString();
+                //whse_cbo.DisplayMember = DataList.WarehseDataSet().Tables[0].Columns["Description"].ToString();
 
-                whse_cbo.ValueMember = "WarehouseCode";
+                //whse_cbo.ValueMember = "WarehouseCode";
 
                 DataSet DS = DataList.UOMSearchDataSet();
 
@@ -142,12 +154,13 @@ namespace EpicorIntegration
                 uomclass_cbo.SelectedIndex = 2;
 
                 type_cbo.SelectedIndex = 0;
-
+                /*
                 uomvol_cbo.DataSource = DataList.UOMVolumeDataSet().Tables[0];
 
                 uomvol_cbo.DisplayMember = DataList.UOMVolumeDataSet().Tables[0].Columns["UOMCode"].ToString();
 
                 uomvol_cbo.ValueMember = "UOMCode";
+                 * */
 
                 uomweight_cbo.DataSource = DataList.UOMWeightDataSet().Tables[0];
 
@@ -165,9 +178,29 @@ namespace EpicorIntegration
             }
         }
 
+        void Description_txt_Leave(object sender, EventArgs e)
+        {
+            AllToUpper();
+        }
+
+        void Partnumber_txt_Leave(object sender, EventArgs e)
+        {
+            AllToUpper();
+
+            if (Partnumber_txt.Text.Substring(0, 3) == "201")
+                trackserial.Checked = true;
+        }
+
         private void cancelbtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AllToUpper()
+        {
+            Partnumber_txt.Text = Partnumber_txt.Text.ToUpper();
+
+            Description_txt.Text = Description_txt.Text.ToUpper();
         }
 
         private void savebtn_Click(object sender, EventArgs e)
@@ -210,9 +243,9 @@ namespace EpicorIntegration
 
                     DataList.AddDatum(Pdata, "Part", 0, "NetWeightUOM", uomweight_cbo.SelectedValue.ToString());
 
-                    DataList.AddDatum(Pdata, "Part", 0, "NetVolume", NetVolume.Text);
+                    //DataList.AddDatum(Pdata, "Part", 0, "NetVolume", NetVolume.Text);
 
-                    DataList.AddDatum(Pdata, "Part", 0, "NetVolumeUOM", uomvol_cbo.SelectedValue.ToString());
+                    //DataList.AddDatum(Pdata, "Part", 0, "NetVolumeUOM", uomvol_cbo.SelectedValue.ToString());
 
                     DataList.AddDatum(Pdata, "Part", 0, "IUM", uom_cbo.SelectedValue.ToString());
 
@@ -276,11 +309,20 @@ namespace EpicorIntegration
             if (pdata.Net_Weight_UM != "")
                 uomweight_cbo.SelectedText = pdata.Net_Weight_UM;
 
-            if (pdata.Net_Vol != 0)
+            if (pdata.TrackSerial != null)
+                trackserial.Checked = pdata.TrackSerial;
+
+            if (pdata.QtyBearing != null)
+                qtybearing.Checked = pdata.QtyBearing;
+
+            if (pdata.UseRevision != null)
+                userevision.Checked = pdata.UseRevision;
+            
+            /*if (pdata.Net_Vol != 0)
                 NetVolume.Value = pdata.Net_Vol;
 
             if (pdata.Net_Vol_UM != "")
-                uomvol_cbo.SelectedText = pdata.Net_Vol_UM;
+                uomvol_cbo.SelectedText = pdata.Net_Vol_UM;*/
 
             if (pdata.Primary_UOM != "")
                 uom_cbo.SelectedText = pdata.Primary_UOM;
@@ -318,6 +360,37 @@ namespace EpicorIntegration
 
                 LoadData(pdata);
             }
+        }
+
+        private void type_cbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (type_cbo.SelectedValue == "M")
+            {
+                qtybearing.Checked = true;
+                userevision.Checked = true;
+            }
+            else
+            {
+                qtybearing.Checked = false;
+                userevision.Checked = false;
+            }
+        }
+
+        private void addwhse_btn_Click(object sender, EventArgs e)
+        {
+            //instance with partdataset
+            Warehouse_Master wm = new Warehouse_Master(PartDatum);
+
+            wm.ShowDialog();
+
+            //get added warehouse list from form
+
+            //add to partdataset and combobox.items
+
+            wm.Dispose();
+
+            DataList.EpicClose();
+
         }
     }
 }

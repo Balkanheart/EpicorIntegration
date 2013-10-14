@@ -37,9 +37,18 @@ namespace EpicorIntegration
 
         }
 
+        public static DataSet PlannerList()
+        {
+            DataSet ds = (DataSet)BOReader.GetList("Person", "", "PersonID,Name");
+
+            EpicClose();
+
+            return ds;
+        }
+
         public static DataSet PlantDataSet()
         {
-            DataSet ds = (DataSet)BOReader.GetList("Plant", "", "Company,Plant,Name,Company");
+            DataSet ds = (DataSet)BOReader.GetList("Plant", "", "Company,Plant,Name");
 
             EpicClose();
 
@@ -639,6 +648,12 @@ namespace EpicorIntegration
         public string PartPlant;
 
         public string PlantWhse;
+
+        public bool QtyBearing;
+
+        public bool UseRevision;
+
+        public bool TrackSerial;
     }
 
     /// <summary>

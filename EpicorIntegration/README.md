@@ -33,16 +33,12 @@ Detect if added item has populated BOM
 Default material additions to op10
 Set condition and fields for (IF TYPE=M -> VIEWASASM = TRUE)
 
-
 Item_Master:
 Accept preload from template
 Use template but retain original preload values
-Set condition and fields for (IF TYPE=P -> SET LEAD TIME/SAFETY STOCK)
+Set condition and fields for (IF TYPE=P -> SET LEAD TIME/SAFETY STOCK) //Maybe
 Set condition and fields for (IF TYPE=M -> USEREV = TRUE, QTYBEARING = TRUE)
-Set condition and fields for (IF Frame of Flo-Machine -> TRACKSERIAL = TRUE)
-Remove Volume
-Only use Net Weight
-Add all fields string.ToUpper()
+Set condition and fields for (IF Frame or Flo-Machine -> TRACKSERIAL = TRUE)
 On Warehouse Add -> Create set up to add subsequent Warehouse locations
 Set Planner (BAL, ADNIK, FLO)
 

@@ -168,9 +168,17 @@ namespace EpicorIntegration
         void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl.SelectedTab == tabControl.TabPages["ItemTab"])
-                this.Size = new Size(538, 542);
+            {
+                this.Size = new Size(511, 542);
+
+                this.CancelButton = close_item_btn;
+            }
             else
+            {
                 this.Size = new Size(731, 542);
+
+                CancelButton = close_op_btn;
+            }
         }
 
         public PartData pdata = new PartData();

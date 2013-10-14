@@ -60,13 +60,14 @@
             this.mtlseq_txt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.BillDataGrid = new System.Windows.Forms.DataGridView();
+            this.PartTimer = new System.Windows.Forms.Timer(this.components);
             this.MtlSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MtlPartNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MtlPartNumPartDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UOMCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewAsAsm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PartTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MajorHorizSplit)).BeginInit();
             this.MajorHorizSplit.Panel1.SuspendLayout();
             this.MajorHorizSplit.Panel2.SuspendLayout();
@@ -371,6 +372,7 @@
             // 
             this.BillDataGrid.AllowUserToAddRows = false;
             this.BillDataGrid.AllowUserToDeleteRows = false;
+            this.BillDataGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.BillDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.BillDataGrid.BackgroundColor = System.Drawing.Color.White;
@@ -381,6 +383,7 @@
             this.MtlPartNum,
             this.MtlPartNumPartDescription,
             this.OpDesc,
+            this.UOMCode,
             this.ViewAsAsm});
             this.BillDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BillDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -397,14 +400,19 @@
             this.BillDataGrid.Size = new System.Drawing.Size(554, 200);
             this.BillDataGrid.TabIndex = 1;
             // 
+            // PartTimer
+            // 
+            this.PartTimer.Interval = 750;
+            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
+            // 
             // MtlSeq
             // 
-            this.MtlSeq.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MtlSeq.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.MtlSeq.DataPropertyName = "MtlSeq";
-            this.MtlSeq.HeaderText = "Sequence";
+            this.MtlSeq.HeaderText = "Seq.";
             this.MtlSeq.Name = "MtlSeq";
             this.MtlSeq.ReadOnly = true;
-            this.MtlSeq.Width = 81;
+            this.MtlSeq.Width = 54;
             // 
             // QtyPer
             // 
@@ -426,12 +434,11 @@
             // 
             // MtlPartNumPartDescription
             // 
-            this.MtlPartNumPartDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MtlPartNumPartDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.MtlPartNumPartDescription.DataPropertyName = "MtlPartNumPartDescription";
             this.MtlPartNumPartDescription.HeaderText = "Description";
             this.MtlPartNumPartDescription.Name = "MtlPartNumPartDescription";
             this.MtlPartNumPartDescription.ReadOnly = true;
-            this.MtlPartNumPartDescription.Width = 85;
             // 
             // OpDesc
             // 
@@ -442,18 +449,23 @@
             this.OpDesc.ReadOnly = true;
             this.OpDesc.Width = 78;
             // 
+            // UOMCode
+            // 
+            this.UOMCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.UOMCode.DataPropertyName = "UOMCode";
+            this.UOMCode.HeaderText = "UOM Code";
+            this.UOMCode.Name = "UOMCode";
+            this.UOMCode.ReadOnly = true;
+            this.UOMCode.Width = 85;
+            // 
             // ViewAsAsm
             // 
-            this.ViewAsAsm.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ViewAsAsm.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.ViewAsAsm.DataPropertyName = "ViewAsAsm";
             this.ViewAsAsm.HeaderText = "View As Assembly";
             this.ViewAsAsm.Name = "ViewAsAsm";
             this.ViewAsAsm.ReadOnly = true;
-            // 
-            // PartTimer
-            // 
-            this.PartTimer.Interval = 750;
-            this.PartTimer.Tick += new System.EventHandler(this.PartTimer_Tick);
+            this.ViewAsAsm.Width = 88;
             // 
             // Bill_Master
             // 
@@ -513,13 +525,14 @@
         private System.Windows.Forms.TextBox gid_txt;
         private System.Windows.Forms.ComboBox uom_cbo;
         private System.Windows.Forms.CheckBox ViewAsAsm_chk;
+        private System.Windows.Forms.Timer PartTimer;
         private System.Windows.Forms.DataGridViewTextBoxColumn MtlSeq;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtyPer;
         private System.Windows.Forms.DataGridViewTextBoxColumn MtlPartNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn MtlPartNumPartDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn OpDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UOMCode;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ViewAsAsm;
-        private System.Windows.Forms.Timer PartTimer;
 
     }
 }

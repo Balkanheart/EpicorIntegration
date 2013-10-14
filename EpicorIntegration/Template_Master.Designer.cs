@@ -29,19 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Template_Master));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.ItemTab = new System.Windows.Forms.TabPage();
             this.ItemSplit = new System.Windows.Forms.SplitContainer();
-            this.OprTab = new System.Windows.Forms.TabPage();
-            this.OprSplit = new System.Windows.Forms.SplitContainer();
             this.ItemLeftGrid = new System.Windows.Forms.SplitContainer();
-            this.add_btn = new System.Windows.Forms.Button();
-            this.edit_btn = new System.Windows.Forms.Button();
-            this.del_btn = new System.Windows.Forms.Button();
+            this.close_item_btn = new System.Windows.Forms.Button();
+            this.del_item_btn = new System.Windows.Forms.Button();
+            this.edit_item_btn = new System.Windows.Forms.Button();
+            this.add_item_btn = new System.Windows.Forms.Button();
+            this.ItemTemplateList = new System.Windows.Forms.DataGridView();
+            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BS_engDataDataSet = new System.Windows.Forms.BindingSource(this.components);
+            this.engDataDataSet = new EpicorIntegration.ENGDataDataSet();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.whse_cbo = new System.Windows.Forms.ComboBox();
@@ -68,10 +73,26 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.class_cbo = new System.Windows.Forms.ComboBox();
-            this.close_btn = new System.Windows.Forms.Button();
-            this.engDataDataSet = new EpicorIntegration.ENGDataDataSet();
-            this.BS_engDataDataSet = new System.Windows.Forms.BindingSource(this.components);
-            this.itemTemplateTableAdapter = new EpicorIntegration.ENGDataDataSetTableAdapters.ItemTemplateTableAdapter();
+            this.OprTab = new System.Windows.Forms.TabPage();
+            this.OprSplit = new System.Windows.Forms.SplitContainer();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.OpsDataGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.close_op_btn = new System.Windows.Forms.Button();
+            this.del_op_btn = new System.Windows.Forms.Button();
+            this.edit_op_btn = new System.Windows.Forms.Button();
+            this.add_op_btn = new System.Windows.Forms.Button();
+            this.OprPreviewContainer = new System.Windows.Forms.SplitContainer();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.addop_btn = new System.Windows.Forms.Button();
+            this.remop_btn = new System.Windows.Forms.Button();
+            this.saveop_btn = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.prodstd_cbo = new System.Windows.Forms.ComboBox();
             this.prodhrs_num = new System.Windows.Forms.NumericUpDown();
@@ -85,64 +106,42 @@
             this.ProdStandard = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stdformat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrimaryResourceGrpDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OprPreviewContainer = new System.Windows.Forms.SplitContainer();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.splitter1 = new System.Windows.Forms.Splitter();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.addop_btn = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label16 = new System.Windows.Forms.Label();
-            this.ItemTemplateList = new System.Windows.Forms.DataGridView();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemTemplateTableAdapter = new EpicorIntegration.ENGDataDataSetTableAdapters.ItemTemplateTableAdapter();
             this.tabControl.SuspendLayout();
             this.ItemTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemSplit)).BeginInit();
             this.ItemSplit.Panel1.SuspendLayout();
             this.ItemSplit.Panel2.SuspendLayout();
             this.ItemSplit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemLeftGrid)).BeginInit();
+            this.ItemLeftGrid.Panel1.SuspendLayout();
+            this.ItemLeftGrid.Panel2.SuspendLayout();
+            this.ItemLeftGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemTemplateList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BS_engDataDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).BeginInit();
+            this.panel4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NetVolume)).BeginInit();
             this.OprTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OprSplit)).BeginInit();
             this.OprSplit.Panel1.SuspendLayout();
             this.OprSplit.Panel2.SuspendLayout();
             this.OprSplit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemLeftGrid)).BeginInit();
-            this.ItemLeftGrid.Panel1.SuspendLayout();
-            this.ItemLeftGrid.Panel2.SuspendLayout();
-            this.ItemLeftGrid.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NetVolume)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BS_engDataDataSet)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.prodhrs_num)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OPDataGrid)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OpsDataGrid)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OprPreviewContainer)).BeginInit();
             this.OprPreviewContainer.Panel1.SuspendLayout();
             this.OprPreviewContainer.Panel2.SuspendLayout();
             this.OprPreviewContainer.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemTemplateList)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.prodhrs_num)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OPDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -164,7 +163,7 @@
             this.ItemTab.Location = new System.Drawing.Point(4, 22);
             this.ItemTab.Name = "ItemTab";
             this.ItemTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ItemTab.Size = new System.Drawing.Size(707, 478);
+            this.ItemTab.Size = new System.Drawing.Size(487, 478);
             this.ItemTab.TabIndex = 0;
             this.ItemTab.Text = "Item Templates";
             // 
@@ -183,40 +182,9 @@
             // 
             this.ItemSplit.Panel2.Controls.Add(this.groupBox2);
             this.ItemSplit.Panel2.Controls.Add(this.groupBox1);
-            this.ItemSplit.Size = new System.Drawing.Size(701, 472);
+            this.ItemSplit.Size = new System.Drawing.Size(481, 472);
             this.ItemSplit.SplitterDistance = 115;
             this.ItemSplit.TabIndex = 0;
-            // 
-            // OprTab
-            // 
-            this.OprTab.BackColor = System.Drawing.SystemColors.Control;
-            this.OprTab.Controls.Add(this.OprSplit);
-            this.OprTab.Location = new System.Drawing.Point(4, 22);
-            this.OprTab.Name = "OprTab";
-            this.OprTab.Padding = new System.Windows.Forms.Padding(3);
-            this.OprTab.Size = new System.Drawing.Size(707, 478);
-            this.OprTab.TabIndex = 1;
-            this.OprTab.Text = "Operation Templates";
-            // 
-            // OprSplit
-            // 
-            this.OprSplit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OprSplit.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.OprSplit.Location = new System.Drawing.Point(3, 3);
-            this.OprSplit.Name = "OprSplit";
-            // 
-            // OprSplit.Panel1
-            // 
-            this.OprSplit.Panel1.Controls.Add(this.panel2);
-            this.OprSplit.Panel1.Controls.Add(this.splitter1);
-            this.OprSplit.Panel1.Controls.Add(this.panel1);
-            // 
-            // OprSplit.Panel2
-            // 
-            this.OprSplit.Panel2.Controls.Add(this.OprPreviewContainer);
-            this.OprSplit.Size = new System.Drawing.Size(701, 472);
-            this.OprSplit.SplitterDistance = 115;
-            this.OprSplit.TabIndex = 0;
             // 
             // ItemLeftGrid
             // 
@@ -227,10 +195,10 @@
             // 
             // ItemLeftGrid.Panel1
             // 
-            this.ItemLeftGrid.Panel1.Controls.Add(this.close_btn);
-            this.ItemLeftGrid.Panel1.Controls.Add(this.del_btn);
-            this.ItemLeftGrid.Panel1.Controls.Add(this.edit_btn);
-            this.ItemLeftGrid.Panel1.Controls.Add(this.add_btn);
+            this.ItemLeftGrid.Panel1.Controls.Add(this.close_item_btn);
+            this.ItemLeftGrid.Panel1.Controls.Add(this.del_item_btn);
+            this.ItemLeftGrid.Panel1.Controls.Add(this.edit_item_btn);
+            this.ItemLeftGrid.Panel1.Controls.Add(this.add_item_btn);
             // 
             // ItemLeftGrid.Panel2
             // 
@@ -240,32 +208,105 @@
             this.ItemLeftGrid.SplitterDistance = 148;
             this.ItemLeftGrid.TabIndex = 0;
             // 
-            // add_btn
+            // close_item_btn
             // 
-            this.add_btn.Location = new System.Drawing.Point(20, 19);
-            this.add_btn.Name = "add_btn";
-            this.add_btn.Size = new System.Drawing.Size(75, 23);
-            this.add_btn.TabIndex = 0;
-            this.add_btn.Text = "&Add";
-            this.add_btn.UseVisualStyleBackColor = true;
+            this.close_item_btn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.close_item_btn.Location = new System.Drawing.Point(20, 106);
+            this.close_item_btn.Name = "close_item_btn";
+            this.close_item_btn.Size = new System.Drawing.Size(75, 23);
+            this.close_item_btn.TabIndex = 4;
+            this.close_item_btn.Text = "&Close";
+            this.close_item_btn.UseVisualStyleBackColor = true;
+            this.close_item_btn.Click += new System.EventHandler(this.close_btn_Click);
             // 
-            // edit_btn
+            // del_item_btn
             // 
-            this.edit_btn.Location = new System.Drawing.Point(20, 48);
-            this.edit_btn.Name = "edit_btn";
-            this.edit_btn.Size = new System.Drawing.Size(75, 23);
-            this.edit_btn.TabIndex = 1;
-            this.edit_btn.Text = "&Edit";
-            this.edit_btn.UseVisualStyleBackColor = true;
+            this.del_item_btn.Location = new System.Drawing.Point(20, 77);
+            this.del_item_btn.Name = "del_item_btn";
+            this.del_item_btn.Size = new System.Drawing.Size(75, 23);
+            this.del_item_btn.TabIndex = 2;
+            this.del_item_btn.Text = "&Delete";
+            this.del_item_btn.UseVisualStyleBackColor = true;
             // 
-            // del_btn
+            // edit_item_btn
             // 
-            this.del_btn.Location = new System.Drawing.Point(20, 77);
-            this.del_btn.Name = "del_btn";
-            this.del_btn.Size = new System.Drawing.Size(75, 23);
-            this.del_btn.TabIndex = 2;
-            this.del_btn.Text = "&Delete";
-            this.del_btn.UseVisualStyleBackColor = true;
+            this.edit_item_btn.Location = new System.Drawing.Point(20, 48);
+            this.edit_item_btn.Name = "edit_item_btn";
+            this.edit_item_btn.Size = new System.Drawing.Size(75, 23);
+            this.edit_item_btn.TabIndex = 1;
+            this.edit_item_btn.Text = "&Edit";
+            this.edit_item_btn.UseVisualStyleBackColor = true;
+            // 
+            // add_item_btn
+            // 
+            this.add_item_btn.Location = new System.Drawing.Point(20, 19);
+            this.add_item_btn.Name = "add_item_btn";
+            this.add_item_btn.Size = new System.Drawing.Size(75, 23);
+            this.add_item_btn.TabIndex = 0;
+            this.add_item_btn.Text = "&Add";
+            this.add_item_btn.UseVisualStyleBackColor = true;
+            // 
+            // ItemTemplateList
+            // 
+            this.ItemTemplateList.AllowUserToAddRows = false;
+            this.ItemTemplateList.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ItemTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.ItemTemplateList.AutoGenerateColumns = false;
+            this.ItemTemplateList.BackgroundColor = System.Drawing.Color.White;
+            this.ItemTemplateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ItemTemplateList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.titleDataGridViewTextBoxColumn});
+            this.ItemTemplateList.DataSource = this.BS_engDataDataSet;
+            this.ItemTemplateList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ItemTemplateList.Location = new System.Drawing.Point(0, 20);
+            this.ItemTemplateList.Name = "ItemTemplateList";
+            this.ItemTemplateList.ReadOnly = true;
+            this.ItemTemplateList.RowHeadersVisible = false;
+            this.ItemTemplateList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ItemTemplateList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ItemTemplateList.ShowCellErrors = false;
+            this.ItemTemplateList.ShowCellToolTips = false;
+            this.ItemTemplateList.ShowEditingIcon = false;
+            this.ItemTemplateList.ShowRowErrors = false;
+            this.ItemTemplateList.Size = new System.Drawing.Size(115, 300);
+            this.ItemTemplateList.TabIndex = 4;
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            this.titleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
+            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // BS_engDataDataSet
+            // 
+            this.BS_engDataDataSet.DataMember = "ItemTemplate";
+            this.BS_engDataDataSet.DataSource = this.engDataDataSet;
+            // 
+            // engDataDataSet
+            // 
+            this.engDataDataSet.DataSetName = "ENGDataDataSet";
+            this.engDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label16);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(115, 20);
+            this.panel4.TabIndex = 3;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(5, 3);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(73, 13);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "Template List:";
             // 
             // groupBox2
             // 
@@ -273,7 +314,7 @@
             this.groupBox2.Controls.Add(this.whse_cbo);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.plant_cbo);
-            this.groupBox2.Location = new System.Drawing.Point(19, 353);
+            this.groupBox2.Location = new System.Drawing.Point(3, 353);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(353, 108);
             this.groupBox2.TabIndex = 36;
@@ -338,7 +379,7 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.class_cbo);
-            this.groupBox1.Location = new System.Drawing.Point(19, 3);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(353, 344);
             this.groupBox1.TabIndex = 35;
@@ -549,29 +590,231 @@
             this.class_cbo.Size = new System.Drawing.Size(210, 21);
             this.class_cbo.TabIndex = 19;
             // 
-            // close_btn
+            // OprTab
             // 
-            this.close_btn.Location = new System.Drawing.Point(20, 106);
-            this.close_btn.Name = "close_btn";
-            this.close_btn.Size = new System.Drawing.Size(75, 23);
-            this.close_btn.TabIndex = 4;
-            this.close_btn.Text = "&Close";
-            this.close_btn.UseVisualStyleBackColor = true;
-            this.close_btn.Click += new System.EventHandler(this.close_btn_Click);
+            this.OprTab.BackColor = System.Drawing.SystemColors.Control;
+            this.OprTab.Controls.Add(this.OprSplit);
+            this.OprTab.Location = new System.Drawing.Point(4, 22);
+            this.OprTab.Name = "OprTab";
+            this.OprTab.Padding = new System.Windows.Forms.Padding(3);
+            this.OprTab.Size = new System.Drawing.Size(707, 478);
+            this.OprTab.TabIndex = 1;
+            this.OprTab.Text = "Operation Templates";
             // 
-            // engDataDataSet
+            // OprSplit
             // 
-            this.engDataDataSet.DataSetName = "ENGDataDataSet";
-            this.engDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.OprSplit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OprSplit.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.OprSplit.Location = new System.Drawing.Point(3, 3);
+            this.OprSplit.Name = "OprSplit";
             // 
-            // BS_engDataDataSet
+            // OprSplit.Panel1
             // 
-            this.BS_engDataDataSet.DataMember = "ItemTemplate";
-            this.BS_engDataDataSet.DataSource = this.engDataDataSet;
+            this.OprSplit.Panel1.Controls.Add(this.panel2);
+            this.OprSplit.Panel1.Controls.Add(this.splitter1);
+            this.OprSplit.Panel1.Controls.Add(this.panel1);
             // 
-            // itemTemplateTableAdapter
+            // OprSplit.Panel2
             // 
-            this.itemTemplateTableAdapter.ClearBeforeFill = true;
+            this.OprSplit.Panel2.Controls.Add(this.OprPreviewContainer);
+            this.OprSplit.Size = new System.Drawing.Size(701, 472);
+            this.OprSplit.SplitterDistance = 115;
+            this.OprSplit.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.OpsDataGrid);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 152);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(115, 320);
+            this.panel2.TabIndex = 2;
+            // 
+            // OpsDataGrid
+            // 
+            this.OpsDataGrid.AllowUserToAddRows = false;
+            this.OpsDataGrid.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.OpsDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.OpsDataGrid.AutoGenerateColumns = false;
+            this.OpsDataGrid.BackgroundColor = System.Drawing.Color.White;
+            this.OpsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.OpsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1});
+            this.OpsDataGrid.DataSource = this.BS_engDataDataSet;
+            this.OpsDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OpsDataGrid.Location = new System.Drawing.Point(0, 20);
+            this.OpsDataGrid.Name = "OpsDataGrid";
+            this.OpsDataGrid.ReadOnly = true;
+            this.OpsDataGrid.RowHeadersVisible = false;
+            this.OpsDataGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.OpsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.OpsDataGrid.ShowCellErrors = false;
+            this.OpsDataGrid.ShowCellToolTips = false;
+            this.OpsDataGrid.ShowEditingIcon = false;
+            this.OpsDataGrid.ShowRowErrors = false;
+            this.OpsDataGrid.Size = new System.Drawing.Size(115, 300);
+            this.OpsDataGrid.TabIndex = 3;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Title";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Title";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label15);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(115, 20);
+            this.panel3.TabIndex = 2;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(5, 3);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(73, 13);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Template List:";
+            // 
+            // splitter1
+            // 
+            this.splitter1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitter1.Location = new System.Drawing.Point(0, 148);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(115, 4);
+            this.splitter1.TabIndex = 1;
+            this.splitter1.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.close_op_btn);
+            this.panel1.Controls.Add(this.del_op_btn);
+            this.panel1.Controls.Add(this.edit_op_btn);
+            this.panel1.Controls.Add(this.add_op_btn);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(115, 148);
+            this.panel1.TabIndex = 0;
+            // 
+            // close_op_btn
+            // 
+            this.close_op_btn.Location = new System.Drawing.Point(20, 106);
+            this.close_op_btn.Name = "close_op_btn";
+            this.close_op_btn.Size = new System.Drawing.Size(75, 23);
+            this.close_op_btn.TabIndex = 8;
+            this.close_op_btn.Text = "&Close";
+            this.close_op_btn.UseVisualStyleBackColor = true;
+            // 
+            // del_op_btn
+            // 
+            this.del_op_btn.Location = new System.Drawing.Point(20, 77);
+            this.del_op_btn.Name = "del_op_btn";
+            this.del_op_btn.Size = new System.Drawing.Size(75, 23);
+            this.del_op_btn.TabIndex = 7;
+            this.del_op_btn.Text = "&Delete";
+            this.del_op_btn.UseVisualStyleBackColor = true;
+            // 
+            // edit_op_btn
+            // 
+            this.edit_op_btn.Location = new System.Drawing.Point(20, 48);
+            this.edit_op_btn.Name = "edit_op_btn";
+            this.edit_op_btn.Size = new System.Drawing.Size(75, 23);
+            this.edit_op_btn.TabIndex = 6;
+            this.edit_op_btn.Text = "&Edit";
+            this.edit_op_btn.UseVisualStyleBackColor = true;
+            // 
+            // add_op_btn
+            // 
+            this.add_op_btn.Location = new System.Drawing.Point(20, 19);
+            this.add_op_btn.Name = "add_op_btn";
+            this.add_op_btn.Size = new System.Drawing.Size(75, 23);
+            this.add_op_btn.TabIndex = 5;
+            this.add_op_btn.Text = "&Add";
+            this.add_op_btn.UseVisualStyleBackColor = true;
+            // 
+            // OprPreviewContainer
+            // 
+            this.OprPreviewContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OprPreviewContainer.Location = new System.Drawing.Point(0, 0);
+            this.OprPreviewContainer.Name = "OprPreviewContainer";
+            this.OprPreviewContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // OprPreviewContainer.Panel1
+            // 
+            this.OprPreviewContainer.Panel1.Controls.Add(this.groupBox4);
+            this.OprPreviewContainer.Panel1.Controls.Add(this.label14);
+            this.OprPreviewContainer.Panel1.Controls.Add(this.textBox1);
+            this.OprPreviewContainer.Panel1.Controls.Add(this.groupBox3);
+            // 
+            // OprPreviewContainer.Panel2
+            // 
+            this.OprPreviewContainer.Panel2.Controls.Add(this.OPDataGrid);
+            this.OprPreviewContainer.Size = new System.Drawing.Size(582, 472);
+            this.OprPreviewContainer.SplitterDistance = 175;
+            this.OprPreviewContainer.TabIndex = 10;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.addop_btn);
+            this.groupBox4.Controls.Add(this.remop_btn);
+            this.groupBox4.Controls.Add(this.saveop_btn);
+            this.groupBox4.Location = new System.Drawing.Point(308, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(89, 159);
+            this.groupBox4.TabIndex = 16;
+            this.groupBox4.TabStop = false;
+            // 
+            // addop_btn
+            // 
+            this.addop_btn.Location = new System.Drawing.Point(6, 21);
+            this.addop_btn.Name = "addop_btn";
+            this.addop_btn.Size = new System.Drawing.Size(75, 23);
+            this.addop_btn.TabIndex = 12;
+            this.addop_btn.Text = "Add Opr";
+            this.addop_btn.UseVisualStyleBackColor = true;
+            // 
+            // remop_btn
+            // 
+            this.remop_btn.Location = new System.Drawing.Point(6, 50);
+            this.remop_btn.Name = "remop_btn";
+            this.remop_btn.Size = new System.Drawing.Size(75, 23);
+            this.remop_btn.TabIndex = 13;
+            this.remop_btn.Text = "Rem. Opr";
+            this.remop_btn.UseVisualStyleBackColor = true;
+            // 
+            // saveop_btn
+            // 
+            this.saveop_btn.Location = new System.Drawing.Point(6, 127);
+            this.saveop_btn.Name = "saveop_btn";
+            this.saveop_btn.Size = new System.Drawing.Size(75, 23);
+            this.saveop_btn.TabIndex = 14;
+            this.saveop_btn.Text = "Save";
+            this.saveop_btn.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(9, 10);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(85, 13);
+            this.label14.TabIndex = 10;
+            this.label14.Text = "Template Name:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(12, 26);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(290, 20);
+            this.textBox1.TabIndex = 11;
             // 
             // groupBox3
             // 
@@ -715,267 +958,15 @@
             this.PrimaryResourceGrpDesc.ReadOnly = true;
             this.PrimaryResourceGrpDesc.Width = 134;
             // 
-            // OprPreviewContainer
+            // itemTemplateTableAdapter
             // 
-            this.OprPreviewContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OprPreviewContainer.Location = new System.Drawing.Point(0, 0);
-            this.OprPreviewContainer.Name = "OprPreviewContainer";
-            this.OprPreviewContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // OprPreviewContainer.Panel1
-            // 
-            this.OprPreviewContainer.Panel1.Controls.Add(this.groupBox4);
-            this.OprPreviewContainer.Panel1.Controls.Add(this.label14);
-            this.OprPreviewContainer.Panel1.Controls.Add(this.textBox1);
-            this.OprPreviewContainer.Panel1.Controls.Add(this.groupBox3);
-            // 
-            // OprPreviewContainer.Panel2
-            // 
-            this.OprPreviewContainer.Panel2.Controls.Add(this.OPDataGrid);
-            this.OprPreviewContainer.Size = new System.Drawing.Size(582, 472);
-            this.OprPreviewContainer.SplitterDistance = 175;
-            this.OprPreviewContainer.TabIndex = 10;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(115, 148);
-            this.panel1.TabIndex = 0;
-            // 
-            // splitter1
-            // 
-            this.splitter1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter1.Location = new System.Drawing.Point(0, 148);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(115, 4);
-            this.splitter1.TabIndex = 1;
-            this.splitter1.TabStop = false;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 152);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(115, 320);
-            this.panel2.TabIndex = 2;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(20, 106);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "&Close";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(20, 77);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "&Delete";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(20, 48);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "&Edit";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(20, 19);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "&Add";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(9, 10);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(85, 13);
-            this.label14.TabIndex = 10;
-            this.label14.Text = "Template Name:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(12, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(290, 20);
-            this.textBox1.TabIndex = 11;
-            // 
-            // addop_btn
-            // 
-            this.addop_btn.Location = new System.Drawing.Point(6, 21);
-            this.addop_btn.Name = "addop_btn";
-            this.addop_btn.Size = new System.Drawing.Size(75, 23);
-            this.addop_btn.TabIndex = 12;
-            this.addop_btn.Text = "Add Opr";
-            this.addop_btn.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(6, 50);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 13;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(6, 79);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 14;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(6, 124);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 15;
-            this.button8.Text = "button8";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.addop_btn);
-            this.groupBox4.Controls.Add(this.button8);
-            this.groupBox4.Controls.Add(this.button6);
-            this.groupBox4.Controls.Add(this.button7);
-            this.groupBox4.Location = new System.Drawing.Point(308, 3);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(89, 159);
-            this.groupBox4.TabIndex = 16;
-            this.groupBox4.TabStop = false;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.label15);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(115, 20);
-            this.panel3.TabIndex = 2;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(5, 3);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(73, 13);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "Template List:";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1});
-            this.dataGridView1.DataSource = this.BS_engDataDataSet;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 20);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.ShowCellErrors = false;
-            this.dataGridView1.ShowCellToolTips = false;
-            this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.ShowRowErrors = false;
-            this.dataGridView1.Size = new System.Drawing.Size(115, 300);
-            this.dataGridView1.TabIndex = 3;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Title";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Title";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.label16);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(115, 20);
-            this.panel4.TabIndex = 3;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(5, 3);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(73, 13);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "Template List:";
-            // 
-            // ItemTemplateList
-            // 
-            this.ItemTemplateList.AllowUserToAddRows = false;
-            this.ItemTemplateList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ItemTemplateList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.ItemTemplateList.AutoGenerateColumns = false;
-            this.ItemTemplateList.BackgroundColor = System.Drawing.Color.White;
-            this.ItemTemplateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ItemTemplateList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.titleDataGridViewTextBoxColumn});
-            this.ItemTemplateList.DataSource = this.BS_engDataDataSet;
-            this.ItemTemplateList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemTemplateList.Location = new System.Drawing.Point(0, 20);
-            this.ItemTemplateList.Name = "ItemTemplateList";
-            this.ItemTemplateList.ReadOnly = true;
-            this.ItemTemplateList.RowHeadersVisible = false;
-            this.ItemTemplateList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ItemTemplateList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ItemTemplateList.ShowCellErrors = false;
-            this.ItemTemplateList.ShowCellToolTips = false;
-            this.ItemTemplateList.ShowEditingIcon = false;
-            this.ItemTemplateList.ShowRowErrors = false;
-            this.ItemTemplateList.Size = new System.Drawing.Size(115, 300);
-            this.ItemTemplateList.TabIndex = 4;
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
+            this.itemTemplateTableAdapter.ClearBeforeFill = true;
             // 
             // Template_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.close_item_btn;
             this.ClientSize = new System.Drawing.Size(715, 504);
             this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -990,41 +981,41 @@
             this.ItemSplit.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ItemSplit)).EndInit();
             this.ItemSplit.ResumeLayout(false);
-            this.OprTab.ResumeLayout(false);
-            this.OprSplit.Panel1.ResumeLayout(false);
-            this.OprSplit.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.OprSplit)).EndInit();
-            this.OprSplit.ResumeLayout(false);
             this.ItemLeftGrid.Panel1.ResumeLayout(false);
             this.ItemLeftGrid.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ItemLeftGrid)).EndInit();
             this.ItemLeftGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ItemTemplateList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BS_engDataDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NetWeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NetVolume)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.engDataDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BS_engDataDataSet)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.prodhrs_num)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OPDataGrid)).EndInit();
+            this.OprTab.ResumeLayout(false);
+            this.OprSplit.Panel1.ResumeLayout(false);
+            this.OprSplit.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.OprSplit)).EndInit();
+            this.OprSplit.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.OpsDataGrid)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.OprPreviewContainer.Panel1.ResumeLayout(false);
             this.OprPreviewContainer.Panel1.PerformLayout();
             this.OprPreviewContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.OprPreviewContainer)).EndInit();
             this.OprPreviewContainer.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemTemplateList)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.prodhrs_num)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OPDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1037,9 +1028,9 @@
         private System.Windows.Forms.TabPage OprTab;
         private System.Windows.Forms.SplitContainer OprSplit;
         private System.Windows.Forms.SplitContainer ItemLeftGrid;
-        private System.Windows.Forms.Button del_btn;
-        private System.Windows.Forms.Button edit_btn;
-        private System.Windows.Forms.Button add_btn;
+        private System.Windows.Forms.Button del_item_btn;
+        private System.Windows.Forms.Button edit_item_btn;
+        private System.Windows.Forms.Button add_item_btn;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox whse_cbo;
@@ -1066,7 +1057,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox class_cbo;
-        private System.Windows.Forms.Button close_btn;
+        private System.Windows.Forms.Button close_item_btn;
         private ENGDataDataSet engDataDataSet;
         private System.Windows.Forms.BindingSource BS_engDataDataSet;
         private ENGDataDataSetTableAdapters.ItemTemplateTableAdapter itemTemplateTableAdapter;
@@ -1087,22 +1078,21 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button close_op_btn;
+        private System.Windows.Forms.Button del_op_btn;
+        private System.Windows.Forms.Button edit_op_btn;
+        private System.Windows.Forms.Button add_op_btn;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button addop_btn;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button remop_btn;
+        private System.Windows.Forms.Button saveop_btn;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView ItemTemplateList;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView OpsDataGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label15;

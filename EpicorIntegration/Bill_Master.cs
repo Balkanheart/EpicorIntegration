@@ -84,7 +84,7 @@ namespace EpicorIntegration
             {
                 if (DR.RowState == DataRowState.Modified)
                 {
-                    //Validate all data
+                    #region Validate all data
 
                     string partnumber = DR["MtlPartNum"].ToString();
 
@@ -101,9 +101,10 @@ namespace EpicorIntegration
                     EngWB.CheckECOMtlMtlSeqRelatedOperation(int.Parse(mtlseq), int.Parse(ops), "", out opMessage, out opMsgType, EngWBDS);
 
                     EngWB.ChangeECOMtlMtlPartNum(EngWBDS);
+
+                    #endregion
                 }
             }
-            //Still needs to correctly target billdatagrid fields
 
             EngWB.Update(EngWBDS);
 
@@ -199,25 +200,45 @@ namespace EpicorIntegration
 
         private void newbtn_Click(object sender, EventArgs e)
         {
-            EngWB.GetNewECOMtl(EngWBDS, gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "");
+            try
+            {
+                EngWB.GetNewECOMtl(EngWBDS, gid_txt.Text, parent_txt.Text, parentrev_txt.Text, "");
 
-            int rowindex = BillDataGrid.Rows.Count - 1;
+                int rowindex = BillDataGrid.Rows.Count - 1;
 
-            BillDataGrid.ClearSelection();
+                BillDataGrid.ClearSelection();
 
-            BillDataGrid.CurrentCell = BillDataGrid.Rows[rowindex].Cells[0];
+                BillDataGrid.CurrentCell = BillDataGrid.Rows[rowindex].Cells[0];
 
-            ops_cbo.SelectedIndex = 0;
+                qty_num.ValueChanged -= qty_num_ValueChanged;
 
-            EngWBDS.Tables["ECOMtl"].Rows[rowindex]["RelatedOperation"] = ops_cbo.SelectedValue;
+                ops_cbo.SelectedIndexChanged -= ops_cbo_SelectedIndexChanged;
 
-            partnum_txt.Text = "";
+                partnum_txt.TextChanged -= partnum_txt_TextChanged;
 
-            EngWBDS.Tables["ECOMtl"].Rows[rowindex]["QtyPer"] = 1;
+                qty_num.Value = 1;
+                
+                ops_cbo.SelectedIndex = 0;
 
-            //EngWBDS.Tables["ECOMtl"].Rows[rowindex]["MtlPartNum"] = partnum_txt.Text;
+                partnum_txt.Text = "";
 
-            EngWBDS.Tables["ECOMtl"].Rows[rowindex]["UOMCode"] = uom_cbo.Text;
+                desc_txt.Text = "";
+
+                qty_num.ValueChanged += qty_num_ValueChanged;
+
+                ops_cbo.SelectedIndexChanged += ops_cbo_SelectedIndexChanged;
+
+                partnum_txt.TextChanged += partnum_txt_TextChanged;
+
+                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["RelatedOperation"] = ops_cbo.SelectedValue;
+
+                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["QtyPer"] = 1;
+
+                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["ViewAsAsm"] = false;
+
+                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["UOMCode"] = uom_cbo.Text;
+            }
+            catch { }
         }
 
         private void savebtn_Click(object sender, EventArgs e)
@@ -259,26 +280,30 @@ namespace EpicorIntegration
 
         private void UpdateDataSet()
         {
-            if (linechanged)
+            try
             {
-                int rowindex = BillDataGrid.CurrentCellAddress.Y;
+                if (linechanged)
+                {
+                    int rowindex = BillDataGrid.CurrentCellAddress.Y;
 
-                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["ViewAsAsm"] = ViewAsAsm_chk.Checked;
+                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["ViewAsAsm"] = ViewAsAsm_chk.Checked;
 
-                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["MtlPartNum"] = partnum_txt.Text;
+                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["MtlPartNum"] = partnum_txt.Text;
 
-                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["RelatedOperation"] = ops_cbo.SelectedValue;
+                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["RelatedOperation"] = ops_cbo.SelectedValue;
 
-                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["OpDesc"] = EngWBDS.Tables["ECOOpr"].Rows[ops_cbo.SelectedIndex]["OpDesc"];
+                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["OpDesc"] = EngWBDS.Tables["ECOOpr"].Rows[ops_cbo.SelectedIndex]["OpDesc"];
 
-                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["UOMCode"] = uom_cbo.Text;
+                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["UOMCode"] = uom_cbo.Text;
 
-                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["MtlPartNumPartDescription"] = desc_txt.Text;
+                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["MtlPartNumPartDescription"] = desc_txt.Text;
 
-                EngWBDS.Tables["ECOMtl"].Rows[rowindex]["QtyPer"] = qty_num.Value;
+                    EngWBDS.Tables["ECOMtl"].Rows[rowindex]["QtyPer"] = qty_num.Value;
 
-                linechanged = false;
+                    linechanged = false;
+                }
             }
+            catch { }
         }
 
         private void UpdateFormFields()

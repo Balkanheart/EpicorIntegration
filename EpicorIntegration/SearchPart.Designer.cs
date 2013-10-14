@@ -47,9 +47,11 @@
             this.PartNumber = new System.Windows.Forms.TextBox();
             this.Advanced = new System.Windows.Forms.TabPage();
             this.advSplit = new System.Windows.Forms.SplitContainer();
+            this.AdvSearch = new System.Windows.Forms.CheckBox();
             this.advgroup = new System.Windows.Forms.GroupBox();
             this.serial_chk = new System.Windows.Forms.CheckBox();
             this.onhold_chk = new System.Windows.Forms.CheckBox();
+            this.phantom_chk = new System.Windows.Forms.CheckBox();
             this.qtybearing_chk = new System.Windows.Forms.CheckBox();
             this.nonstock_chk = new System.Windows.Forms.CheckBox();
             this.SearchResultGrid = new System.Windows.Forms.DataGridView();
@@ -59,21 +61,16 @@
             this.Clearbtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.SearchBtn = new System.Windows.Forms.Button();
-            this.AdvSearch = new System.Windows.Forms.CheckBox();
             this.PartNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PartDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProdCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SearchWord = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClassID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nonstock = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            //this.OnHold = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Inactive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PhantomBOM = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            //this.TrackLots = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TrackSerialNum = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.QtyBearing = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.phantom_chk = new System.Windows.Forms.CheckBox();
             this.tabs.SuspendLayout();
             this.Basic.SuspendLayout();
             this.basicgroup.SuspendLayout();
@@ -281,8 +278,19 @@
             this.advSplit.Panel2.Controls.Add(this.advgroup);
             this.advSplit.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.advSplit.Size = new System.Drawing.Size(522, 130);
-            this.advSplit.SplitterDistance = 17;
+            this.advSplit.SplitterDistance = 25;
             this.advSplit.TabIndex = 0;
+            // 
+            // AdvSearch
+            // 
+            this.AdvSearch.AutoSize = true;
+            this.AdvSearch.Location = new System.Drawing.Point(3, 3);
+            this.AdvSearch.Name = "AdvSearch";
+            this.AdvSearch.Size = new System.Drawing.Size(112, 17);
+            this.AdvSearch.TabIndex = 0;
+            this.AdvSearch.Text = "Advanced Search";
+            this.AdvSearch.UseVisualStyleBackColor = true;
+            this.AdvSearch.CheckedChanged += new System.EventHandler(this.AdvSearch_CheckedChanged);
             // 
             // advgroup
             // 
@@ -295,7 +303,7 @@
             this.advgroup.Enabled = false;
             this.advgroup.Location = new System.Drawing.Point(0, 0);
             this.advgroup.Name = "advgroup";
-            this.advgroup.Size = new System.Drawing.Size(522, 109);
+            this.advgroup.Size = new System.Drawing.Size(522, 101);
             this.advgroup.TabIndex = 0;
             this.advgroup.TabStop = false;
             // 
@@ -318,6 +326,17 @@
             this.onhold_chk.TabIndex = 5;
             this.onhold_chk.Text = "On Hold";
             this.onhold_chk.UseVisualStyleBackColor = true;
+            // 
+            // phantom_chk
+            // 
+            this.phantom_chk.AutoSize = true;
+            this.phantom_chk.Location = new System.Drawing.Point(6, 39);
+            this.phantom_chk.Name = "phantom_chk";
+            this.phantom_chk.Size = new System.Drawing.Size(95, 17);
+            this.phantom_chk.TabIndex = 4;
+            this.phantom_chk.Text = "Phantom BOM";
+            this.phantom_chk.UseVisualStyleBackColor = true;
+            this.phantom_chk.Visible = false;
             // 
             // qtybearing_chk
             // 
@@ -342,6 +361,8 @@
             // 
             // SearchResultGrid
             // 
+            this.SearchResultGrid.AllowUserToAddRows = false;
+            this.SearchResultGrid.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.PowderBlue;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.SearchResultGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -354,11 +375,8 @@
             this.ProdCode,
             this.SearchWord,
             this.ClassID,
-            this.Nonstock,
-            //this.OnHold,
             this.Inactive,
             this.PhantomBOM,
-            //this.TrackLots,
             this.TrackSerialNum,
             this.QtyBearing});
             this.SearchResultGrid.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -367,6 +385,10 @@
             this.SearchResultGrid.ReadOnly = true;
             this.SearchResultGrid.RowHeadersVisible = false;
             this.SearchResultGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.SearchResultGrid.ShowCellErrors = false;
+            this.SearchResultGrid.ShowCellToolTips = false;
+            this.SearchResultGrid.ShowEditingIcon = false;
+            this.SearchResultGrid.ShowRowErrors = false;
             this.SearchResultGrid.Size = new System.Drawing.Size(684, 196);
             this.SearchResultGrid.TabIndex = 0;
             // 
@@ -455,17 +477,6 @@
             this.SearchBtn.UseVisualStyleBackColor = true;
             this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
-            // AdvSearch
-            // 
-            this.AdvSearch.AutoSize = true;
-            this.AdvSearch.Location = new System.Drawing.Point(3, 3);
-            this.AdvSearch.Name = "AdvSearch";
-            this.AdvSearch.Size = new System.Drawing.Size(112, 17);
-            this.AdvSearch.TabIndex = 0;
-            this.AdvSearch.Text = "Advanced Search";
-            this.AdvSearch.UseVisualStyleBackColor = true;
-            this.AdvSearch.CheckedChanged += new System.EventHandler(this.AdvSearch_CheckedChanged);
-            // 
             // PartNum
             // 
             this.PartNum.DataPropertyName = "PartNum";
@@ -510,20 +521,6 @@
             this.ClassID.Name = "ClassID";
             this.ClassID.ReadOnly = true;
             // 
-            // Nonstock
-            // 
-            this.Nonstock.DataPropertyName = "Nonstock";
-            this.Nonstock.HeaderText = "NonStock";
-            this.Nonstock.Name = "Nonstock";
-            this.Nonstock.ReadOnly = true;
-            // 
-            // OnHold
-            /* 
-            this.OnHold.DataPropertyName = "OnHold";
-            this.OnHold.HeaderText = "On Hold";
-            this.OnHold.Name = "OnHold";
-            this.OnHold.ReadOnly = true;
-            */ 
             // Inactive
             // 
             this.Inactive.DataPropertyName = "Inactive";
@@ -538,15 +535,6 @@
             this.PhantomBOM.Name = "PhantomBOM";
             this.PhantomBOM.ReadOnly = true;
             // 
-            // TrackLots
-            /* 
-            this.TrackLots.DataPropertyName = "TrackLots";
-            this.TrackLots.HeaderText = "Lot Tracking";
-            this.TrackLots.Name = "TrackLots";
-            this.TrackLots.ReadOnly = true;
-            this.TrackLots.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TrackLots.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            /*/ 
             // TrackSerialNum
             // 
             this.TrackSerialNum.DataPropertyName = "TrackSerialNum";
@@ -562,17 +550,6 @@
             this.QtyBearing.HeaderText = "QtyBearing";
             this.QtyBearing.Name = "QtyBearing";
             this.QtyBearing.ReadOnly = true;
-            // 
-            // phantom_chk
-            // 
-            this.phantom_chk.AutoSize = true;
-            this.phantom_chk.Location = new System.Drawing.Point(6, 39);
-            this.phantom_chk.Name = "phantom_chk";
-            this.phantom_chk.Size = new System.Drawing.Size(95, 17);
-            this.phantom_chk.TabIndex = 4;
-            this.phantom_chk.Text = "Phantom BOM";
-            this.phantom_chk.UseVisualStyleBackColor = true;
-            this.phantom_chk.Visible = false;
             // 
             // SearchPart
             // 
@@ -645,19 +622,18 @@
         private System.Windows.Forms.ComboBox type_cbo;
         private System.Windows.Forms.SplitContainer advSplit;
         private System.Windows.Forms.CheckBox AdvSearch;
+        //private System.Windows.Forms.DataGridViewCheckBoxColumn OnHold;
+        //private System.Windows.Forms.DataGridViewCheckBoxColumn TrackLots;
+        private System.Windows.Forms.CheckBox phantom_chk;
         private System.Windows.Forms.DataGridViewTextBoxColumn PartNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn PartDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn TypeCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProdCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn SearchWord;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClassID;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Nonstock;
-        //private System.Windows.Forms.DataGridViewCheckBoxColumn OnHold;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Inactive;
         private System.Windows.Forms.DataGridViewCheckBoxColumn PhantomBOM;
-        //private System.Windows.Forms.DataGridViewCheckBoxColumn TrackLots;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TrackSerialNum;
         private System.Windows.Forms.DataGridViewCheckBoxColumn QtyBearing;
-        private System.Windows.Forms.CheckBox phantom_chk;
     }
 }
